@@ -19,6 +19,20 @@ async def on_member_remove(member):
 
 @Misaki.command()
 async def ping(ctx):
-    await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒')
+    if (round(Misaki.latency*1000) >= 100):
+        await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒')
+        await ctx.send('有夠遠的 :ok_this_is_epic:')
+    else:
+        await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒')
+
+@Misaki.command()
+async def 鄭順謙(ctx):
+    await ctx.send('還錢')
+
+@Misaki.command()
+async def 水塔(ctx):
+    await ctx.send('鄭順謙')
+    await ctx.send('還錢')
+
 
 Misaki.run('NzEyMjQzMDQwNzYwMTAyOTky.XsOu7A.6UD4xvWSbWH0LSIy_A8mgFNOEmA')
