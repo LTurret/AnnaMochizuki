@@ -43,18 +43,16 @@ async def purge(ctx, amount=1):
 
 @Misaki.command()
 async def 大和美少女(ctx):
-    pic = discord.File('C:\\Users\\George Rupp\\Desktop\\Files\\Programming\\Github\\Suspend-bot\\local-picture\\水手大和.jpg')
+    pic = discord.File(jdata['大和美少女'])
     await ctx.send(file=pic)
 
 @Misaki.command()
 async def 南斗(ctx):
-    pic = discord.File('C:\\Users\\George Rupp\\Desktop\\Files\\Programming\\Github\\Suspend-bot\\local-picture\\Misakiaoba.gif')
+    pic = discord.File(jdata['南斗'])
     await ctx.send(file=pic)
 
 @Misaki.command()
 async def 歌單(ctx):
-    await ctx.send('https://www.youtube.com/playlist?list=PL7N_IWFrvzwsOLqvzI9D5lyKEuiV6dXkT')
-
-
+    await ctx.send(jdata['歌單'])
 
 Misaki.run(jdata['BotToken'])
