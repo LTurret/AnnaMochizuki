@@ -42,4 +42,11 @@ async def ping(ctx):
 async def purge(ctx, amount=1):
 	await ctx.channel.purge(limit=amount+1)
 
+@Misaki.command()
+async def 大和美少女(ctx):
+    pic = discord.File('C:\\Users\\George Rupp\\Desktop\\Files\\Image\\Else')
+    await ctx.send(file=pic)
+
+
+
 Misaki.run(jdata['BotToken'])
