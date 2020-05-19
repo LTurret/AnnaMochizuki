@@ -33,8 +33,7 @@ async def on_message(message):
 @Misaki.command()
 async def ping(ctx):
     if (round(Misaki.latency*1000) >= 100):
-        await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒')
-        await ctx.send('有夠遠的 :ok_this_is_epic:')
+        await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒\n有夠遠的')
     else:
         await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒')
 
@@ -44,8 +43,17 @@ async def purge(ctx, amount=1):
 
 @Misaki.command()
 async def 大和美少女(ctx):
-    pic = discord.File('C:\\Users\\George Rupp\\Desktop\\Files\\Image\\Else')
+    pic = discord.File('C:\\Users\\George Rupp\\Desktop\\Files\\Programming\\Github\\Suspend-bot\\local-picture\\水手大和.jpg')
     await ctx.send(file=pic)
+
+@Misaki.command()
+async def 南斗(ctx):
+    pic = discord.File('C:\\Users\\George Rupp\\Desktop\\Files\\Programming\\Github\\Suspend-bot\\local-picture\\Misakiaoba.gif')
+    await ctx.send(file=pic)
+
+@Misaki.command()
+async def 歌單(ctx):
+    await ctx.send('https://www.youtube.com/playlist?list=PL7N_IWFrvzwsOLqvzI9D5lyKEuiV6dXkT')
 
 
 
