@@ -9,10 +9,12 @@ async def on_ready():
 
 @Misaki.event
 async def on_member_join(member):
-    print(f'{member} 加入了漢堡群！')
+    channel = Misaki.get_channel(474858135853596675)
+    await channel.send(f'{member.mention} 加入了漢堡群')
 
 @Misaki.event
-async def on_member_leave(member):
-    print(f'{member} 退出了漢堡群，SAD')
+async def on_member_remove(member):
+    channel = Misaki.get_channel(474858135853596675)
+    await channel.send(f'{member.mention} 退出了漢堡群，SAD！')
 
 Misaki.run('NzEyMjQzMDQwNzYwMTAyOTky.XsOu7A.6UD4xvWSbWH0LSIy_A8mgFNOEmA')
