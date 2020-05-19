@@ -22,12 +22,6 @@ async def on_message(message):
      if "help" is message.content:
         channel = Misaki.get_channel(474858135853596675)
         await channel.send('okay here\'s list...')
-     elif "鄭順謙" is message.content:
-        channel = Misaki.get_channel(474858135853596675)
-        await channel.send('還錢')
-     elif "水塔" is message.content:
-        channel = Misaki.get_channel(474858135853596675)
-        await channel.send('鄭順謙')
 
 @Misaki.command()
 async def ping(ctx):
