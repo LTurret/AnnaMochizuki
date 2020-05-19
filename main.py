@@ -5,7 +5,7 @@ from discord.ext import commands
 with open ('setting.json', 'r', encoding='utf8') as jsonSetting:
     jdata = json.load(jsonSetting)
 
-Misaki = commands.Bot(command_prefix='|')
+Misaki = commands.Bot(command_prefix='.')
 
 @Misaki.event
 async def on_ready():
@@ -37,5 +37,9 @@ async def ping(ctx):
         await ctx.send('有夠遠的 :ok_this_is_epic:')
     else:
         await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒')
+
+@Misaki.command()
+async def purge(ctx, amount=1):
+	await ctx.channel.purge(limit=amount+1)
 
 Misaki.run(jdata['BotToken'])
