@@ -13,18 +13,18 @@ async def on_ready():
 
 @Misaki.event
 async def on_member_join(member):
-    channel = Misaki.get_channel(jdata['MainChannelID'])
-    await channel.send(f'{member.mention} 加入了漢堡群')
+    channel = Misaki.get_channel(int(jdata['MainChannelID']))
+    await channel.send(f'{member.mention} 加入了漢堡群！')
 
 @Misaki.event
 async def on_member_remove(member):
-    channel = Misaki.get_channel(jdata['MainChannelID'])
+    channel = Misaki.get_channel(int(jdata['MainChannelID']))
     await channel.send(f'{member.mention} 退出了漢堡群，SAD！')
 
 @Misaki.listen()
 async def on_message(message):
      if "help" == message.content:
-        channel = Misaki.get_channel(jdata['MainChannelID'])
+        channel = Misaki.get_channel(int(jdata['MainChannelID']))
         await channel.send('okay here\'s list...')
 
 @Misaki.command()
