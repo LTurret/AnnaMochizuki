@@ -2,6 +2,6 @@
 
 ## English
 
-   *### Annoucement
-   *### Usage
-   *### Commands
+### Annoucement
+### Usage
+### Commands
