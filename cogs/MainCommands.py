@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 
 class MainCommands(commands.Cog):
-
     def __init__(self, Misaki):
         self.Misaki = Misaki
 
