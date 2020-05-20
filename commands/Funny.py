@@ -7,7 +7,7 @@ with open ('setting.json', 'r', encoding='utf8') as jsonSetting:
 
 Misaki = commands.Bot(command_prefix='.')
 
-class Fun(commands.Cog):
+class Funny(commands.Cog):
     def __init__(self, Misaki):
         self.bot = Misaki
 
