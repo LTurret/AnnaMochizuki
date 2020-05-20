@@ -6,7 +6,7 @@ from discord.ext import commands
 with open ('setting.json', 'r', encoding='utf8') as jsonSetting:
     jdata = json.load(jsonSetting)
 
-Misaki = commands.Bot(command_prefix='.')
+Misaki = commands.Bot(command_prefix=commands.when_mentioned, description='Hello world')
 
 @Misaki.event
 async def on_ready():
@@ -42,19 +42,5 @@ async def unload(ctx, extension):
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         Misaki.load_extension(f'cogs.{filename[:-3]}')
-
-@Misaki.command()
-async def 大和美少女(ctx):
-    pic = discord.File(jdata['大和美少女'])
-    await ctx.send(file=pic)
-
-@Misaki.command()
-async def 南斗(ctx):
-    pic = discord.File(jdata['南斗'])
-    await ctx.send(file=pic)
-
-@Misaki.command()
-async def 歌單(ctx):
-    await ctx.send(jdata['歌單'])
 
 Misaki.run(jdata['BotToken'])
