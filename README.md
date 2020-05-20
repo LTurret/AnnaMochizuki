@@ -1,4 +1,4 @@
-# |   Misaki bot for Suspend discord server   |
+# Misaki bot for Suspend discord server
 
 ## English
 
