@@ -22,15 +22,6 @@ async def on_member_remove(member):
     channel = Misaki.get_channel(int(jdata['MainChannelID']))
     await channel.send(f'{member.mention} 退出了漢堡群，SAD！')
 
-@Misaki.listen()
-async def on_message(message):
-     if "help" == message.content:
-        channel = Misaki.get_channel(int(jdata['MainChannelID']))
-        await channel.send('okay here\'s list...')
-     elif "水塔" == message.content:
-        channel = Misaki.get_channel(int(jdata['MainChannelID']))
-        await channel.send('鄭順謙')
-
 @Misaki.command()
 async def load(ctx, extension):
     Misaki.load_extension(f'cogs.{extension}')
