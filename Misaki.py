@@ -1,5 +1,6 @@
 import discord
 import json
+import os
 from discord.ext import commands
 
 with open ('setting.json', 'r', encoding='utf8') as jsonSetting:
@@ -31,15 +32,16 @@ async def on_message(message):
         await channel.send('鄭順謙')
 
 @Misaki.command()
-async def ping(ctx):
-    if (round(Misaki.latency*1000) >= 100):
-        await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒\n有夠遠的')
-    else:
-        await ctx.send(f'你與我的距離為 {round(Misaki.latency*1000)} 毫秒')
+async def load(ctx, extension):
+    Misaki.load_extension(f'cogs.{extension}')
 
 @Misaki.command()
-async def purge(ctx, amount=1):
-	await ctx.channel.purge(limit=amount+1)
+async def unload(ctx, extension):
+    Misaki.unload_extension(f'cogs.{extension}')
+
+for filename in os.listdir('./cogs'):
+    if filename.endswith('.py'):
+        Misaki.load_extension(f'cogs.{filename[:-3]}')
 
 @Misaki.command()
 async def 大和美少女(ctx):
