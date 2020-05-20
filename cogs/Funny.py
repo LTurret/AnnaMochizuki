@@ -25,12 +25,9 @@ class Funny(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        #(if "help" == message.content:
-            #channel = self.Misaki.get_channel(int(jdata['MainChannelID']))
-            #await channel.send('okay here\'s list...'))
-        if "<@712243040760102992>" == message.content:
+        if "水塔" == message.content:
             channel = self.Misaki.get_channel(int(jdata['MainChannelID']))
-            await channel.send('是在ping啥小')
+            await channel.send('鄭順謙')
 
 def setup(Misaki):
     Misaki.add_cog(Funny(Misaki))
