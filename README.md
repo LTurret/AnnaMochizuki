@@ -2,6 +2,9 @@
 
 ## English
 
-### Annoucement
-### Usage
-### Commands
+### *Annoucement
+This bot is currently used for private usage.
+### *Usage
+For my programming technique and make a discord for myself.
+### *Commands
+soon...
