@@ -16,5 +16,10 @@ class MainCommands(commands.Cog):
     async def purge(self, ctx, amount=1):
         await ctx.channel.purge(limit=amount+1)
 
+    @commands.command()
+    async def botsaid(self, ctx, *,message):
+        await ctx.message.delete()
+        await ctx.send(message)
+
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
