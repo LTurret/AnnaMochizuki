@@ -25,10 +25,17 @@ async def on_member_remove(member):
 @Misaki.command()
 async def load(ctx, extension):
     Misaki.load_extension(f'cogs.{extension}')
+    await ctx.send(f'function **{extension}** loadeded.')
 
 @Misaki.command()
 async def unload(ctx, extension):
     Misaki.unload_extension(f'cogs.{extension}')
+    await ctx.send(f'function **{extension}** unloaded.')
+
+@Misaki.command()
+async def reload(ctx, extension):
+    Misaki.reload_extension(f'cogs.{extension}')
+    await ctx.send(f'function **{extension}** reloaded.')
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
