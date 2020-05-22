@@ -2,11 +2,11 @@
 
 create by LTurret
 
-## *Annoucement
+## * Annoucement
 
 This bot is currently used for private usage and my programming techique.
 
-### *Usage
+### * Usage
 
 Mention Misaki in server then you'll activate the bot!
 Try like this:
@@ -15,16 +15,16 @@ Try like this:
 @青羽美咲 {commands}
 ```
 
-### *Commands
+### * Commands
 
 soon...
 
-### Futures
+### * Futures
 
 * 做MLTD通知bot
 * 讓MLTD通知每日更新+通報
 
-### The issue I'm facting
+### * The issue I'm facting
 
 There's no any issue now.
 because i'm still learn how to write a bot
