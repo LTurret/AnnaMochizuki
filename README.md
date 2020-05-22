@@ -18,3 +18,13 @@ Try like this:
 ### *Commands
 
 soon...
+
+### Futures
+
+* 做MLTD通知bot
+* 讓MLTD通知每日更新+通報
+
+### The issue I'm facting
+
+There's no any issue now.
+because i'm still learn how to write a bot
