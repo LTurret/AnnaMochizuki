@@ -25,11 +25,11 @@ class Funny(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if jdata['keywordOfZhen'] in message.content:
-            await message.channel.send('鄭順謙')
-        elif message.content == '一根手指':
+        if message.content == '一根手指':
             await message.channel.send('5000塊')
-        elif jdata['keywordOfSu'] in message.content:
+        elif message.content in jdata['keywordOfZhen']:
+            await message.channel.send('鄭順謙')
+        elif message.content in jdata['keywordOfSu']:
             await message.channel.send('<@493622381554827274>')
 
 def setup(Misaki):
