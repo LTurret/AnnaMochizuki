@@ -29,7 +29,7 @@ soon...
 - [ ] 完成Misaki bot
 - [ ] 公開Misaki bot
 
-### * The issue I'm facting
+### * Recent
 
-There's no any issue now.
-because i'm still learn how to write a bot
+- [ ] Make asyncio functoin annoucement mltd relate
+- [ ] Toggle cog.MLTD helplist
