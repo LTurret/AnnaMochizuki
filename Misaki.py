@@ -3,13 +3,14 @@ import json
 import os
 from discord.ext import commands
 
-with open ('setting.json', 'r', encoding='utf8') as jsonSetting:
+with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding='utf8') as jsonSetting:
     jdata = json.load(jsonSetting)
 
 Misaki = commands.Bot(command_prefix=commands.when_mentioned, description='Hello world')
 
 @Misaki.event
 async def on_ready():
+    await Misaki.change_presence(status = discord.Status.online, activity = discord.Game('アイドルマスター ミリオンライブ!'))
     print("Misaki is working!\n大家的事務員，美咲上班啦！")
 
 @Misaki.event
