@@ -3,8 +3,10 @@ import json
 import datetime
 from discord.ext import commands
 
-with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\MLTD.json", 'r', encoding='utf8') as jsonSetting:
-    jdata = json.load(jsonSetting)
+with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\MLTD.json", 'r', encoding='utf8') as MLTDjson:
+    Mjson = json.load(MLTDjson)
+with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\announce.json", 'r', encoding='utf8') as EventDescription:
+    Eann = json.load(EventDescription)
 
 class MLTD(commands.Cog):
     def __init__(self, Misaki):
@@ -12,23 +14,23 @@ class MLTD(commands.Cog):
 
     @commands.command()
     async def 大和美少女(self, ctx):
-        pic = discord.File(jdata['大和美少女'])
+        pic = discord.File(Mjson['大和美少女'])
         await ctx.send(file=pic)
 
     @commands.command()
     async def 南斗(self, ctx):
-        pic = discord.File(jdata['南斗'])
+        pic = discord.File(Mjson['南斗'])
         await ctx.send(file=pic)
 
     @commands.command()
     async def 歌單(self, ctx):
-        await ctx.send(jdata['歌單'])
+        await ctx.send(Mjson['歌單'])
 
     @commands.command()
     async def MLTDhelp(self, ctx):
         embed = discord.Embed(title = "MLTD指令選單", description = "大家的事務員，青羽美咲！", colour = 0x93e2df
         , timestamp = datetime.datetime.utcnow())
-        embed.set_author(name = "青羽美咲", url = jdata['MLTD_Misaki_about'], icon_url = jdata['MLTD_765_icon'])
+        embed.set_author(name = "青羽美咲", url = Mjson['MLTD_Misaki_about'], icon_url = Mjson['MLTD_765_icon'])
         embed.set_thumbnail(url = "https://i.imgur.com/eEKg1Vn.jpg")
         embed.add_field(name = "大和美少女", value = "**@青羽美咲 大和美少女**", inline = False)
         embed.add_field(name = "南斗", value = "**@青羽美咲 南斗**", inline = False)
@@ -43,17 +45,17 @@ class MLTD(commands.Cog):
     async def TWevent(self, ctx):
         embed = discord.Embed(title = "台服活動貼文", colour = 0x93e2df
         , timestamp = datetime.datetime.utcnow())
-        embed.set_author(name = "偶像大師 百萬人演唱會！劇場時光", url = "https://www.facebook.com/idolmastermlTD.ch/?epa=SEARCH_BOX", icon_url = jdata['MLTD_TWevent_avatar'])
-        embed.set_image(url = jdata['MLTD_TWevent_cover'])
-        embed.add_field(name = "內文", value = jdata['MLTD_TWevent_ann'], inline = False)
+        embed.set_author(name = "偶像大師 百萬人演唱會！劇場時光", url = "https://www.facebook.com/idolmastermlTD.ch/?epa=SEARCH_BOX", icon_url = Mjson['MLTD_TWevent_avatar'])
+        embed.set_image(url = Mjson['MLTD_TWevent_cover'])
+        embed.add_field(name = "內文", value = Eann['MLTD_TWevent_ann'], inline = False)
         await ctx.send(embed=embed)
 
     #probably code an asyncio function to here.
     #it will be standard asyncio or be discord std function.
     @commands.command()
     async def Stream(self, ctx):
-        await ctx.send(jdata['MLTD_StreamPic'])
-        await ctx.send(jdata['MLTD_StreamLink'])
+        await ctx.send(Mjson['MLTD_StreamPic'])
+        await ctx.send(Mjson['MLTD_StreamLink'])
 
 def setup(Misaki):
     Misaki.add_cog(MLTD(Misaki))
