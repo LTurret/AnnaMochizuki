@@ -23,14 +23,12 @@ class MainCommands(commands.Cog):
         await ctx.send(message)
     
     @commands.command()
-    async def rand_squad(self, ctx):
+    async def rand_squad(self, ctx, keyword:str):
         for member in ctx.guild.members:
-            thestring = "LT"
-            #if str(member).find("LT"):
-            if search(str(member), thestring):
-                print(f"{member} has 'LT' in its name!")
+            if search(str(member), keyword):
+                print("yes")
             else:
-                print(f"{member} hasn't 'LT' in its name!")
+                print("no")
                     
 
 def setup(Misaki):
