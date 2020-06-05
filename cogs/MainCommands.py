@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from re import search
 
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
@@ -20,6 +21,17 @@ class MainCommands(commands.Cog):
     async def botsaid(self, ctx, *,message):
         await ctx.message.delete()
         await ctx.send(message)
+    
+    @commands.command()
+    async def rand_squad(self, ctx):
+        for member in ctx.guild.members:
+            thestring = "LT"
+            #if str(member).find("LT"):
+            if search(str(member), thestring):
+                print(f"{member} has 'LT' in its name!")
+            else:
+                print(f"{member} hasn't 'LT' in its name!")
+                    
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
