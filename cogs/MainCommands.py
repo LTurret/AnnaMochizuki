@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from typing import Optional
-from re import search
+import random
 
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
@@ -19,21 +19,22 @@ class MainCommands(commands.Cog):
         await ctx.channel.purge(limit=amount+1)
 
     @commands.command()
+    async def cls(self, ctx, amount=1):
+        await ctx.channel.purge(limit=amount+1)
+
+    @commands.command()
     async def botsaid(self, ctx, *,message):
         await ctx.message.delete()
         await ctx.send(message)
     
     @commands.command()
-    async def rand_squad(self, ctx, keyword):
-        search = keyword
-        hasSearch = []
+    async def rds(self, ctx, keyword:str, sampling:int, rng:int):
+        hasNick = []
         for member in ctx.guild.members:
-            if member.nick != None and member.nick.count(search):
-                hasSearch.append(member)
-        print(hasSearch)
-
-
-
+            if member.nick != None and member.nick.count(keyword):
+                hasNick.append(member)
+        for hasSamp in random.sample(hasNick, k=sampling):
+            print(hasSamp)
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
