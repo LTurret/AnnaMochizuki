@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from typing import Optional
 from re import search
 
 class MainCommands(commands.Cog):
@@ -23,13 +24,16 @@ class MainCommands(commands.Cog):
         await ctx.send(message)
     
     @commands.command()
-    async def rand_squad(self, ctx, keyword:str):
+    async def rand_squad(self, ctx, keyword):
+        search = keyword
+        hasSearch = []
         for member in ctx.guild.members:
-            if search(str(member), keyword):
-                print("yes")
-            else:
-                print("no")
-                    
+            if member.nick != None and member.nick.count(search):
+                hasSearch.append(member)
+        print(hasSearch)
+
+
+
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
