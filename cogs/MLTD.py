@@ -30,15 +30,11 @@ class MLTD(commands.Cog):
     async def help_MLTD(self, ctx):
         embed = discord.Embed(title = "MLTD指令清單", description = None, colour = 0x93e2df
         , timestamp = datetime.datetime.utcnow())
-        #embed.set_author(name = "青羽美咲", url = Mjson['MLTD_Misaki_about'], icon_url = Mjson['MLTD_765_icon'])
-        embed.set_thumbnail(url = "https://i.imgur.com/eEKg1Vn.jpg")
         embed.add_field(name = "> 大和美少女", value = "**@青羽美咲 大和美少女**", inline = False)
         embed.add_field(name = "> 南斗", value = "**@青羽美咲 南斗**", inline = False)
         embed.add_field(name = "> 歌單", value = "**@青羽美咲 歌單**", inline = False)
-        embed.add_field(name = "> 直播推廣通知", value = "**@青羽美咲 Stream**", inline = False)
         embed.add_field(name = "> 日服活動確認", value = "**@青羽美咲 JPevent**", inline = False)
         embed.add_field(name = "> 台服活動確認", value = "**@青羽美咲 TWevent**", inline = False)
-        embed.set_footer(text = "なんとぉー！")
         await ctx.send(embed=embed)
 
     @commands.command()
