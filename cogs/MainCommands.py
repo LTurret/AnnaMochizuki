@@ -4,8 +4,8 @@ import random
 import datetime
 from discord.ext import commands
 
-with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\MLTD.json", 'r', encoding='utf8') as MLTDjson:
-    Mjson = json.load(MLTDjson)
+with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
+    MainCommandsJson = json.load(MainCommandsJson)
 
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
@@ -42,20 +42,24 @@ class MainCommands(commands.Cog):
         await ctx.send(message)
     
     @commands.command()
-    async def rds(self, ctx, keyword:str, sampling1:int, sampling2:int):
+    async def rds(self, ctx, keyword:str, population:int, groups:int):
         hasNick = []
         for member in ctx.guild.members:
             if member.nick != None and member.nick.count(keyword):
                 hasNick.append(member.name)
-        for iteration in range(sampling2):
-            enum = random.sample(hasNick, k=sampling1)
-            for removal in enum:
-                hasNick.remove(removal)
-            embed = discord.Embed(title = f'第 {iteration+1} 小隊', description = None, colour = 0x93e2df
-            , timestamp = datetime.datetime.utcnow())
-            embed.set_thumbnail(url = 'https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/flag-icon.png') #TO JSON TO JSON TO JSON
-            embed.add_field(name = "隊員", value=f'{enum}', inline=False)
-            await ctx.send(embed=embed)
+        if (len(hasNick) <= population * groups):
+            await ctx.channel.send(f'不足以分組。\n請確定人數是否足夠、關鍵字 "{keyword}" 是否更改為暱稱之內。')
+            pass
+        else:
+            for iteration in range(groups):
+                enum = random.sample(hasNick, k=population)
+                for removal in enum:
+                    hasNick.remove(removal)
+                embed = discord.Embed(title = f'第 {iteration+1} 小隊', description = None, colour = 0x93e2df
+                , timestamp = datetime.datetime.utcnow())
+                embed.set_thumbnail(url = MainCommandsJson['Flag_icon'])
+                embed.add_field(name = "隊員", value=f'{enum}', inline=False)
+                await ctx.send(embed=embed)
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
