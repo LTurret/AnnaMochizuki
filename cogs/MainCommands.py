@@ -12,16 +12,6 @@ class MainCommands(commands.Cog):
         self.Misaki = Misaki
 
     @commands.command()
-    async def help_main(self, ctx):
-        embed = discord.Embed(title = "主要指令清單", description = None, colour = 0x93e2df
-        , timestamp = datetime.datetime.utcnow())
-        embed.add_field(name = "> 與我的延遲", value = "**@青羽美咲 ping**", inline = False)
-        embed.add_field(name = "> 刪除數量訊息", value = "**@青羽美咲 purge [數量]**", inline = False)
-        embed.add_field(name = "> 匿名訊息", value = "**@青羽美咲 botsaid [訊息]**", inline = False)
-        embed.add_field(name = "> 隨機組隊", value = "**@青羽美咲 rds [關鍵字] [每組幾人] [隊伍數]**", inline = False)
-        await ctx.send(embed=embed)
-
-    @commands.command()
     async def ping(self, ctx):
         if (round(self.Misaki.latency*1000) >= 100):
             await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒\n有夠遠的')
@@ -29,10 +19,12 @@ class MainCommands(commands.Cog):
             await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒')
 
     @commands.command()
+    @commands.has_permissions(manage_channels=True)
     async def purge(self, ctx, amount=1):
         await ctx.channel.purge(limit=amount+1)
 
     @commands.command()
+    @commands.has_permissions(manage_channels=True)
     async def cls(self, ctx, amount=1):
         await ctx.channel.purge(limit=amount+1)
 
@@ -40,7 +32,7 @@ class MainCommands(commands.Cog):
     async def botsaid(self, ctx, *,message):
         await ctx.message.delete()
         await ctx.send(message)
-    
+
     @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
         hasNick = []
