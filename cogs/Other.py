@@ -1,5 +1,4 @@
 import discord
-import json
 import datetime
 from discord.ext import commands
 
