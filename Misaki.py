@@ -6,12 +6,13 @@ from discord.ext import commands
 with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding='utf8') as jsonSetting:
     jdata = json.load(jsonSetting)
 
-Misaki = commands.Bot(command_prefix=commands.when_mentioned, description='Hello world')
+Misaki = commands.Bot(command_prefix=commands.when_mentioned, description="大家的事務員-青羽美咲")
+Misaki.remove_command('help')
 
 @Misaki.event
 async def on_ready():
     await Misaki.change_presence(status = discord.Status.online, activity = discord.Game('アイドルマスター ミリオンライブ!'))
-    print("Misaki is working!\n大家的事務員，美咲上班啦！")
+    print("Misaki is online!\n大家的事務員，青羽美咲上線啦！")
 
 @Misaki.event
 async def on_member_join(member):
