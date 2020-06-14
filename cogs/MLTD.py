@@ -27,17 +27,6 @@ class MLTD(commands.Cog):
         await ctx.send(Mjson['歌單'])
 
     @commands.command()
-    async def help_MLTD(self, ctx):
-        embed = discord.Embed(title = "MLTD指令清單", description = None, colour = 0x93e2df
-        , timestamp = datetime.datetime.utcnow())
-        embed.add_field(name = "> 大和美少女", value = "**@青羽美咲 大和美少女**", inline = False)
-        embed.add_field(name = "> 南斗", value = "**@青羽美咲 南斗**", inline = False)
-        embed.add_field(name = "> 歌單", value = "**@青羽美咲 歌單**", inline = False)
-        embed.add_field(name = "> 日服活動確認", value = "**@青羽美咲 JPevent**", inline = False)
-        embed.add_field(name = "> 台服活動確認", value = "**@青羽美咲 TWevent**", inline = False)
-        await ctx.send(embed=embed)
-
-    @commands.command()
     async def TWevent(self, ctx):
         embed = discord.Embed(title = "台服活動貼文", colour = 0x93e2df
         , timestamp = datetime.datetime.utcnow())
@@ -46,8 +35,6 @@ class MLTD(commands.Cog):
         embed.add_field(name = "內文", value = Eann['MLTD_TWevent_ann'], inline = False)
         await ctx.send(embed=embed)
 
-    #probably code an asyncio function to here.
-    #it will be standard asyncio or be discord std function.
     @commands.command()
     async def Stream(self, ctx):
         await ctx.send(Mjson['MLTD_StreamPic'])
