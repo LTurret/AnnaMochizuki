@@ -21,12 +21,28 @@ class MainCommands(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def purge(self, ctx, amount=1):
-        await ctx.channel.purge(limit=amount+1)
+        doCommand = False
+        for MemberRoles in ctx.message.author.roles:
+            if (str(MemberRoles) == "Verified Member" and doCommand != True):
+                doCommand = True
+        if (doCommand == True):
+            await ctx.channel.purge(limit=amount+1)
+            await ctx.channel.send(f'{amount} 個訊息已被刪除\n*此通知將在3秒後移除...*', delete_after = 3)
+        else:
+            await ctx.channel.send("您的權限不足使用此指令。\n*此通知將在3秒後移除...*", delete_after = 3)
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def cls(self, ctx, amount=1):
-        await ctx.channel.purge(limit=amount+1)
+        doCommand = False
+        for MemberRoles in ctx.message.author.roles:
+            if (str(MemberRoles) == "Verified Member" and doCommand != True):
+                doCommand = True
+        if (doCommand == True):
+            await ctx.channel.purge(limit=amount+1)
+            await ctx.channel.send(f'{amount} 個訊息已被刪除\n*此通知將在3秒後移除...*', delete_after = 3)
+        else:
+            await ctx.channel.send("您的權限不足使用此指令。\n*此通知將在3秒後移除...*", delete_after = 3)
 
     @commands.command()
     async def botsaid(self, ctx, *,message):
