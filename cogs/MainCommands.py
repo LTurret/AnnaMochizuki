@@ -19,7 +19,6 @@ class MainCommands(commands.Cog):
             await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒')
 
     @commands.command()
-    @commands.has_permissions(manage_channels=True)
     async def purge(self, ctx, amount=1):
         doCommand = False
         for MemberRoles in ctx.message.author.roles:
@@ -29,10 +28,10 @@ class MainCommands(commands.Cog):
             await ctx.channel.purge(limit=amount+1)
             await ctx.channel.send(f'{amount} 個訊息已被刪除\n*此通知將在3秒後移除...*', delete_after = 3)
         else:
+            await ctx.channel.purge(limit=amount)
             await ctx.channel.send("您的權限不足使用此指令。\n*此通知將在3秒後移除...*", delete_after = 3)
 
     @commands.command()
-    @commands.has_permissions(manage_channels=True)
     async def cls(self, ctx, amount=1):
         doCommand = False
         for MemberRoles in ctx.message.author.roles:
@@ -42,12 +41,28 @@ class MainCommands(commands.Cog):
             await ctx.channel.purge(limit=amount+1)
             await ctx.channel.send(f'{amount} 個訊息已被刪除\n*此通知將在3秒後移除...*', delete_after = 3)
         else:
+            await ctx.channel.purge(limit=amount)
             await ctx.channel.send("您的權限不足使用此指令。\n*此通知將在3秒後移除...*", delete_after = 3)
 
     @commands.command()
     async def botsaid(self, ctx, *,message):
         await ctx.message.delete()
         await ctx.send(message)
+
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
+            guild = self.Misaki.get_guild(payload.guild_id)
+            role = guild.get_role(711454063962882051)
+            await payload.member.add_roles(role)
+
+    @commands.Cog.listener()
+    async def on_raw_reaction_remove(self, payload):
+        if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
+            guild = self.Misaki.get_guild(payload.guild_id)
+            member = guild.get_member(payload.user_id)
+            role = guild.get_role(711454063962882051)
+            await member.remove_roles(role)
 
     @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
