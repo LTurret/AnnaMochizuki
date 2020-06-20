@@ -28,7 +28,7 @@ class MainCommands(commands.Cog):
             await ctx.channel.purge(limit=amount+1)
             await ctx.channel.send(f'{amount} 個訊息已被刪除\n*此通知將在3秒後移除...*', delete_after = 3)
         else:
-            await ctx.channel.purge(limit=amount)
+            await ctx.channel.purge(limit=1)
             await ctx.channel.send("您的權限不足使用此指令。\n*此通知將在3秒後移除...*", delete_after = 3)
 
     @commands.command()
@@ -41,7 +41,7 @@ class MainCommands(commands.Cog):
             await ctx.channel.purge(limit=amount+1)
             await ctx.channel.send(f'{amount} 個訊息已被刪除\n*此通知將在3秒後移除...*', delete_after = 3)
         else:
-            await ctx.channel.purge(limit=amount)
+            await ctx.channel.purge(limit=1)
             await ctx.channel.send("您的權限不足使用此指令。\n*此通知將在3秒後移除...*", delete_after = 3)
 
     @commands.command()
@@ -51,6 +51,7 @@ class MainCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
+        print(payload.emoji)
         if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
             guild = self.Misaki.get_guild(payload.guild_id)
             role = guild.get_role(711454063962882051)
@@ -71,7 +72,7 @@ class MainCommands(commands.Cog):
             if member.nick != None and member.nick.count(keyword):
                 hasNick.append(member.name)
         if (len(hasNick) <= population * groups):
-            await ctx.channel.send(f'不足以分組。\n請確定人數是否足夠、關鍵字 "{keyword}" 是否更改為暱稱之內。')
+            await ctx.channel.send(f'不足以分組。\n請確定人數是否足夠、關鍵字 "{keyword}" 是否更改為暱稱之內。', delete_after = 5)
             pass
         else:
             for iteration in range(groups):
