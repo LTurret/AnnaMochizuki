@@ -21,6 +21,8 @@ class helplist(commands.Cog):
         embed.add_field(name = "> 歌單", value = "**@青羽美咲 歌單**", inline = False)
         embed.add_field(name = "> 日服活動確認", value = "**@青羽美咲 JPevent**", inline = False)
         embed.add_field(name = "> 台服活動確認", value = "**@青羽美咲 TWevent**", inline = False)
+        embed.add_field(name = "> 轉蛋模擬器", value = "**@青羽美咲 轉蛋 [轉出次數]**", inline = False)
+        embed.add_field(name = "> 轉蛋機率", value = "**@青羽美咲 轉蛋機率**", inline = False)
         await ctx.send(embed=embed)
 
     @commands.command()
