@@ -87,7 +87,5 @@ class MLTD(commands.Cog):
                 embed.add_field(name = "> 抽獎結果，抽了10次有SR保底", value = f'{result}', inline = False)
                 await ctx.send(embed=embed)
 
-
-
 def setup(Misaki):
     Misaki.add_cog(MLTD(Misaki))
