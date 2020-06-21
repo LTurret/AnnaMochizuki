@@ -38,11 +38,6 @@ class MLTD(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def Stream(self, ctx):
-        await ctx.send(Mjson['MLTD_StreamPic'])
-        await ctx.send(Mjson['MLTD_StreamLink'])
-
-    @commands.command()
     async def 轉蛋機率(self, ctx):
         embed = discord.Embed(title = "轉蛋機率"
         , description = None, colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
