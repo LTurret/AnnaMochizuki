@@ -46,9 +46,9 @@ class MLTD(commands.Cog):
     async def 轉蛋機率(self, ctx):
         embed = discord.Embed(title = "轉蛋機率"
         , description = None, colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
-        embed.add_field(name = "> <:SSR:723921126560104539>", value = '**"提供機率" 3%，也就是 "轉出機率" <= "3%"**', inline = False)
-        embed.add_field(name = "> <:SR:723921117013606460>", value = '**"提供機率" 12%，也就是 "轉出機率" <= "15"**', inline = False)
-        embed.add_field(name = "> <:R_:723921106909659227>", value = '**"提供機率" 85%，也就是 "轉出機率" > "15"**', inline = False)
+        embed.add_field(name = "> <:SSR:723921126560104539>", value = '**"提供機率" 3%，也就是 "轉出機率" <= 3%**', inline = False)
+        embed.add_field(name = "> <:SR:723921117013606460>", value = '**"提供機率" 12%，也就是 "轉出機率" <= 15%**', inline = False)
+        embed.add_field(name = "> <:R_:723921106909659227>", value = '**"提供機率" 85%，也就是 "轉出機率" > 15%**', inline = False)
         await ctx.send(embed=embed)
 
     @commands.command()
