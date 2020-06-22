@@ -66,7 +66,7 @@ class MLTD(commands.Cog):
                     else:
                         reward = Mjson['Draw_R']
                     result = result + ' ' + reward
-            if (amount >= 1 and amount != 10):
+            if (amount == 1):
                 #await ctx.channel.send(f'<@{ctx.message.author.id}> 的轉出機率為{percentage}%，抽了{draw+1}次的{result}')
                 embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果'
                 , description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
