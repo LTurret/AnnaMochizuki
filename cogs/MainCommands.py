@@ -2,6 +2,7 @@ import discord
 import json
 import random
 import datetime
+from discord import Webhook, RequestsWebhookAdapter
 from discord.ext import commands
 
 with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
@@ -90,6 +91,14 @@ class MainCommands(commands.Cog):
         await ctx.message.delete()
         member = ctx.guild.get_member(ctx.message.author.id)
         await member.move_to(ctx.guild.get_channel(476269156560535552))
+
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        Trigger = message.content.count('TriggerWebhookConvertor')
+        if (Trigger == True and message.author != self.Misaki.user):
+            await message.delete()
+            await message.channel.send(message.content[24:])
+
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
