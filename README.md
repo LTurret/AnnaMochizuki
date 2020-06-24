@@ -18,17 +18,20 @@ Try like this:
 ### * Commands
 
 use following command for more detialed commands:
-@青羽美咲 help_main
-@青羽美咲 help_mltd
+
+```cs
+@青羽美咲 {help_main}
+@青羽美咲 {help_mltd}
+```
 
 ### * Futures
 
-- [x] Random grouper
-- [x] Reaction role
-- [x] Command with specific role
-- [x] Error presenter system(not for all commands)
-- [x] Repl.it build
+- [x] 隨機組隊系統
+- [x] 回應身分組(reaction role)
+- [x] 指令給特定身分組
+- [x] 報錯系統(if statement陽春版)
+- [x] Repl.it建置
 - [x] MLTD轉蛋模擬器
-- [ ] Give admin with specific password
-- [x] Join ivisible voice channel with specific password
-- [x] Webhook representer
+- [ ] 管理員後門
+- [x] 以特定指令加入隱藏頻道
+- [x] 網路爬蟲imas轉推器
