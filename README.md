@@ -17,11 +17,11 @@ Try like this:
 
 ### * Commands
 
-use following command for more detialed commands:
+Use the following command for a more detailed description:
 
 ```cs
-@青羽美咲 {help_main}
-@青羽美咲 {help_mltd}
+@青羽美咲 help_main
+@青羽美咲 help_mltd
 ```
 
 ### * Futures
