@@ -99,6 +99,5 @@ class MainCommands(commands.Cog):
             await message.delete()
             await message.channel.send(message.content[24:])
 
-
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
