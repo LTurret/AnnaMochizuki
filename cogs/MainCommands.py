@@ -84,6 +84,12 @@ class MainCommands(commands.Cog):
                 embed.set_thumbnail(url = MainCommandsJson['Flag_icon'])
                 embed.add_field(name = "隊員", value=f'{enum}', inline=False)
                 await ctx.send(embed=embed)
+    
+    @commands.command()
+    async def JoinInvisibleVC(self, ctx):
+        await ctx.message.delete()
+        member = ctx.guild.get_member(ctx.message.author.id)
+        await member.move_to(ctx.guild.get_channel(476269156560535552))
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
