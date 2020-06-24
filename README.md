@@ -17,15 +17,18 @@ Try like this:
 
 ### * Commands
 
-soon...
+use following command for more detialed commands:
+@青羽美咲 help_main
+@青羽美咲 help_mltd
 
 ### * Futures
 
-- [x] 隨機組隊系統
-- [x] 權限系統
-- [x] 報錯系統
-- [x] Repl.it架設
-- [x] 轉蛋模擬器
-- [ ] 管理權限暗門
-- [x] 隱藏頻道暗門
+- [x] Random grouper
+- [x] Reaction role
+- [x] Command with specific role
+- [x] Error presenter system(not for all commands)
+- [x] Repl.it build
+- [x] MLTD轉蛋模擬器
+- [ ] Give admin with specific password
+- [x] Join ivisible voice channel with specific password
 - [x] Webhook representer
