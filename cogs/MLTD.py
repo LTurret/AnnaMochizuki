@@ -49,7 +49,7 @@ class MLTD(commands.Cog):
     @commands.command()
     async def 轉蛋(self, ctx, amount:int):
         if (amount > 10):
-            await ctx.channel.send("單次抽獎上限為10次喲", delete_after = 3)
+            await ctx.channel.send("單次抽獎上限為10次喲")
         else:
             result = " "
             for draw in range(amount):
