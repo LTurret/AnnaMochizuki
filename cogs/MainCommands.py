@@ -27,10 +27,10 @@ class MainCommands(commands.Cog):
                 doCommand = True
         if (doCommand == True):
             await ctx.channel.purge(limit=amount+1)
-            await ctx.channel.send(f'{amount} 個訊息已被刪除\n*此通知將在3秒後移除...*', delete_after = 3)
+            await ctx.channel.send(f'{amount} 個訊息已被刪除')
         else:
             await ctx.channel.purge(limit=1)
-            await ctx.channel.send("您的權限不足使用此指令。\n*此通知將在3秒後移除...*", delete_after = 3)
+            await ctx.channel.send("您的權限不足使用此指令。")
 
     @commands.command()
     async def cls(self, ctx, amount=1):
@@ -40,10 +40,8 @@ class MainCommands(commands.Cog):
                 doCommand = True
         if (doCommand == True):
             await ctx.channel.purge(limit=amount+1)
-            await ctx.channel.send(f'{amount} 個訊息已被刪除\n*此通知將在3秒後移除...*', delete_after = 3)
         else:
             await ctx.channel.purge(limit=1)
-            await ctx.channel.send("您的權限不足使用此指令。\n*此通知將在3秒後移除...*", delete_after = 3)
 
     @commands.command()
     async def botsaid(self, ctx, *,message):
