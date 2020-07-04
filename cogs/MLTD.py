@@ -66,7 +66,6 @@ class MLTD(commands.Cog):
                         reward = Mjson['Draw_R']
                     result = result + ' ' + reward
             if (amount == 1):
-                #await ctx.channel.send(f'<@{ctx.message.author.id}> 的轉出機率為{percentage}%，抽了{draw+1}次的{result}')
                 embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果'
                 , description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
                 embed.set_author(name = "早坂そら", url = Mjson['早坂空_about'], icon_url = Mjson['早坂空_avatar'])
@@ -74,14 +73,12 @@ class MLTD(commands.Cog):
                 embed.add_field(name = "> 抽獎結果", value = f'{result}', inline = False)
                 await ctx.send(embed=embed)
             elif (amount > 1 and amount != 10):
-                #Alike drawing 10, but it won't display the percentage of the rolling.
                 embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果'
                 , description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
                 embed.set_author(name = "早坂そら", url = Mjson['早坂空_about'], icon_url = Mjson['早坂空_avatar'])
                 embed.add_field(name = "> 抽獎結果", value = f'{result}', inline = False)
                 await ctx.send(embed=embed)
             elif (amount == 10):
-                #await ctx.channel.send(f'抽了{draw+1}次的{result}')
                 embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果'
                 , description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
                 embed.set_author(name = "早坂そら", url = Mjson['早坂空_about'], icon_url = Mjson['早坂空_avatar'])
