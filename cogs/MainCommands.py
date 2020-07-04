@@ -51,17 +51,17 @@ class MainCommands(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         print(payload.emoji)
-        if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
+        if (payload.channel_id == MainCommandsJson['ImformationChannel'] and payload.message_id == MainCommandsJson['Rules'] and str(payload.emoji) == MainCommandsJson['ReactionRole_Emoji']):
             guild = self.Misaki.get_guild(payload.guild_id)
-            role = guild.get_role(711454063962882051)
+            role = guild.get_role(MainCommandsJson['Verified-Member'])
             await payload.member.add_roles(role)
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
-        if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
+        if (payload.channel_id == MainCommandsJson['ImformationChannel'] and payload.message_id == MainCommandsJson['Rules'] and str(payload.emoji) == MainCommandsJson['ReactionRole_Emoji']):
             guild = self.Misaki.get_guild(payload.guild_id)
             member = guild.get_member(payload.user_id)
-            role = guild.get_role(711454063962882051)
+            role = guild.get_role(MainCommandsJson['Verified-Member'])
             await member.remove_roles(role)
 
     @commands.command()
@@ -71,7 +71,7 @@ class MainCommands(commands.Cog):
             if member.nick != None and member.nick.count(keyword):
                 hasNick.append(member.name)
         if (len(hasNick) <= population * groups):
-            await ctx.channel.send(f'不足以分組。\n請確定人數是否足夠、關鍵字 "{keyword}" 是否更改為暱稱之內。', delete_after = 5)
+            await ctx.channel.send(f'不足以分組。\n請確定人數是否足夠、關鍵字 "{keyword}" 是否更改為暱稱之內。')
             pass
         else:
             for iteration in range(groups):
@@ -88,12 +88,12 @@ class MainCommands(commands.Cog):
     async def JoinInvisibleVC(self, ctx):
         await ctx.message.delete()
         member = ctx.guild.get_member(ctx.message.author.id)
-        await member.move_to(ctx.guild.get_channel(476269156560535552))
+        await member.move_to(ctx.guild.get_channel(MainCommandsJson['InvisibleChannel-Id']))
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        Trigger = message.content.count('TriggerWebhookConvertor')
-        if (Trigger == True and message.author != self.Misaki.user):
+        TriggerPassword = message.content.count('TriggerWebhookConverter')
+        if (TriggerPassword == True and message.author != self.Misaki.user):
             await message.delete()
             await message.channel.send(message.content[24:])
 
