@@ -29,9 +29,15 @@ class helplist(commands.Cog):
     async def help_main(self, ctx):
         embed = discord.Embed(title = "主要指令清單", description = None, colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
         embed.add_field(name = "> 與我的延遲", value = "**@青羽美咲 ping**", inline = False)
-        embed.add_field(name = "> 刪除數量訊息", value = "**@青羽美咲 purge [數量]** *權限限制*", inline = False)
+        embed.add_field(name = "> 刪除數量訊息", value = "**@青羽美咲 cls [數量]** *權限限制*", inline = False)
         embed.add_field(name = "> 匿名訊息", value = "**@青羽美咲 botsaid [訊息]**", inline = False)
         embed.add_field(name = "> 隨機組隊", value = "**@青羽美咲 rds [關鍵字] [每組幾人] [隊伍數]**", inline = False)
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def help_other(self, ctx):
+        embed = discord.Embed(title = "主要指令清單", description = None, colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
+        embed.add_field(name = "> 乘法公式", value = "**@青羽美咲 乘法公式**", inline = False)
         await ctx.send(embed=embed)
 
 def setup(Misaki):
