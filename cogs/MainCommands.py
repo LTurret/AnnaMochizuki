@@ -2,7 +2,6 @@ import discord
 import json
 import random
 import datetime
-from discord import Webhook, RequestsWebhookAdapter
 from discord.ext import commands
 
 with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
@@ -66,23 +65,25 @@ class MainCommands(commands.Cog):
 
     @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
-        hasNick = []
+        HavetheNick = []
         for member in ctx.guild.members:
-            if member.nick != None and member.nick.count(keyword):
-                hasNick.append(member.name)
-        if (len(hasNick) <= population * groups):
-            await ctx.channel.send(f'不足以分組。\n請確定人數是否足夠、關鍵字 "{keyword}" 是否更改為暱稱之內。')
-            pass
+            if (member.nick != None and member.nick.count(keyword)):
+                HavetheNick.append(member.name)
+        if (population == 0):
+            await ctx.channel.send("人數不可為0！")
         else:
-            for iteration in range(groups):
-                enum = random.sample(hasNick, k=population)
-                for removal in enum:
-                    hasNick.remove(removal)
-                embed = discord.Embed(title = f'第 {iteration+1} 小隊', description = None, colour = 0x93e2df
-                , timestamp = datetime.datetime.utcnow())
-                embed.set_thumbnail(url = MainCommandsJson['Flag_icon'])
-                embed.add_field(name = "隊員", value=f'{enum}', inline=False)
-                await ctx.send(embed=embed)
+            if (len(HavetheNick) < population * groups):
+                    await ctx.channel.send(f'不足以分組。\n請確定人數是否足夠、關鍵字 "{keyword}" 是否更改為暱稱之內。')
+            else:
+                for iteration in range(groups):
+                    ChosenMember = random.sample(HavetheNick, k=population)
+                    for RemoveMember in ChosenMember:
+                        HavetheNick.remove(RemoveMember)
+                    embed = discord.Embed(title = f'第 {iteration+1} 小隊', description = None, colour = 0x93e2df
+                    , timestamp = datetime.datetime.utcnow())
+                    embed.set_thumbnail(url = MainCommandsJson['Flag_icon'])
+                    embed.add_field(name = "隊員", value=f'{ChosenMember}', inline=False)
+                    await ctx.send(embed=embed)
     
     @commands.command()
     async def JoinInvisibleVC(self, ctx):
