@@ -50,17 +50,17 @@ class MainCommands(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         print(payload.emoji)
-        if (payload.channel_id == MainCommandsJson['ImformationChannel'] and payload.message_id == MainCommandsJson['Rules'] and str(payload.emoji) == MainCommandsJson['ReactionRole_Emoji']):
+        if (payload.channel_id == MainCommandsJson['TC_Imformation-Id'] and payload.message_id == MainCommandsJson['Rules'] and str(payload.emoji) == MainCommandsJson['ReactionRole_Emoji']):
             guild = self.Misaki.get_guild(payload.guild_id)
-            role = guild.get_role(MainCommandsJson['Verified-Member'])
+            role = guild.get_role(MainCommandsJson['Role_VerifiedMember'])
             await payload.member.add_roles(role)
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
-        if (payload.channel_id == MainCommandsJson['ImformationChannel'] and payload.message_id == MainCommandsJson['Rules'] and str(payload.emoji) == MainCommandsJson['ReactionRole_Emoji']):
+        if (payload.channel_id == MainCommandsJson['TC_Imformation-Id'] and payload.message_id == MainCommandsJson['Rules'] and str(payload.emoji) == MainCommandsJson['ReactionRole_Emoji']):
             guild = self.Misaki.get_guild(payload.guild_id)
             member = guild.get_member(payload.user_id)
-            role = guild.get_role(MainCommandsJson['Verified-Member'])
+            role = guild.get_role(MainCommandsJson['Role_VerifiedMember'])
             await member.remove_roles(role)
 
     @commands.command()
@@ -84,7 +84,7 @@ class MainCommands(commands.Cog):
                     embed.set_thumbnail(url = MainCommandsJson['Flag_icon'])
                     embed.add_field(name = "隊員", value=f'{ChosenMember}', inline=False)
                     await ctx.send(embed=embed)
-    
+
     @commands.command()
     async def JoinInvisibleVC(self, ctx):
         await ctx.message.delete()
