@@ -90,13 +90,17 @@ class MainCommands(commands.Cog):
         await ctx.message.delete()
         member = ctx.guild.get_member(ctx.message.author.id)
         await member.move_to(ctx.guild.get_channel(MainCommandsJson['InvisibleChannel-Id']))
-
+        
     @commands.Cog.listener()
     async def on_message(self, message):
         TriggerPassword = message.content.count('TriggerWebhookConverter')
         if (TriggerPassword == True and message.author != self.Misaki.user):
             await message.delete()
             await message.channel.send(message.content[24:])
+
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx, exception):
+        await ctx.channel.send(f'{exception}\nPlease check the helplist for usage of commands.')
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))
