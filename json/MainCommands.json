@@ -1,8 +1,10 @@
 {
     "Flag_icon": "https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/flag-icon.png",
-    "ImformationChannel": "463321768212299778",
+    "TC_Imformation-Id": "463321768212299778",
+    "TC_BotCommands-Id": "695508789327298570",
+    "VC_Invisible-Id": "476269156560535552",
+    "Role_VerifiedMember": "711454063962882051",
+    "Role_Admin-Id": "712258721409138768",
     "Rules": "464825427844792320",
-    "ReactionRole_Emoji": "<:Serika:677696191772753940>",
-    "Verified-Member": "711454063962882051",
-    "InvisibleChannel-Id": "476269156560535552"
+    "ReactionRole_Emoji": "<:Serika:677696191772753940>"
 }
