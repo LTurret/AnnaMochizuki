@@ -89,7 +89,7 @@ class MainCommands(commands.Cog):
     async def JoinInvisibleVC(self, ctx):
         await ctx.message.delete()
         member = ctx.guild.get_member(ctx.message.author.id)
-        await member.move_to(ctx.guild.get_channel(MainCommandsJson['InvisibleChannel-Id']))
+        await member.move_to(ctx.guild.get_channel(476269156560535552))
         
     @commands.Cog.listener()
     async def on_message(self, message):
