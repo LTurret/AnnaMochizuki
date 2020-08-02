@@ -4,9 +4,9 @@ import datetime
 import random
 from discord.ext import commands
 
-with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\mltd.json", 'r', encoding='utf8') as MLTDjson:
+with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\mltd.json", 'r', encoding='utf8') as MLTDjson:
     Mjson = json.load(MLTDjson)
-with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\announce.json", 'r', encoding='utf8') as EventDescription:
+with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\announce.json", 'r', encoding='utf8') as EventDescription:
     Eann = json.load(EventDescription)
 
 class MLTD(commands.Cog):
