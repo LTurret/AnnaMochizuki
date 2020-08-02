@@ -4,7 +4,7 @@ import random
 import datetime
 from discord.ext import commands
 
-with open (r"C:\Users\George Rupp\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
+with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
     MainCommandsJson = json.load(MainCommandsJson)
 
 class MainCommands(commands.Cog):
@@ -49,12 +49,10 @@ class MainCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
-        print(payload.emoji)
         if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
             guild = self.Misaki.get_guild(payload.guild_id)
             role = guild.get_role(711454063962882051)
             await payload.member.add_roles(role)
-            
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
