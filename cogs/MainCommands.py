@@ -54,6 +54,7 @@ class MainCommands(commands.Cog):
             guild = self.Misaki.get_guild(payload.guild_id)
             role = guild.get_role(711454063962882051)
             await payload.member.add_roles(role)
+            
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
