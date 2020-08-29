@@ -10,6 +10,7 @@ with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\Ma
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
+        self.RaidMessage = []
 
     @commands.command()
     async def ping(self, ctx):
@@ -29,13 +30,13 @@ class MainCommands(commands.Cog):
             await ctx.channel.send(f'{amount} 個訊息已被刪除')
         else:
             await ctx.channel.purge(limit=1)
-            await ctx.channel.send("您的權限不足使用此指令。")
+            await ctx.channel.send("您必須擁有身分組來使用指令。")
 
     @commands.command()
     async def cls(self, ctx, amount=1):
         doCommand = False
         for MemberRoles in ctx.message.author.roles:
-            if (str(MemberRoles) == "Verified Member" and doCommand != True):
+            if (str(MemberRoles) == "大家的事務員" and doCommand != True):
                 doCommand = True
         if (doCommand == True):
             await ctx.channel.purge(limit=amount+1)
@@ -46,21 +47,6 @@ class MainCommands(commands.Cog):
     async def botsaid(self, ctx, *,message):
         await ctx.message.delete()
         await ctx.send(message)
-
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
-            guild = self.Misaki.get_guild(payload.guild_id)
-            role = guild.get_role(711454063962882051)
-            await payload.member.add_roles(role)
-
-    @commands.Cog.listener()
-    async def on_raw_reaction_remove(self, payload):
-        if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
-            guild = self.Misaki.get_guild(payload.guild_id)
-            member = guild.get_member(payload.user_id)
-            role = guild.get_role(711454063962882051)
-            await member.remove_roles(role)
 
     @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
@@ -89,13 +75,45 @@ class MainCommands(commands.Cog):
         await ctx.message.delete()
         member = ctx.guild.get_member(ctx.message.author.id)
         await member.move_to(ctx.guild.get_channel(476269156560535552))
-        
+
     @commands.Cog.listener()
     async def on_message(self, message):
+        #general - Twitter Mode
+        if (message.content.upper().count("TWITTER MODE")):
+            await message.add_reaction("❤️")
+            await message.add_reaction("🗨️")
+            await message.add_reaction("🔁")
+            print(message.reactions)
+        #imas
         TriggerPassword = message.content.count('TriggerWebhookConverter')
         if (TriggerPassword == True and message.author != self.Misaki.user):
             await message.delete()
             await message.channel.send(message.content[24:])
+        #testing
+        RaidPassword = message.content.count("Raid event!")
+        if (RaidPassword == True):
+            await message.add_reaction("<:Serika:677696191772753940>")
+            self.RaidMessage = message
+
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
+            guild = self.Misaki.get_guild(payload.guild_id)
+            role = guild.get_role(711454063962882051)
+            await payload.member.add_roles(role)
+
+    @commands.Cog.listener()
+    async def on_raw_reaction_remove(self, payload):
+        if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
+            guild = self.Misaki.get_guild(payload.guild_id)
+            member = guild.get_member(payload.user_id)
+            role = guild.get_role(711454063962882051)
+            await member.remove_roles(role)
+
+    @commands.Cog.listener()
+    async def on_reaction_add(self, reaction, user):
+        if (reaction.count > 1):
+            await self.RaidMessage.delete()
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, exception):
