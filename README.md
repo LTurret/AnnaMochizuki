@@ -28,11 +28,11 @@ Use the following command for a more detailed description:
 ### * Futures
 
 - [x] 隨機組隊系統
-- [x] 回應身分組(reaction role)
-- [x] 指令給特定身分組
+- [x] Reaction role
 - [x] 報錯系統(if statement陽春版)
 - [x] Repl.it建置
 - [x] MLTD轉蛋模擬器
 - [ ] 管理員後門 #712258721409138768
-- [x] 以特定指令加入隱藏頻道
+- [x] 無身分組成員以特定指令加入隱藏頻道
 - [x] 網路爬蟲imas轉推器
+- [x] Raid Announcesment System(RAS)
