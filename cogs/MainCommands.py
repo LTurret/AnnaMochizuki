@@ -11,6 +11,7 @@ class MainCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
         self.RaidMessage = []
+        self.RaidStatus = False
 
     @commands.command()
     async def ping(self, ctx):
@@ -84,16 +85,20 @@ class MainCommands(commands.Cog):
             await message.add_reaction("🗨️")
             await message.add_reaction("🔁")
             print(message.reactions)
-        #imas
+        #iM@S
         TriggerPassword = message.content.count('TriggerWebhookConverter')
         if (TriggerPassword == True and message.author != self.Misaki.user):
             await message.delete()
             await message.channel.send(message.content[24:])
-        #testing
+        #Raid Announcesment System (RAS)
         RaidPassword = message.content.count("Raid event!")
-        if (RaidPassword == True):
+        if (RaidPassword == True and self.RaidStatus == False):
             await message.add_reaction("<:Serika:677696191772753940>")
             self.RaidMessage = message
+            self.RaidStatus = True
+        elif (RaidPassword == True and self.RaidStatus == True):
+            await message.delete()
+            await message.channel.send("You must wait until last raid ended!")
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -114,6 +119,7 @@ class MainCommands(commands.Cog):
     async def on_reaction_add(self, reaction, user):
         if (reaction.count > 1):
             await self.RaidMessage.delete()
+            self.RaidStatus = False
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, exception):
