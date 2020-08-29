@@ -90,7 +90,7 @@ class MainCommands(commands.Cog):
         if (TriggerPassword == True and message.author != self.Misaki.user):
             await message.delete()
             await message.channel.send(message.content[24:])
-        #Raid Announcesment System (RAS)
+        #Raid Announcement System (RAS)
         RaidPassword = message.content.count("Raid event!")
         if (RaidPassword == True and self.RaidStatus == False):
             await message.add_reaction("<:Serika:677696191772753940>")
