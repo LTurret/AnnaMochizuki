@@ -14,16 +14,6 @@ class MLTD(commands.Cog):
         self.Misaki = Misaki
 
     @commands.command()
-    async def 大和美少女(self, ctx):
-        pic = discord.File(Mjson['大和美少女'])
-        await ctx.send(file=pic)
-
-    @commands.command()
-    async def 南斗(self, ctx):
-        pic = discord.File(Mjson['南斗'])
-        await ctx.send(file=pic)
-
-    @commands.command()
     async def 歌單(self, ctx):
         await ctx.send(Mjson['歌單'])
 
