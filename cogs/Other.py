@@ -7,6 +7,12 @@ class Other(commands.Cog):
         self.Misaki = Misaki
 
     @commands.command()
+    async def add(self, ctx, value):
+        Storage = 0
+        Storage += value
+        await ctx.send(Storage)
+
+    @commands.command()
     async def 乘法公式(self, ctx):
         embed = discord.Embed(title = "乘法公式", description = None, colour = 0x93e2df
         , timestamp = datetime.datetime.utcnow())
