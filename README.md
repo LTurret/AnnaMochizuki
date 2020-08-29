@@ -35,4 +35,5 @@ Use the following command for a more detailed description:
 - [ ] 管理員後門 #712258721409138768
 - [x] 無身分組成員以特定指令加入隱藏頻道
 - [x] 網路爬蟲imas轉推器
+- [x] Twitter Mode 
 - [x] Raid Announcesment System(RAS)
