@@ -36,4 +36,4 @@ Use the following command for a more detailed description:
 - [x] 無身分組成員以特定指令加入隱藏頻道
 - [x] 網路爬蟲imas轉推器
 - [x] Twitter Mode 
-- [x] Raid Announcesment System(RAS)
+- [x] Raid Announcement System(RAS)
