@@ -115,8 +115,8 @@ class MainCommands(commands.Cog):
 
 
         #RAS Detector
-        RaidDector = message.content.count("Raid is start soon...")
-        if (RaidDector == True and message.author == self.Misaki.user):
+        RaidDetector = message.content.count("Raid is start soon...")
+        if (RaidDetector == True and message.author == self.Misaki.user):
             self.RaidMessage = message
             await message.edit(content = f"A Cult (:flag_tw:) afk will be starting in 10 seconds by <@{self.RaidAuthorId}>. Prepare to join raiding `{self.RaidAuthorName}'s Cult` *Now located above lounge.* **You do not need to react to anything**")
             await message.add_reaction("🔚")
