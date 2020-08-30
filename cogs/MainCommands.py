@@ -12,6 +12,10 @@ class MainCommands(commands.Cog):
         self.Misaki = Misaki
         self.RaidMessage = []
         self.RaidStatus = False
+        self.RaidAuthorId = ""
+        self.RaidAuthorName = ""
+        self.RaidCategory = []
+        self.RaidVoiceChannel = []
 
     @commands.command()
     async def ping(self, ctx):
@@ -37,7 +41,7 @@ class MainCommands(commands.Cog):
     async def cls(self, ctx, amount=1):
         doCommand = False
         for MemberRoles in ctx.message.author.roles:
-            if (str(MemberRoles) == "大家的事務員" and doCommand != True):
+            if (str(MemberRoles) == "大家的事務員" or str(MemberRoles).upper() == "VERIFIED MEMBER" and doCommand != True):
                 doCommand = True
         if (doCommand == True):
             await ctx.channel.purge(limit=amount+1)
@@ -75,7 +79,10 @@ class MainCommands(commands.Cog):
     async def JoinInvisibleVC(self, ctx):
         await ctx.message.delete()
         member = ctx.guild.get_member(ctx.message.author.id)
-        await member.move_to(ctx.guild.get_channel(476269156560535552))
+        InvisibleVoiceChannel = ctx.guild.get_channel(476269156560535552)
+        await member.move_to(InvisibleVoiceChannel)
+        print(InvisibleVoiceChannel.category)
+        print(type(InvisibleVoiceChannel.category) == str)
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -84,21 +91,36 @@ class MainCommands(commands.Cog):
             await message.add_reaction("❤️")
             await message.add_reaction("🗨️")
             await message.add_reaction("🔁")
-            print(message.reactions)
+
+
         #iM@S
         TriggerPassword = message.content.count('TriggerWebhookConverter')
         if (TriggerPassword == True and message.author != self.Misaki.user):
             await message.delete()
             await message.channel.send(message.content[24:])
+
+
         #Raid Announcement System (RAS)
         RaidPassword = message.content.count("Raid event!")
         if (RaidPassword == True and self.RaidStatus == False):
-            await message.add_reaction("<:Serika:677696191772753940>")
-            self.RaidMessage = message
+            await message.delete()
             self.RaidStatus = True
+            self.RaidAuthorId = message.author.id
+            self.RaidAuthorName = message.author.display_name
+            self.RaidCategory = message.guild.categories[2]
+            await message.channel.send("Raid is start soon...")
         elif (RaidPassword == True and self.RaidStatus == True):
             await message.delete()
-            await message.channel.send("You must wait until last raid ended!")
+            await message.channel.send("You must wait until last raid ended!", delete_after = 2)
+
+
+        #RAS Detector
+        RaidDector = message.content.count("Raid is start soon...")
+        if (RaidDector == True and message.author == self.Misaki.user):
+            self.RaidMessage = message
+            await message.edit(content = f"A Cult (:flag_tw:) afk will be starting in 10 seconds by <@{self.RaidAuthorId}>. Prepare to join raiding `{self.RaidAuthorName}'s Cult` *Now located above lounge.* **You do not need to react to anything**")
+            await message.add_reaction("🔚")
+            await self.RaidCategory.create_voice_channel(name = f"{self.RaidAuthorName}'s Cult", user_limit = 75)
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -117,7 +139,11 @@ class MainCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
+        #RAS - ended system
         if (reaction.count > 1):
+            for RaidVoiceChannel in self.RaidCategory.voice_channels:
+                if (RaidVoiceChannel.name == f"{self.RaidAuthorName}'s Cult"):
+                    await RaidVoiceChannel.delete()
             await self.RaidMessage.delete()
             self.RaidStatus = False
 
