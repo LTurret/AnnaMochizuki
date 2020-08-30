@@ -10,12 +10,16 @@ with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\Ma
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
+        self.TwitterModeRetweet = []
+        self.TwitterModeRetweetStatus = "Idle"
+        self.TwitterModeRetweetIsBot = False
         self.RaidMessage = []
-        self.RaidStatus = False
-        self.RaidAuthorId = ""
-        self.RaidAuthorName = ""
         self.RaidCategory = []
         self.RaidVoiceChannel = []
+        self.RaidAuthorId = ""
+        self.RaidAuthorName = ""
+        self.RaidEndedSystemCaller = "Idle"
+        self.RaidStatus = False
         self.BotSaidFilter = True
 
     @commands.command()
@@ -55,6 +59,17 @@ class MainCommands(commands.Cog):
         await ctx.send(message)
 
     @commands.command()
+    async def ras(self, ctx):
+        self.RaidAuthorId = ctx.author.id
+        self.RaidAuthorName = ctx.author.display_name
+        await ctx.message.delete()
+        await ctx.channel.send("RAS is up!")
+
+    @commands.command()
+    async def rgs(self, ctx):
+        await ctx.channel.send("RGS is up!")
+
+    @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
         HavetheNick = []
         for member in ctx.guild.members:
@@ -82,16 +97,17 @@ class MainCommands(commands.Cog):
         member = ctx.guild.get_member(ctx.message.author.id)
         InvisibleVoiceChannel = ctx.guild.get_channel(476269156560535552)
         await member.move_to(InvisibleVoiceChannel)
-        print(InvisibleVoiceChannel.category)
-        print(type(InvisibleVoiceChannel.category) == str)
 
     @commands.Cog.listener()
     async def on_message(self, message):
         #general - Twitter Mode
-        if (message.content.upper().count("TWITTER MODE")):
+        if (message.content.upper().count("TWITTER MODE") and self.TwitterModeRetweetIsBot != True):
+            self.TwitterModeRetweetIsBot = False
             await message.add_reaction("❤️")
             await message.add_reaction("🗨️")
             await message.add_reaction("🔁")
+            self.TwitterModeRetweet = message
+            self.TwitterModeRetweetStatus = "Triggered"
 
 
         #iM@S
@@ -101,13 +117,18 @@ class MainCommands(commands.Cog):
             await message.channel.send(message.content[24:])
 
 
+        #Random Group-up System (RGS)
+        TriggerRGS = message.content.count("RGS is up!")
+        if (TriggerRGS == True and message.author == self.Misaki.user):
+            await message.channel.send("Random Group-up System voting is here!")
+            await message.add_reaction("🚩")
+        
+        
         #Raid Announcement System (RAS)
-        RaidPassword = message.content.count("Raid event!")
-        if (RaidPassword == True and self.RaidStatus == False):
+        RaidPassword = message.content.count("RAS is up!")
+        if (RaidPassword == True and self.RaidStatus == False and message.author == self.Misaki.user):
             await message.delete()
             self.RaidStatus = True
-            self.RaidAuthorId = message.author.id
-            self.RaidAuthorName = message.author.display_name
             self.RaidCategory = message.guild.categories[2]
             self.BotSaidFilter = False
             await message.channel.send("Raid is start soon...")
@@ -122,8 +143,9 @@ class MainCommands(commands.Cog):
             self.RaidMessage = message
             await message.edit(content = f"A Cult (:flag_tw:) afk will be starting in 10 seconds by <@{self.RaidAuthorId}>. Prepare to join raiding `{self.RaidAuthorName}'s Cult` *Now located above lounge.* **You do not need to react to anything**")
             self.BotSaidFilter = True
+            self.RaidEndedSystemCaller = "Stady"
             await message.add_reaction("🔚")
-            await self.RaidCategory.create_voice_channel(name = f"{self.RaidAuthorName}'s Cult", user_limit = 75)
+            await self.RaidCategory.create_voice_channel(name = f"{self.RaidAuthorName}'s Cult", user_limit = 65)
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -143,12 +165,22 @@ class MainCommands(commands.Cog):
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
         #RAS - ended system
-        if (reaction.count > 1):
-            for RaidVoiceChannel in self.RaidCategory.voice_channels:
-                if (RaidVoiceChannel.name == f"{self.RaidAuthorName}'s Cult"):
-                    await RaidVoiceChannel.delete()
-            await self.RaidMessage.delete()
-            self.RaidStatus = False
+        if (self.RaidEndedSystemCaller == "Stady"):
+            if (self.RaidMessage.id == reaction.message.id and reaction.count > 1):
+                for RaidVoiceChannel in self.RaidCategory.voice_channels:
+                    if (RaidVoiceChannel.name == f"{self.RaidAuthorName}'s Cult"):
+                        await RaidVoiceChannel.delete()
+                await self.RaidMessage.delete()
+                self.RaidStatus = False
+
+
+        #Twitter mode - retweet
+        if (self.TwitterModeRetweetStatus == "Triggered"):
+            if (self.TwitterModeRetweet.reactions[2].count > 1):
+                self.TwitterModeRetweetIsBot = True
+                await self.TwitterModeRetweet.channel.send(f"Retweet! from <@{self.TwitterModeRetweet.author.id}> \n\n {self.TwitterModeRetweet.content}")
+                self.TwitterModeRetweetStatus = "Idle"
+                self.TwitterModeRetweetIsBot = False
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, exception):
