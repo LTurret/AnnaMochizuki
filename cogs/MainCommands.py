@@ -16,6 +16,7 @@ class MainCommands(commands.Cog):
         self.RaidAuthorName = ""
         self.RaidCategory = []
         self.RaidVoiceChannel = []
+        self.BotSaidFilter = True
 
     @commands.command()
     async def ping(self, ctx):
@@ -108,6 +109,7 @@ class MainCommands(commands.Cog):
             self.RaidAuthorId = message.author.id
             self.RaidAuthorName = message.author.display_name
             self.RaidCategory = message.guild.categories[2]
+            self.BotSaidFilter = False
             await message.channel.send("Raid is start soon...")
         elif (RaidPassword == True and self.RaidStatus == True):
             await message.delete()
@@ -116,9 +118,10 @@ class MainCommands(commands.Cog):
 
         #RAS Detector
         RaidDetector = message.content.count("Raid is start soon...")
-        if (RaidDetector == True and message.author == self.Misaki.user):
+        if (RaidDetector == True and message.author == self.Misaki.user and self.BotSaidFilter == False):
             self.RaidMessage = message
             await message.edit(content = f"A Cult (:flag_tw:) afk will be starting in 10 seconds by <@{self.RaidAuthorId}>. Prepare to join raiding `{self.RaidAuthorName}'s Cult` *Now located above lounge.* **You do not need to react to anything**")
+            self.BotSaidFilter = True
             await message.add_reaction("🔚")
             await self.RaidCategory.create_voice_channel(name = f"{self.RaidAuthorName}'s Cult", user_limit = 75)
 
