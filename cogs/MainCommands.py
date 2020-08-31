@@ -11,8 +11,8 @@ class MainCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
         self.TwitterModeRetweet = []
+        self.TwitterModeRepresent = []
         self.TwitterModeRetweetStatus = "Idle"
-        self.TwitterModeRetweetIsBot = False
         self.RaidMessage = []
         self.RaidCategory = []
         self.RaidVoiceChannel = []
@@ -101,13 +101,13 @@ class MainCommands(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         #general - Twitter Mode
-        if (message.content.upper().count("TWITTER MODE") and self.TwitterModeRetweetIsBot != True):
-            self.TwitterModeRetweetIsBot = False
+        if (message.content.upper().count("TWITTER MODE") and len(message.content) != 12 and message.author != self.Misaki.user):
+            self.TwitterModeRetweetStatus = "Hold"
+            self.TwitterModeRetweet = message
             await message.add_reaction("❤️")
             await message.add_reaction("🗨️")
             await message.add_reaction("🔁")
-            self.TwitterModeRetweet = message
-            self.TwitterModeRetweetStatus = "Triggered"
+            self.TwitterModeRetweetStatus = "Stady"
 
 
         #iM@S
@@ -122,8 +122,8 @@ class MainCommands(commands.Cog):
         if (TriggerRGS == True and message.author == self.Misaki.user):
             await message.channel.send("Random Group-up System voting is here!")
             await message.add_reaction("🚩")
-        
-        
+
+
         #Raid Announcement System (RAS)
         RaidPassword = message.content.count("RAS is up!")
         if (RaidPassword == True and self.RaidStatus == False and message.author == self.Misaki.user):
@@ -149,18 +149,49 @@ class MainCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
+        #ReactionRole
         if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
             guild = self.Misaki.get_guild(payload.guild_id)
             role = guild.get_role(711454063962882051)
             await payload.member.add_roles(role)
 
+
+        #Twitter mode - retweet
+        channel = self.Misaki.get_channel(payload.channel_id)
+        async for message in channel.history(limit = 50):
+            self.TwitterModeRetweetStatus = "Searching"
+            if (payload.message_id == message.id):
+                self.TwitterModeRetweet = message
+                self.TwitterModeRetweetStatus = "Stady"
+                if (len(self.TwitterModeRetweet.reactions) == 3 and payload.member != self.Misaki.user):
+                    if (self.TwitterModeRetweetStatus == "Stady" and self.TwitterModeRetweet.reactions[2].count > 1):
+                        RetweetEmbed = discord.Embed(title = "")
+                        RetweetEmbed.set_author(name = f"{self.TwitterModeRetweet.author.display_name}", icon_url = f"{self.TwitterModeRetweet.author.avatar_url}")
+                        RetweetEmbed.add_field(name = "content:", value = f"{self.TwitterModeRetweet.content[13:]}", inline=False)
+                        await self.TwitterModeRetweet.channel.send(embed = RetweetEmbed)
+                        self.TwitterModeRepresent = self.TwitterModeRetweet.channel.last_message
+
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
+        #ReactionRole
         if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
             guild = self.Misaki.get_guild(payload.guild_id)
             member = guild.get_member(payload.user_id)
             role = guild.get_role(711454063962882051)
             await member.remove_roles(role)
+
+
+        #Twitter mode - retweet
+        channel = self.Misaki.get_channel(payload.channel_id)
+        async for message in channel.history(limit = 50):
+            self.TwitterModeRetweetStatus = "Searching"
+            if (message.id == payload.message_id):
+                self.TwitterModeRetweet = message
+                self.TwitterModeRetweetStatus = "Delete"
+                async for message in channel.history(limit = 50):
+                    if (message.content == self.TwitterModeRepresent.content and message.author == self.Misaki.user and self.TwitterModeRetweetStatus == "Delete"):
+                        await self.TwitterModeRepresent.delete()
+                        self.TwitterModeRetweetStatus = "Stady"
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
@@ -172,15 +203,6 @@ class MainCommands(commands.Cog):
                         await RaidVoiceChannel.delete()
                 await self.RaidMessage.delete()
                 self.RaidStatus = False
-
-
-        #Twitter mode - retweet
-        if (self.TwitterModeRetweetStatus == "Triggered"):
-            if (self.TwitterModeRetweet.reactions[2].count > 1):
-                self.TwitterModeRetweetIsBot = True
-                await self.TwitterModeRetweet.channel.send(f"Retweet! from <@{self.TwitterModeRetweet.author.id}> \n\n {self.TwitterModeRetweet.content}")
-                self.TwitterModeRetweetStatus = "Idle"
-                self.TwitterModeRetweetIsBot = False
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, exception):
