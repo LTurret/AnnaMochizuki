@@ -10,9 +10,8 @@ with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\Ma
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
-        self.TwitterModeRetweet = []
-        self.TwitterModeRepresent = []
-        self.TwitterModeRetweetStatus = "Idle"
+        self.TwitterModeCapacitor = []
+        self.TwitterModeDB = [712263206940442706, 751038225191010354, 751051926841327616] #Server:guild, Original_db:CategoryChannel, Represent_db:CategoryChannel
         self.RaidMessage = []
         self.RaidCategory = []
         self.RaidVoiceChannel = []
@@ -102,12 +101,10 @@ class MainCommands(commands.Cog):
     async def on_message(self, message):
         #general - Twitter Mode
         if (message.content.upper().count("TWITTER MODE") and len(message.content) != 12 and message.author != self.Misaki.user):
-            self.TwitterModeRetweetStatus = "Hold"
-            self.TwitterModeRetweet = message
             await message.add_reaction("❤️")
             await message.add_reaction("🗨️")
             await message.add_reaction("🔁")
-            self.TwitterModeRetweetStatus = "Stady"
+            self.TwitterModeCapacitor.append(message)
 
 
         #iM@S
@@ -157,19 +154,16 @@ class MainCommands(commands.Cog):
 
 
         #Twitter mode - retweet
-        channel = self.Misaki.get_channel(payload.channel_id)
-        async for message in channel.history(limit = 50):
-            self.TwitterModeRetweetStatus = "Searching"
-            if (payload.message_id == message.id):
-                self.TwitterModeRetweet = message
-                self.TwitterModeRetweetStatus = "Stady"
-                if (len(self.TwitterModeRetweet.reactions) == 3 and payload.member != self.Misaki.user):
-                    if (self.TwitterModeRetweetStatus == "Stady" and self.TwitterModeRetweet.reactions[2].count > 1):
-                        RetweetEmbed = discord.Embed(title = "")
-                        RetweetEmbed.set_author(name = f"{self.TwitterModeRetweet.author.display_name}", icon_url = f"{self.TwitterModeRetweet.author.avatar_url}")
-                        RetweetEmbed.add_field(name = "content:", value = f"{self.TwitterModeRetweet.content[13:]}", inline=False)
-                        await self.TwitterModeRetweet.channel.send(embed = RetweetEmbed)
-                        self.TwitterModeRepresent = self.TwitterModeRetweet.channel.last_message
+        if (payload.user_id != 712243040760102992 and str(payload.emoji) == "🔁" and payload.message_id == self.TwitterModeCapacitor[0].id):
+            CategoryOfOriginalMessage = self.Misaki.get_channel(self.TwitterModeDB[1])
+            CategoryOfRepresentMessage = self.Misaki.get_channel(self.TwitterModeDB[2])
+            await CategoryOfOriginalMessage.create_text_channel(name = self.TwitterModeCapacitor[0].id)
+            RetweetEmbed = discord.Embed(title = "")
+            RetweetEmbed.set_author(name = f"author_name", icon_url = f"https://www.meme-arsenal.com/memes/28576beb596a5a49207912a086f1ff34.jpg")
+            RetweetEmbed.add_field(name = "content:", value = "content", inline=False)
+            await self.TwitterModeCapacitor[0].channel.send(embed = RetweetEmbed)
+            await CategoryOfRepresentMessage.create_text_channel(name = self.TwitterModeCapacitor[0].channel.last_message.id)
+            
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
@@ -182,16 +176,21 @@ class MainCommands(commands.Cog):
 
 
         #Twitter mode - retweet
-        channel = self.Misaki.get_channel(payload.channel_id)
-        async for message in channel.history(limit = 50):
-            self.TwitterModeRetweetStatus = "Searching"
-            if (message.id == payload.message_id):
-                self.TwitterModeRetweet = message
-                self.TwitterModeRetweetStatus = "Delete"
-                async for message in channel.history(limit = 50):
-                    if (message.content == self.TwitterModeRepresent.content and message.author == self.Misaki.user and self.TwitterModeRetweetStatus == "Delete"):
-                        await self.TwitterModeRepresent.delete()
-                        self.TwitterModeRetweetStatus = "Stady"
+        if (str(payload.emoji) == "🔁"):
+            Original_db = self.Misaki.get_channel(self.TwitterModeDB[1])
+            Represent_db = self.Misaki.get_channel(self.TwitterModeDB[2])
+            for Channel in Original_db.text_channels:
+                if (Channel.name == str(payload.message_id)):
+                    RepresentTarget = Channel.position
+                    Original_delete = Channel
+            for Channel in Represent_db.text_channels:
+                if (Channel.position == RepresentTarget + 1):
+                    Represent_delete = Channel
+                    Source = self.Misaki.get_channel(payload.channel_id)
+                    Retweet = await Source.fetch_message(Channel.name)
+                    await Retweet.delete()
+                    await Original_delete.delete()
+                    await Represent_delete.delete()
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
