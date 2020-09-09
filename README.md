@@ -1,6 +1,6 @@
 # Misaki bot for Suspend discord server
 
-create by LTurret
+created by LTurret
 
 ## * Annoucement
 
