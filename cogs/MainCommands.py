@@ -163,7 +163,6 @@ class MainCommands(commands.Cog):
             RetweetEmbed.add_field(name = "content:", value = "content", inline=False)
             await self.TwitterModeCapacitor[0].channel.send(embed = RetweetEmbed)
             await CategoryOfRepresentMessage.create_text_channel(name = self.TwitterModeCapacitor[0].channel.last_message.id)
-            
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
