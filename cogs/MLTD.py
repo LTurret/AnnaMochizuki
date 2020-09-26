@@ -90,9 +90,11 @@ class MLTD(commands.Cog):
             data = response.read().decode("utf-8")
         root = bs4.BeautifulSoup(data, "html.parser")
         source = root.find_all("li", class_="hvr-grow")
+        Idol = []
         for source_information in source:
             character_name = source_information.a.get("title")[0:len(source_information)-6]
-            print(character_name)
+            Idol.append(character_name)
+        print(Idol)
 
 def setup(Misaki):
     Misaki.add_cog(MLTD(Misaki))
