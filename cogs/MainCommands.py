@@ -109,7 +109,7 @@ class MainCommands(commands.Cog):
 
         #iM@S
         TriggerPassword = message.content.count('TriggerWebhookConverter')
-        if (TriggerPassword == True and message.author != self.Misaki.user):
+        if (TriggerPassword == True and message.author.display_name == "音無小鳥"):
             await message.delete()
             await message.channel.send(message.content[24:])
 
