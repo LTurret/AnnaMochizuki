@@ -69,6 +69,11 @@ class MainCommands(commands.Cog):
         await ctx.channel.send("RGS is up!")
 
     @commands.command()
+    async def hello(self, ctx):
+        member = ctx.guild.get_member(ctx.message.author.id)
+        print(member.status)
+
+    @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
         HavetheNick = []
         for member in ctx.guild.members:
