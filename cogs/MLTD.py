@@ -82,7 +82,7 @@ class MLTD(commands.Cog):
         #put a character name list here
         #serction 1.
         #   put every character name to embed message to show off all option
-        url = "https://imas.gamedbs.jp/mlth/chara/show/24"
+        url = "https://imas.gamedbs.jp/mlth/"
         request = req.Request(url, headers= {
             "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
         })
@@ -94,7 +94,9 @@ class MLTD(commands.Cog):
         for source_information in source:
             character_name = source_information.a.get("title")[0:len(source_information)-6]
             Idol.append(character_name)
-        print(Idol)
+            for IdolName in Idol:
+                if str(IdolName) == character_name:
+                    print(IdolName)
 
 def setup(Misaki):
     Misaki.add_cog(MLTD(Misaki))
