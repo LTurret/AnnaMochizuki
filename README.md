@@ -37,5 +37,5 @@ Use the following command for a more detailed description:
 - [x] 網路爬蟲imas轉推器
 - [x] Twitter Mode 
 - [x] Raid Announcement System(RAS)
-- [ ] RAS更新
+- [x] RAS更新
 - [ ] 群體移動語音頻道

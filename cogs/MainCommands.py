@@ -17,6 +17,7 @@ class MainCommands(commands.Cog):
         self.RaidVoiceChannel = []
         self.RaidAuthorId = ""
         self.RaidAuthorName = ""
+        self.RaidChamberName = ""
         self.RaidEndedSystemCaller = "Idle"
         self.RaidStatus = False
         self.BotSaidFilter = True
@@ -51,9 +52,10 @@ class MainCommands(commands.Cog):
         await ctx.send(message)
 
     @commands.command()
-    async def ras(self, ctx):
+    async def ras(self, ctx, chamber_name):
         self.RaidAuthorId = ctx.author.id
         self.RaidAuthorName = ctx.author.display_name
+        self.RaidChamberName = chamber_name
         await ctx.message.delete()
         await ctx.channel.send("RAS is up!")
 
@@ -142,11 +144,11 @@ class MainCommands(commands.Cog):
         RaidDetector = message.content.count("Raid is start soon...")
         if (RaidDetector == True and message.author == self.Misaki.user and self.BotSaidFilter == False):
             self.RaidMessage = message
-            await message.edit(content = f"A Cult (:flag_tw:) afk will be starting in 10 seconds by <@{self.RaidAuthorId}>. Prepare to join raiding `{self.RaidAuthorName}'s Cult` *Now located above lounge.* **You do not need to react to anything**")
+            await message.edit(content = f"A Raid (:flag_tw:) afk will be starting in 10 seconds by <@{self.RaidAuthorId}>. Prepare to join raiding `{self.RaidAuthorName}'s {self.RaidChamberName}` *Now located above lounge.* **You do not need to react to anything**")
             self.BotSaidFilter = True
             self.RaidEndedSystemCaller = "Stady"
             await message.add_reaction("🔚")
-            await self.RaidCategory.create_voice_channel(name = f"{self.RaidAuthorName}'s Cult", user_limit = 65)
+            await self.RaidCategory.create_voice_channel(name = f"{self.RaidAuthorName}'s {self.RaidChamberName}", user_limit = 5)
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -199,10 +201,10 @@ class MainCommands(commands.Cog):
     async def on_reaction_add(self, reaction, user):
         #RAS - ended system
         if (self.RaidEndedSystemCaller == "Stady"):
-            if (self.RaidMessage.id == reaction.message.id and reaction.count > 1):
-                for RaidVoiceChannel in self.RaidCategory.voice_channels:
-                    if (RaidVoiceChannel.name == f"{self.RaidAuthorName}'s Cult"):
-                        await RaidVoiceChannel.delete()
+            if (reaction.message.id == self.RaidMessage.id and reaction.count > 1):
+                for VoiceChannel in self.RaidCategory.voice_channels:
+                    if (VoiceChannel.name == f"{self.RaidAuthorName}'s {self.RaidChamberName}"):
+                        await VoiceChannel.delete()
                 await self.RaidMessage.delete()
                 self.RaidStatus = False
 
