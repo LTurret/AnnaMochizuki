@@ -52,7 +52,7 @@ class MainCommands(commands.Cog):
         await ctx.send(message)
 
     @commands.command()
-    async def ras(self, ctx, chamber_name):
+    async def ras(self, ctx, chamber_name, user_limit:int):
         self.RaidAuthorId = ctx.author.id
         self.RaidAuthorName = ctx.author.display_name
         self.RaidChamberName = chamber_name
