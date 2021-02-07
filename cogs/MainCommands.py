@@ -10,8 +10,6 @@ with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\Ma
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
-        self.TwitterModeCapacitor = []
-        self.TwitterModeDB = [712263206940442706, 751038225191010354, 751051926841327616] #Server:guild, Original_db:CategoryChannel, Represent_db:CategoryChannel
         self.RaidMessage = []
         self.RaidCategory = []
         self.RaidVoiceChannel = []
@@ -50,14 +48,6 @@ class MainCommands(commands.Cog):
     async def botsaid(self, ctx, *,message):
         await ctx.message.delete()
         await ctx.send(message)
-
-    @commands.command()
-    async def ras(self, ctx, chamber_name, user_limit:int):
-        self.RaidAuthorId = ctx.author.id
-        self.RaidAuthorName = ctx.author.display_name
-        self.RaidChamberName = chamber_name
-        await ctx.message.delete()
-        await ctx.channel.send("RAS is up!")
 
     @commands.command()
     async def rgs(self, ctx):
@@ -110,7 +100,6 @@ class MainCommands(commands.Cog):
             await message.add_reaction("❤️")
             await message.add_reaction("🗨️")
             await message.add_reaction("🔁")
-            self.TwitterModeCapacitor.append(message)
 
 
         #iM@S
@@ -127,19 +116,6 @@ class MainCommands(commands.Cog):
             await message.add_reaction("🚩")
 
 
-        #Raid Announcement System (RAS)
-        RaidPassword = message.content.count("RAS is up!")
-        if (RaidPassword == True and self.RaidStatus == False and message.author == self.Misaki.user):
-            await message.delete()
-            self.RaidStatus = True
-            self.RaidCategory = message.guild.categories[2]
-            self.BotSaidFilter = False
-            await message.channel.send("Raid is start soon...")
-        elif (RaidPassword == True and self.RaidStatus == True):
-            await message.delete()
-            await message.channel.send("You must wait until last raid ended!", delete_after = 2)
-
-
         #RAS Detector
         RaidDetector = message.content.count("Raid is start soon...")
         if (RaidDetector == True and message.author == self.Misaki.user and self.BotSaidFilter == False):
@@ -148,7 +124,6 @@ class MainCommands(commands.Cog):
             self.BotSaidFilter = True
             self.RaidEndedSystemCaller = "Stady"
             await message.add_reaction("🔚")
-            await self.RaidCategory.create_voice_channel(name = f"{self.RaidAuthorName}'s {self.RaidChamberName}", user_limit = 5)
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -158,18 +133,6 @@ class MainCommands(commands.Cog):
             role = guild.get_role(711454063962882051)
             await payload.member.add_roles(role)
 
-
-        #Twitter mode - retweet
-        if (payload.user_id != 712243040760102992 and str(payload.emoji) == "🔁" and payload.message_id == self.TwitterModeCapacitor[0].id):
-            CategoryOfOriginalMessage = self.Misaki.get_channel(self.TwitterModeDB[1])
-            CategoryOfRepresentMessage = self.Misaki.get_channel(self.TwitterModeDB[2])
-            await CategoryOfOriginalMessage.create_text_channel(name = self.TwitterModeCapacitor[0].id)
-            RetweetEmbed = discord.Embed(title = "")
-            RetweetEmbed.set_author(name = f"author_name", icon_url = f"https://www.meme-arsenal.com/memes/28576beb596a5a49207912a086f1ff34.jpg")
-            RetweetEmbed.add_field(name = "content:", value = "content", inline=False)
-            await self.TwitterModeCapacitor[0].channel.send(embed = RetweetEmbed)
-            await CategoryOfRepresentMessage.create_text_channel(name = self.TwitterModeCapacitor[0].channel.last_message.id)
-
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
         #ReactionRole
@@ -178,35 +141,6 @@ class MainCommands(commands.Cog):
             member = guild.get_member(payload.user_id)
             role = guild.get_role(711454063962882051)
             await member.remove_roles(role)
-
-
-        #Twitter mode - retweet
-        if (str(payload.emoji) == "🔁"):
-            Original_db = self.Misaki.get_channel(self.TwitterModeDB[1])
-            Represent_db = self.Misaki.get_channel(self.TwitterModeDB[2])
-            for Channel in Original_db.text_channels:
-                if (Channel.name == str(payload.message_id)):
-                    RepresentTarget = Channel.position
-                    Original_delete = Channel
-            for Channel in Represent_db.text_channels:
-                if (Channel.position == RepresentTarget + 1):
-                    Represent_delete = Channel
-                    Source = self.Misaki.get_channel(payload.channel_id)
-                    Retweet = await Source.fetch_message(Channel.name)
-                    await Retweet.delete()
-                    await Original_delete.delete()
-                    await Represent_delete.delete()
-
-    @commands.Cog.listener()
-    async def on_reaction_add(self, reaction, user):
-        #RAS - ended system
-        if (self.RaidEndedSystemCaller == "Stady"):
-            if (reaction.message.id == self.RaidMessage.id and reaction.count > 1):
-                for VoiceChannel in self.RaidCategory.voice_channels:
-                    if (VoiceChannel.name == f"{self.RaidAuthorName}'s {self.RaidChamberName}"):
-                        await VoiceChannel.delete()
-                await self.RaidMessage.delete()
-                self.RaidStatus = False
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, exception):
