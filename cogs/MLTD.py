@@ -16,18 +16,6 @@ class MLTD(commands.Cog):
         self.Misaki = Misaki
 
     @commands.command()
-    async def 歌單(self, ctx):
-        await ctx.send(Mjson['歌單'])
-
-    @commands.command()
-    async def TWevent(self, ctx):
-        embed = discord.Embed(title = "台服活動貼文", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
-        embed.set_author(name = "偶像大師 百萬人演唱會！劇場時光", url = Mjson['MLTD_TW_about'], icon_url = Mjson['MLTD_TWevent_avatar'])
-        embed.set_image(url = Mjson['MLTD_TWevent_cover'])
-        embed.add_field(name = "內文", value = Eann['MLTD_TWevent_ann'], inline = False)
-        await ctx.send(embed=embed)
-
-    @commands.command()
     async def 轉蛋機率(self, ctx):
         embed = discord.Embed(title = "轉蛋機率"
         , description = None, colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
@@ -35,6 +23,12 @@ class MLTD(commands.Cog):
         embed.add_field(name = "> <:SR:723921117013606460>", value = '**"提供機率" 12%，也就是 "轉出機率" <= 15%**', inline = False)
         embed.add_field(name = "> <:R_:723921106909659227>", value = '**"提供機率" 85%，也就是 "轉出機率" > 15%**', inline = False)
         await ctx.send(embed=embed)
+
+    @commands.command()
+    async def ouen(self, ctx):
+        await ctx.message.delete()
+        await ctx.channel.send("(＊>△<)＜応援ください！")
+        self.OuenActivation = True
 
     @commands.command()
     async def 轉蛋(self, ctx, amount:int):

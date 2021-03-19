@@ -19,6 +19,7 @@ class MainCommands(commands.Cog):
         self.RaidEndedSystemCaller = "Idle"
         self.RaidStatus = False
         self.BotSaidFilter = True
+        self.OuenActivation = False
 
     @commands.command()
     async def ping(self, ctx):
@@ -30,21 +31,13 @@ class MainCommands(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_messages = True)
     async def purge(self, ctx, amount:int):
-        MemberRoles = ctx.message.author.roles
-        if (str(MemberRoles).count("大家的事務員") or str(MemberRoles).count("Enchanted Member") or str(MemberRoles).count("Moderators")):
-            await ctx.channel.purge(limit = amount+1)
-            await ctx.channel.send(f'{amount} 個訊息已被刪除')
-        else:
-            await ctx.channel.purge(limit = 1)
+        await ctx.channel.purge(limit = amount+1)
+        await ctx.channel.send(f'{amount} 個訊息已被刪除')
 
     @commands.command()
     @commands.has_permissions(manage_messages = True)
     async def cls(self, ctx, amount:int):
-        MemberRoles = ctx.message.author.roles
-        if (str(MemberRoles).count("大家的事務員") or str(MemberRoles).count("Moderators")):
-            await ctx.channel.purge(limit = amount+1)
-        else:
-            await ctx.channel.purge(limit = 1)
+        await ctx.channel.purge(limit = amount+1)
 
     @commands.command()
     async def botsaid(self, ctx, *,message):
@@ -54,10 +47,6 @@ class MainCommands(commands.Cog):
     @commands.command()
     async def rgs(self, ctx):
         await ctx.channel.send("RGS is up!")
-
-    @commands.command()
-    async def interact(self, ctx):
-        await ctx.channel.send("boomerange!")
 
     @commands.command()
     async def rds(self, ctx, keyword:str, population:int, groups:int):
@@ -112,15 +101,26 @@ class MainCommands(commands.Cog):
             self.RaidEndedSystemCaller = "Stady"
             await message.add_reaction("🔚")
 
-        
-        #Interact Messaging
-        if (message.content == "boomerange!"):
-            print(message.author[:4])
 
+        #応援ください！
+        if (message.content == "応援ください" and message.author != self.Misaki.user):
+            await message.channel.send("応援するい！")
+
+        
+        #応援
+        if (message.content == "(＊>△<)＜応援ください！" and message.author == self.Misaki.user):
+            self.OuenActivation = True
+
+        #応援Activation
+        if (message.content.count("応援するよ") and self.OuenActivation == True):
+            self.OuenActivation = False
+            await message.channel.send("<:Annavivid:822150612132298752>")
+            
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         #ReactionRole
+        # print(payload)
         if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
             guild = self.Misaki.get_guild(payload.guild_id)
             role = guild.get_role(711454063962882051)
