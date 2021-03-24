@@ -114,7 +114,7 @@ class MainCommands(commands.Cog):
         #応援Activation
         if (message.content.count("応援するよ") and self.OuenActivation == True):
             self.OuenActivation = False
-            await message.channel.send("<:Annavivid:822150612132298752>")
+            await message.channel.send("<:Su02:823936042729734195>")
             
 
     @commands.Cog.listener()

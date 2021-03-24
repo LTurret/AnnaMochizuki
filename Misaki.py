@@ -2,12 +2,15 @@ import discord
 import json
 import os
 from discord.ext import commands
+# from discord_slash import SlashCommand, SlashCommandOptionType, SlashContext
 
 with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding='utf8') as jsonSetting:
     jdata = json.load(jsonSetting)
 
 Misaki = commands.Bot(command_prefix=commands.when_mentioned, description="大家的事務員-青羽美咲")
 Misaki.remove_command('help')
+# slash = SlashCommand(Misaki, auto_register = True)
+
 
 @Misaki.event
 async def on_ready():

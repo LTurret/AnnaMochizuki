@@ -8,8 +8,6 @@ from discord.ext import commands
 
 with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\mltd.json", 'r', encoding='utf8') as MLTDjson:
     Mjson = json.load(MLTDjson)
-with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\announce.json", 'r', encoding='utf8') as EventDescription:
-    Eann = json.load(EventDescription)
 
 class MLTD(commands.Cog):
     def __init__(self, Misaki):
@@ -50,21 +48,18 @@ class MLTD(commands.Cog):
                         reward = Mjson['Draw_R']
                     result = result + ' ' + reward
             if (amount == 1):
-                embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果'
-                , description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
+                embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果', description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
                 embed.set_author(name = "早坂そら", url = Mjson['早坂空_about'], icon_url = Mjson['早坂空_avatar'])
                 embed.add_field(name = f'> 轉出機率為',value = f'**{percentage}%**', inline = False)
                 embed.add_field(name = "> 抽獎結果", value = f'{result}', inline = False)
                 await ctx.send(embed=embed)
             elif (amount > 1 and amount != 10):
-                embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果'
-                , description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
+                embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果', description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
                 embed.set_author(name = "早坂そら", url = Mjson['早坂空_about'], icon_url = Mjson['早坂空_avatar'])
                 embed.add_field(name = "> 抽獎結果", value = f'{result}', inline = False)
                 await ctx.send(embed=embed)
             elif (amount == 10):
-                embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果'
-                , description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
+                embed = discord.Embed(title = f'{str(ctx.message.author)[:-5]} 的轉蛋結果', description = "拍到大家的笑容了！", colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
                 embed.set_author(name = "早坂そら", url = Mjson['早坂空_about'], icon_url = Mjson['早坂空_avatar'])
                 embed.add_field(name = "> 抽獎結果，抽了10次有SR保底", value = f'{result}', inline = False)
                 await ctx.send(embed=embed)
