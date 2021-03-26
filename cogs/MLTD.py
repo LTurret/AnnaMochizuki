@@ -26,7 +26,6 @@ class MLTD(commands.Cog):
     async def ouen(self, ctx):
         await ctx.message.delete()
         await ctx.channel.send("(＊>△<)＜応援ください！")
-        self.OuenActivation = True
 
     @commands.command()
     async def 轉蛋(self, ctx, amount:int):

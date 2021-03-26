@@ -19,7 +19,7 @@ class MainCommands(commands.Cog):
         self.RaidEndedSystemCaller = "Idle"
         self.RaidStatus = False
         self.BotSaidFilter = True
-        self.OuenActivation = False
+        self.OuenResponseHolder = False
 
     @commands.command()
     async def ping(self, ctx):
@@ -101,20 +101,16 @@ class MainCommands(commands.Cog):
             self.RaidEndedSystemCaller = "Stady"
             await message.add_reaction("🔚")
 
-
-        #応援ください！
-        if (message.content == "応援ください" and message.author != self.Misaki.user):
-            await message.channel.send("応援するい！")
-
         
-        #応援
+        #応援發送器
         if (message.content == "(＊>△<)＜応援ください！" and message.author == self.Misaki.user):
-            self.OuenActivation = True
-
-        #応援Activation
-        if (message.content.count("応援するよ") and self.OuenActivation == True):
-            self.OuenActivation = False
+            self.OuenResponseHolder = True
+        #応援回應
+        if (message.content.count("応援するよ") and self.OuenResponseHolder == True):
+            self.OuenResponseHolder = False
             await message.channel.send("<:Su02:823936042729734195>")
+        if (message.content.count("我愛杏奈")):
+            print(message)
             
 
     @commands.Cog.listener()
