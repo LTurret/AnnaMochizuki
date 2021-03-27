@@ -108,15 +108,23 @@ class MainCommands(commands.Cog):
         #応援回應
         if (message.content.count("応援するよ") and self.OuenResponseHolder == True):
             self.OuenResponseHolder = False
-            await message.channel.send("<:Su02:823936042729734195>")
-        if (message.content.count("我愛杏奈")):
-            print(message)
+            random_emojis = [
+                "<:Su01:823936033246806056>",
+                "<:Su02:823936042729734195>",
+                "<:Su00:823936024865931314>",
+                "<:Su03:823936052120911933>",
+                "<:Su04:823936062975377448>",
+                "<:Su05:823936075847565312>",
+                "<:Su15:823936198115590144>"
+            ]
+            emoji = random_emojis[random.randint(0, 6)]
+            await message.channel.send(emoji)
             
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         #ReactionRole
-        # print(payload)
+        print(payload)
         if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
             guild = self.Misaki.get_guild(payload.guild_id)
             role = guild.get_role(711454063962882051)
