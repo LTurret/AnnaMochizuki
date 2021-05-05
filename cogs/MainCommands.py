@@ -3,6 +3,8 @@ import json
 import random
 import datetime
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
+from discord_slash.utils.manage_commands import create_option
 
 with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
     MainCommandsJson = json.load(MainCommandsJson)

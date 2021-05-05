@@ -5,9 +5,13 @@ import random
 import bs4
 import urllib.request as req
 from discord.ext import commands
+from discord_slash import cog_ext, SlashContext
+from discord_slash.utils.manage_commands import create_option
 
 with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\mltd.json", 'r', encoding='utf8') as MLTDjson:
     Mjson = json.load(MLTDjson)
+with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding="utf8") as GlobalSetting:
+    GlobalSetting = json.load(GlobalSetting)
 
 class MLTD(commands.Cog):
     def __init__(self, Misaki):
@@ -22,10 +26,16 @@ class MLTD(commands.Cog):
         embed.add_field(name = "> <:R_:723921106909659227>", value = '**"提供機率" 85%，也就是 "轉出機率" > 15%**', inline = False)
         await ctx.send(embed=embed)
 
-    @commands.command()
+    # @commands.command()
+    # async def ouen(self, ctx):
+    #     await ctx.message.delete()
+    #     await ctx.channel.send("(＊>△<)＜応援ください！")
+
+    @cog_ext.cog_slash(name = "ouen",
+                       description = '使用指令後打上"応援するよ！"來為杏奈應援！！',
+                       guild_ids = GlobalSetting['guild_ids'])
     async def ouen(self, ctx):
-        await ctx.message.delete()
-        await ctx.channel.send("(＊>△<)＜応援ください！")
+        await ctx.send(content = f"(＊>△<)＜応援ください！")
 
     @commands.command()
     async def 轉蛋(self, ctx, amount:int):

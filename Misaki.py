@@ -2,27 +2,21 @@ import discord
 import json
 import os
 from discord.ext import commands
+from discord.ext.commands import Bot
+from discord_slash import SlashCommand, SlashContext
+from discord_slash.utils.manage_commands import create_option
 
 with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding='utf8') as jsonSetting:
     jdata = json.load(jsonSetting)
 
-Misaki = commands.Bot(command_prefix=commands.when_mentioned, description="大家的事務員-青羽美咲")
+Misaki = commands.Bot(command_prefix = commands.when_mentioned, intents = discord.Intents.all())
+slash = SlashCommand(Misaki, sync_commands = True, sync_on_cog_reload = True, override_type = True)
 Misaki.remove_command('help')
 
 @Misaki.event
 async def on_ready():
     await Misaki.change_presence(status = discord.Status.online, activity = discord.Game('偶像大師 百萬人演唱會！ 劇場時光'))
     print("Misaki is online!\n大家的事務員，青羽美咲上線啦！")
-
-@Misaki.event
-async def on_member_join(member):
-    channel = Misaki.get_channel(int(jdata['MainChannelID']))
-    await channel.send(f'{member.mention} 加入了漢堡群！')
-
-@Misaki.event
-async def on_member_remove(member):
-    channel = Misaki.get_channel(int(jdata['MainChannelID']))
-    await channel.send(f'{member.mention} 退出了漢堡群，SAD！')
 
 @Misaki.command()
 async def load(ctx, extension):
