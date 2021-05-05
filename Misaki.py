@@ -2,9 +2,7 @@ import discord
 import json
 import os
 from discord.ext import commands
-from discord.ext.commands import Bot
-from discord_slash import SlashCommand, SlashContext
-from discord_slash.utils.manage_commands import create_option
+from discord_slash import SlashCommand
 
 with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding='utf8') as jsonSetting:
     jdata = json.load(jsonSetting)
