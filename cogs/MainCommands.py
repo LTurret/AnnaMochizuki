@@ -22,13 +22,10 @@ class MainCommands(commands.Cog):
         self.RaidStatus = False
         self.BotSaidFilter = True
         self.OuenResponseHolder = False
-
+    
     @commands.command()
-    async def ping(self, ctx):
-        if (round(self.Misaki.latency*1000) >= 100):
-            await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒\n有夠遠的')
-        else:
-            await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒')
+    async def reply(self, ctx):
+        print(ctx)
 
     @commands.command()
     @commands.has_permissions(manage_messages = True)
@@ -143,7 +140,7 @@ class MainCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, exception):
-        await ctx.channel.send(f'{exception}\nPlease check the helplist for usage of commands.')
+        await ctx.channel.send(f'{exception}\n查無指令，請利用/help來查詢指令')
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))

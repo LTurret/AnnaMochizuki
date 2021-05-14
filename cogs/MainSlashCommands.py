@@ -10,13 +10,6 @@ with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\se
 class MainSlashCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
-
-    # @cog_ext.cog_slash(name = "ouen",
-    #             description = '使用指令後打上"応援するよ！"來為杏奈應援！！',
-    #             guild_ids = GlobalSetting['guild_ids'])
-    # async def ouen(self, ctx):
-    #     await ctx.send(content = f"(＊>△<)＜応援ください！")
-
     @cog_ext.cog_slash(name = "cls",
                        description = "指定欲刪除訊息的數量",
                        guild_ids = GlobalSetting['guild_ids'],
@@ -31,6 +24,23 @@ class MainSlashCommands(commands.Cog):
     async def cls(self, ctx, amount:int):
         await ctx.channel.purge(limit = amount)
         await ctx.send(content = f"您已成功刪除 **{amount}** 則訊息", hidden = True)
+
+    @cog_ext.cog_slash(name = "reply",
+                       description = "回傳ctx數據",
+                       guild_ids = GlobalSetting['guild_ids'])
+    async def reply(self, ctx):
+        print(ctx)
+        await ctx.send(content = f"已回傳", hidden = True)
+
+    @cog_ext.cog_slash(name = "ping",
+                       description = "回傳機器人的延遲時間",
+                       guild_ids = GlobalSetting['guild_ids'])
+    async def ping(self, ctx):
+        if (round(self.Misaki.latency*1000) >= 100):
+            await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒\n有夠遠的')
+        else:
+            await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒')
+
 
 def setup(Misaki):
     Misaki.add_cog(MainSlashCommands(Misaki))
