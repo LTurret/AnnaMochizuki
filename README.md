@@ -4,15 +4,19 @@ created by LTurret
 
 ## * Annoucement
 
-This bot is currently used for private usage and my programming techique.
+This bot is used for private usage and for advanced my programming purpose.
 
 ### * Usage
 
-Mention Misaki in server then you'll activate the bot!
-Try like this:
+Mention Misaki in the server then activate the bot!
+Method:
 
 ```cs
 @青羽美咲 {commands}
+```
+or using discord new feature called slash command
+```cs
+/{command}
 ```
 
 ### * Commands
