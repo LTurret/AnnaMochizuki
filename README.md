@@ -15,8 +15,9 @@ Method:
 @青羽美咲 {commands}
 ```
 or using discord new feature called slash command
+for example:
 ```cs
-/{command}
+/ouen
 ```
 
 ### * Commands
