@@ -140,7 +140,7 @@ class MainCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, exception):
-        await ctx.channel.send(f'{exception}\n查無指令，請利用/help來查詢指令')
+        await ctx.channel.send(exception)
 
 def setup(Misaki):
     Misaki.add_cog(MainCommands(Misaki))

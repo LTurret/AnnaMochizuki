@@ -2,8 +2,7 @@ import discord
 import json
 import datetime
 import random
-import bs4
-import urllib.request as req
+import urllib.request as request
 from discord.ext import commands
 from discord_slash import cog_ext
 
@@ -68,25 +67,32 @@ class MLTD(commands.Cog):
                 await ctx.send(embed=embed)
 
     @commands.command()
-    async def getData(self, character_name:str):
-        #put a character name list here
-        #serction 1.
-        #   put every character name to embed message to show off all option
-        url = "https://imas.gamedbs.jp/mlth/"
-        request = req.Request(url, headers= {
-            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
-        })
-        with req.urlopen(request) as response:
-            data = response.read().decode("utf-8")
-        root = bs4.BeautifulSoup(data, "html.parser")
-        source = root.find_all("li", class_="hvr-grow")
-        Idol = []
-        for source_information in source:
-            character_name = source_information.a.get("title")[0:len(source_information)-6]
-            Idol.append(character_name)
-            for IdolName in Idol:
-                if str(IdolName) == character_name:
-                    print(IdolName)
-
+    async def MLTDtest(self, ctx):
+        await ctx.message.delete()
+        src = "https://mltd-zh.azurewebsites.net/api/events/72/rankings/borderPoints"
+        result = ""
+        with request.urlopen(src) as response:
+            data = json.load(response)
+            information = data["eventPoint"]["scores"]
+            for datum in information:
+                result += '\n排名：{:>5}'.format(datum["rank"]) + '   '  + '分數：{:>10,}'.format(datum["score"]) + '  ' +  '名稱： {:^0}'.format(datum["name"])
+        await ctx.channel.send(result)
+    # @commands.command()
+    # async def MLTDevent(self, ctx, id:int, mode):
+    #     eventid = str(id)
+    #     src = "https://mltd-zh.azurewebsites.net/api/events/"+eventid+"/rankings/borderPoints"
+    #     result = ""
+    #     with request.urlopen(src) as response:
+    #         data = json.load(response)
+    #         if mode.upper() == "PT":
+    #             mode = "eventPoint"
+    #         elif mode.upper() == "SCORE":
+    #             mode = "highScore"
+    #         data = response[mode]["scores"]
+    #         for datum in data:
+    #             result += '\n排名：{:>5}'.format(datum["rank"]) + '   '  + '分數：{:>10,}'.format(datum["score"]) + '  ' +  '名稱： {:^0}'.format(datum["name"])
+    #     print(result)
+    #     #await ctx.channel.send(data)
+            
 def setup(Misaki):
     Misaki.add_cog(MLTD(Misaki))
