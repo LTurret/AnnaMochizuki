@@ -1,10 +1,12 @@
 import discord
 import json
-import random
 import datetime
+import random
 from discord.ext import commands
+from discord.ext.commands import command, Cog #button
 from discord_slash import cog_ext, SlashContext
-from discord_slash.utils.manage_commands import create_option
+from discord_slash.utils.manage_commands import create_option, create_choice
+from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
 
 with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
     MainCommandsJson = json.load(MainCommandsJson)
@@ -123,7 +125,6 @@ class MainCommands(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         #ReactionRole
-        print(payload)
         if (payload.channel_id == 463321768212299778 and payload.message_id == 464825427844792320 and str(payload.emoji) == "<:Serika:677696191772753940>"):
             guild = self.Misaki.get_guild(payload.guild_id)
             role = guild.get_role(711454063962882051)
@@ -138,9 +139,27 @@ class MainCommands(commands.Cog):
             role = guild.get_role(711454063962882051)
             await member.remove_roles(role)
 
+    @commands.command()
+    async def button(self, ctx):
+        await ctx.send(
+            content = "按鈕功能還在開發，目前沒有功能",
+            components = [
+                Button(
+                    label = "按這個會交互失敗",
+                    style = 4
+                ),
+                Button(
+                    label = "相關API",
+                    style = 5,
+                    url = "https://devkiki7000.gitbook.io/discord-components/"
+                )
+            ]
+        )
+
     @commands.Cog.listener()
     async def on_command_error(self, ctx, exception):
-        await ctx.channel.send(exception)
+        await ctx.channel.send(exception)      
 
 def setup(Misaki):
+    DiscordComponents(Misaki) # button
     Misaki.add_cog(MainCommands(Misaki))
