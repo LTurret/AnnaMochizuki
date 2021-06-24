@@ -24,7 +24,7 @@ class MainCommands(commands.Cog):
         self.RaidStatus = False
         self.BotSaidFilter = True
         self.OuenResponseHolder = False
-    
+
     @commands.command()
     async def reply(self, ctx):
         print(ctx)

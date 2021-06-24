@@ -115,12 +115,13 @@ class MLTD(commands.Cog):
             time_code = [" 15:00 ~ ", " 20:59"] 
             evtRng = "活動期間："
             evtBoost = "加倍日期：" + data["date"]["boostBegin"][:-14].replace("-", "/")
+            evtUpdate = "更新時間：" + data[f"{type}"]["summaryTime"]
             n = 0
             for date in date_type:
                 evtRng += date + time_code[n]
                 n = n + 1
             evtRng = evtRng.replace("-", "/")
-            result = data["evtName"] + f'\n\n{evtRng}\n{evtBoost}\n'
+            result = data["evtName"] + f'\n\n{evtRng}\n{evtBoost}\n' + evtUpdate + "\n"
             information = data[type]["scores"]
             for datum in information:
                 result += '\n排名：{:>5}'.format(datum["rank"]) + '   '  + '分數：{:>10,}'.format(datum["score"]) + '  ' +  '名稱： {:^0}'.format(datum["name"])
