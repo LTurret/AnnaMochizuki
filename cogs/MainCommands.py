@@ -72,6 +72,16 @@ class MainCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        #引以為戒
+        if (message.content == "星辰" and message.author != self.Misaki.user):
+            await message.channel.send("<@!278453052850176000> 你必須引以為戒")
+
+
+        #明年一定第二
+        if (message.content == "明年一定二位" and message.author != self.Misaki.user):
+            await message.channel.send("<@!278453052850176000> 不可以食言耶")
+
+
         #general - Twitter Mode
         if (message.content.upper().count("TWITTER MODE") and len(message.content) != 12 and message.author != self.Misaki.user):
             await message.add_reaction("❤️")
