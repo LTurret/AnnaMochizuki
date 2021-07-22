@@ -4,11 +4,11 @@ created by LTurret
 
 ## * Annoucement
 
-This bot is used for private usage and for advanced my programming purpose.
+This bot is only use for personal server and for advanced my programming purpose.
 
 ### * Usage
 
-Mention Misaki in the server then activate the bot!
+Mention Misaki or use slash command in the server to activate the functions
 Method:
 
 ```cs
@@ -17,7 +17,7 @@ Method:
 or using discord new feature called slash command
 for example:
 ```cs
-/ouen
+/botsaid Hello world!
 ```
 
 ### * Commands
@@ -32,15 +32,20 @@ Use the following command for a more detailed description:
 
 ### * Futures
 
-總系統
+Main Commands
 - [x] 隨機組隊系統(Random Group System - RGS)
-- [x] 報錯系統(Command Error-up Announcement)
-- [x] General Twitter Mode
-- [ ] Interact Embedded Messaging
-- [ ] RGS 2.0
+- [x] 缺少引述報錯(on_command_error)
+- [X] 匿名傳訊息(botsaid)
+- [x] Twitter Mode
+- [x] MLTD Twitter webhook
+- [ ] 內嵌訊息交互系統
+- [ ] 隨機組隊系統2.0
 
 Slash Commands
 - [x] 應援系統
+- [x] MLTD轉蛋模擬器
+- [x] 刪除訊息
+- [x] 回傳延遲時間
 
 Reaction Role Registeration
 - [x] 基本解鎖頻道
@@ -50,7 +55,3 @@ MLTD榜線查詢系統
 - [x] MLTD榜線JSON解析
 - [ ] MLTD榜線錯誤訊息分析
 - [ ] MLTD榜線圖片創造
-  
-MLTD
-- [x] ミリシタ Rolling Simulator
-- [x] ミリシタ Twitter webhook
