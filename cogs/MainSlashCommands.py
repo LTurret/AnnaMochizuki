@@ -3,15 +3,15 @@ from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option
 
-with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding="utf8") as GlobalSetting:
-    GlobalSetting = json.load(GlobalSetting)
+with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\config.json", 'r', encoding="utf8") as config:
+    config = json.load(config)
 
 class MainSlashCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
     @cog_ext.cog_slash(name = "cls",
                        description = "指定欲刪除訊息的數量",
-                       guild_ids = GlobalSetting['guild_ids'],
+                       guild_ids = config['guild_ids'],
                        options = [
                            create_option(
                                name = "amount",
@@ -31,7 +31,7 @@ class MainSlashCommands(commands.Cog):
 
     @cog_ext.cog_slash(name = "ping",
                        description = "回傳機器人的延遲時間",
-                       guild_ids = GlobalSetting['guild_ids'])
+                       guild_ids = config['guild_ids'])
     async def ping(self, ctx):
         if (round(self.Misaki.latency*1000) >= 100):
             await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒\n有夠遠的')

@@ -16,8 +16,6 @@ class helplist(commands.Cog):
     @commands.command()
     async def help_mltd(self, ctx):
         embed = discord.Embed(title = "MLTD指令清單", description = None, colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
-        embed.add_field(name = "> 大和美少女", value = "**@青羽美咲 大和美少女**", inline = False)
-        embed.add_field(name = "> 南斗", value = "**@青羽美咲 南斗**", inline = False)
         embed.add_field(name = "> 歌單", value = "**@青羽美咲 歌單**", inline = False)
         embed.add_field(name = "> 轉蛋模擬器", value = "**/轉蛋 [轉出次數]**", inline = False)
         embed.add_field(name = "> 轉蛋機率", value = "**@青羽美咲 轉蛋機率**", inline = False)

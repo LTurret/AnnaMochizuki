@@ -1,11 +1,10 @@
-import discord
-import json
-import datetime
-import random
+import discord, json, datetime, random
 from discord.ext import commands
 
-with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
+with open(r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
     MainCommandsJson = json.load(MainCommandsJson)
+with open(r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\Other.json", mode="r", encoding="utf8") as config_other:
+    config_other = json.load(config_other)
 
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
@@ -49,26 +48,26 @@ class MainCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        # Twitter Mode
+        # [Other] Twitter Mode
         if (message.content.upper().count("TWITTER MODE") and len(message.content) != 12 and message.author != self.Misaki):
             await message.add_reaction("🗨️")
             await message.add_reaction("🔁")
             await message.add_reaction("❤️")
 
 
-        # iM@S
+        # [MLTD] Webhook translator
         TriggerPassword = message.content.count('TriggerWebhookConverter')
         if (TriggerPassword == True and message.author.display_name == "音無小鳥"):
             await message.delete()
             await message.channel.send(message.content[24:])
 
 
-        # 応援 - 訊息發送器
-        if (message.content == "(＊>△<)＜応援ください！" and message.author == self.Misaki):
+        # [MLTD] 応援 - 訊息發送器
+        if (message.content == "(＊>△<)＜応援ください！" and message.author == self.Misaki.user):
             self.OuenResponseHolder = True
 
 
-        # 応援 - 回應表情符號
+        # [MLTD] 応援 - 回應表情符號
         if (message.content.count("応援するよ") and self.OuenResponseHolder == True):
             self.OuenResponseHolder = False
             random_emojis = [
@@ -82,6 +81,11 @@ class MainCommands(commands.Cog):
             ]
             emoji = random_emojis[random.randint(0, 6)]
             await message.channel.send(emoji)
+
+
+        # [Other] 你很腦殘嗎
+        if (message.content.count("你很腦殘嗎") and message.author != self.Misaki.user):
+            await message.channel.send(config_other['AreYouBrainless'])
             
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):

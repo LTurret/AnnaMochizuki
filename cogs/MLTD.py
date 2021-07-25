@@ -1,6 +1,4 @@
-import discord
-import json
-import datetime
+import discord, json, datetime
 import urllib.request as request
 from random import randint
 from discord.ext import commands
@@ -9,8 +7,8 @@ from discord_slash.utils.manage_commands import create_option, create_choice
 
 with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\mltd.json", 'r', encoding='utf8') as MLTDjson:
     Mjson = json.load(MLTDjson)
-with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding="utf8") as GlobalSetting:
-    GlobalSetting = json.load(GlobalSetting)
+with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\config.json", 'r', encoding="utf8") as config:
+    config = json.load(config)
 
 class MLTD(commands.Cog):
     def __init__(self, Misaki):
@@ -27,13 +25,13 @@ class MLTD(commands.Cog):
 
     @cog_ext.cog_slash(name = "ouen",
                        description = '使用指令後打上"応援するよ！"來為杏奈應援！！',
-                       guild_ids = GlobalSetting['guild_ids'])
+                       guild_ids = config['guild_ids'])
     async def ouen(self, ctx):
         await ctx.send(content = f"(＊>△<)＜応援ください！")
 
     @cog_ext.cog_slash(name = "轉蛋",
                        description = "MLTD轉蛋模擬器",
-                       guild_ids = GlobalSetting["guild_ids"],
+                       guild_ids = config["guild_ids"],
                        options = [
                            create_option(
                                name = "amount",
@@ -81,7 +79,7 @@ class MLTD(commands.Cog):
 
     @cog_ext.cog_slash(name = "event",
                        description = "查MLTW pt或高分榜",
-                       guild_ids = GlobalSetting["guild_ids"],
+                       guild_ids = config["guild_ids"],
                        options = [
                            create_option(
                                name = "id",

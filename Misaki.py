@@ -1,11 +1,9 @@
-import discord
-import json
-import os
+import discord, json, os
 from discord.ext import commands
 from discord_slash import SlashCommand
 
-with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\setting.json", 'r', encoding='utf8') as jsonSetting:
-    jdata = json.load(jsonSetting)
+with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\config.json", 'r', encoding='utf8') as config:
+    config = json.load(config)
 
 Misaki = commands.Bot(command_prefix = commands.when_mentioned, intents = discord.Intents.all())
 slash = SlashCommand(Misaki, sync_commands = True, sync_on_cog_reload = True, override_type = True)
@@ -38,4 +36,4 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         Misaki.load_extension(f'cogs.{filename[:-3]}')
 
-Misaki.run(jdata['BotToken'])
+Misaki.run(config['BotToken'])
