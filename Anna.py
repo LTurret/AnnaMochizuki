@@ -2,7 +2,7 @@ import discord, json, os
 from discord.ext import commands
 from discord_slash import SlashCommand
 
-with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\config.json", 'r', encoding='utf8') as config:
+with open ("./json\config.json", mode="r", encoding="utf-8") as config:
     config = json.load(config)
 
 Misaki = commands.Bot(command_prefix = commands.when_mentioned, intents = discord.Intents.all())
@@ -12,7 +12,7 @@ Misaki.remove_command('help')
 @Misaki.event
 async def on_ready():
     await Misaki.change_presence(status = discord.Status.online, activity = discord.Game('偶像大師 百萬人演唱會！ 劇場時光'))
-    print("Misaki is online!\n大家的事務員，青羽美咲上線啦！")
+    print("ㄤ奈可愛")
 
 @Misaki.command()
 async def load(ctx, extension):

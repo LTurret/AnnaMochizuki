@@ -71,13 +71,13 @@ class MainCommands(commands.Cog):
         if (message.content.count("応援するよ") and self.OuenResponseHolder == True):
             self.OuenResponseHolder = False
             random_emojis = [
-                "<:Su01:823936033246806056>",
-                "<:Su02:823936042729734195>",
-                "<:Su00:823936024865931314>",
-                "<:Su03:823936052120911933>",
-                "<:Su04:823936062975377448>",
-                "<:Su05:823936075847565312>",
-                "<:Su15:823936198115590144>"
+                ":Su00:",
+                ":Su01:",
+                ":Su02:",
+                ":Su03:",
+                ":Su04:",
+                ":Su05:"
+                ":Su15:"
             ]
             emoji = random_emojis[random.randint(0, 6)]
             await message.channel.send(emoji)
