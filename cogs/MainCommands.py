@@ -71,13 +71,13 @@ class MainCommands(commands.Cog):
         if (message.content.count("応援するよ") and self.OuenResponseHolder == True):
             self.OuenResponseHolder = False
             random_emojis = [
-                ":Su00:",
-                ":Su01:",
-                ":Su02:",
-                ":Su03:",
-                ":Su04:",
-                ":Su05:"
-                ":Su15:"
+                "<:Su00:882135513539182642>",
+                "<:Su01:882135525648117780>",
+                "<:Su02:882135536964358184>",
+                "<:Su03:882135547395571722>",
+                "<:Su04:882135559043170315>",
+                "<:Su05:882135571974213682>"
+                "<:Su15:882142299528761374>"
             ]
             emoji = random_emojis[random.randint(0, 6)]
             await message.channel.send(emoji)
@@ -86,6 +86,25 @@ class MainCommands(commands.Cog):
         # [Other] 你很腦殘嗎
         if (message.content.count("你很腦殘嗎") and message.author != self.Misaki.user):
             await message.channel.send(config_other['AreYouBrainless'])
+
+        # [Other] >:)
+        if (message.content.count(">:)") and message.author != self.Misaki.user):
+            await message.channel.send(config_other['>:)'])
+
+        # [Other] ㄤ奈可愛
+        kword = ["ㄤ奈可愛", "杏奈可愛"]
+        if (kword.count(message.content) and message.author != self.Misaki.user):
+            if (str(message.author) == "LTurret#0834"):
+                await message.channel.send("你很噁心... <:AnnaShock:882135258865229894>")
+            else:
+                await message.channel.send("謝謝... 製作人 <:Su04:882135559043170315>💜")
+
+        # get information
+        if (message.content.count("get") and message.author != self.Misaki.user):
+            try:
+                print(message.author)
+            except Exception as e:
+                print(e)
             
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):

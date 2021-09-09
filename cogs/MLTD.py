@@ -221,11 +221,13 @@ class MLTD(commands.Cog):
             FetchedID = id
         task_getRankBoarding = asyncio.create_task(getRankBoarding(FetchedID))
         BoardingDataSets = await task_getRankBoarding
-        result = ""
+        time_summaries = BoardingDataSets[f"{type}"]["summaryTime"]
+        nl = "\n"
+        result = f"{str(time_summaries)}{nl}{nl}"
         for data in BoardingDataSets[f"{type}"]["scores"]:
             rank = data["rank"]
             score = data["score"]
-            result += f"排名：{int(rank) :3,d}" + '   '  + f"分數：{int(score) :3,d}" + "\n"
+            result += f"排名：{rank}    分數：{score}{nl}"
         result = "```\n" + result + "```"
         await ctx.send(content = result, hidden = False)
             
