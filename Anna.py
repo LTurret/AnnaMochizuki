@@ -2,7 +2,7 @@ import discord, json, os
 from discord.ext import commands
 from discord_slash import SlashCommand
 
-with open ("./json\config.json", mode="r", encoding="utf-8") as config:
+with open ("./json/config.json", mode="r", encoding="utf-8") as config:
     config = json.load(config)
 
 Misaki = commands.Bot(command_prefix = commands.when_mentioned, intents = discord.Intents.all())

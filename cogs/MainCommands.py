@@ -1,50 +1,20 @@
-import discord, json, datetime, random
+import json, random
 from discord.ext import commands
 
-with open(r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\MainCommands.json", 'r', encoding="utf8") as MainCommandsJson:
+with open("./json/maincommands.json", mode="r", encoding="utf8") as MainCommandsJson:
     MainCommandsJson = json.load(MainCommandsJson)
-with open(r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\Other.json", mode="r", encoding="utf8") as config_other:
+with open("./json/other.json", mode="r", encoding="utf8") as config_other:
     config_other = json.load(config_other)
 
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
-        self.RaidMessage = []
-        self.RaidCategory = []
-        self.RaidVoiceChannel = []
-        self.RaidAuthorId = ""
-        self.RaidAuthorName = ""
-        self.RaidChamberName = ""
-        self.RaidEndedSystemCaller = "Idle"
-        self.RaidStatus = False
-        self.BotSaidFilter = True
         self.OuenResponseHolder = False
 
     @commands.command()
     async def botsaid(self, ctx, *,message):
         await ctx.message.delete()
         await ctx.send(message)
-
-    @commands.command()
-    async def rds(self, ctx, keyword:str, population:int, groups:int):
-        HavetheNick = []
-        for member in ctx.guild.members:
-            if (member.nick != None and member.nick.count(keyword)):
-                HavetheNick.append(member.name)
-        if (population == 0):
-            await ctx.channel.send("人數不可為0！")
-        else:
-            if (len(HavetheNick) < population * groups):
-                    await ctx.channel.send(f'不足以分組。\n請確定人數是否足夠、關鍵字 "{keyword}" 是否更改為暱稱之內。')
-            else:
-                for iteration in range(groups):
-                    ChosenMember = random.sample(HavetheNick, k=population)
-                    for RemoveMember in ChosenMember:
-                        HavetheNick.remove(RemoveMember)
-                    embed = discord.Embed(title = f'第 {iteration+1} 小隊', description = None, colour = 0x93e2df, timestamp = datetime.datetime.utcnow())
-                    embed.set_thumbnail(url = MainCommandsJson['Flag_icon'])
-                    embed.add_field(name = "隊員", value=f'{ChosenMember}', inline=False)
-                    await ctx.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -87,24 +57,35 @@ class MainCommands(commands.Cog):
         if (message.content.count("你很腦殘嗎") and message.author != self.Misaki.user):
             await message.channel.send(config_other['AreYouBrainless'])
 
+
         # [Other] >:)
         if (message.content.count(">:)") and message.author != self.Misaki.user):
             await message.channel.send(config_other['>:)'])
 
+
         # [Other] ㄤ奈可愛
-        kword = ["ㄤ奈可愛", "杏奈可愛"]
-        if (kword.count(message.content) and message.author != self.Misaki.user):
+        if (MainCommandsJson["杏奈可愛keywords"].count(message.content) and message.author != self.Misaki.user):
             if (str(message.author) == "LTurret#0834"):
                 await message.channel.send("你很噁心... <:AnnaShock:882135258865229894>")
             else:
                 await message.channel.send("謝謝... 製作人 <:Su04:882135559043170315>💜")
 
+
+        # [Other] 打上池
+        if (message.content.count("打上池") and message.author != self.Misaki.user):
+            channel = message.guild.get_channel(474858135853596675)
+            reply_message = await channel.fetch_message(885778763932139530)
+            if (str(message.author) == "LTurret#0834"):
+                await reply_message.reply("https://imgur.com/aMTsmeY")
+            else:
+                await message.channel.send("不要抽打上池\n<@!278453052850176000> 快點去打165")
+
         # get information
-        if (message.content.count("get") and message.author != self.Misaki.user):
-            try:
-                print(message.author)
-            except Exception as e:
-                print(e)
+        # if (message.content.count("get") and message.author != self.Misaki.user):
+        #     try:
+        #         print(message.author)
+        #     except Exception as e:
+        #         print(e)
             
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):

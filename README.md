@@ -12,12 +12,12 @@ Mention Misaki or use slash command in the server to activate the functions
 Method:
 
 ```cs
-@青羽美咲 {commands}
+@望月杏奈 {commands}
 ```
 or using discord new feature called slash command
 for example:
 ```cs
-/botsaid Hello world!
+@望月杏奈 botsaid Hello world!
 ```
 
 ### * Commands
@@ -25,21 +25,19 @@ for example:
 Use the following command for a more detailed description:
 
 ```cs
-@青羽美咲 help_main
-@青羽美咲 help_mltd
-@青羽美咲 help_other
+@望月杏奈 help_main
+@望月杏奈 help_mltd
+@望月杏奈 help_other
 ```
 
 ### * Futures
 
 Main Commands
-- [x] 隨機組隊系統(Random Group System - RGS)
-- [x] 缺少引述報錯(on_command_error)
+- [ ] 隨機組隊系統
 - [X] 匿名傳訊息(botsaid)
 - [x] Twitter Mode
 - [x] MLTD Twitter webhook
 - [ ] 內嵌訊息交互系統
-- [ ] 隨機組隊系統2.0
 
 Slash Commands
 - [x] 應援系統

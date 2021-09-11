@@ -1,35 +1,13 @@
-import discord, json, datetime, os, asyncio
+import discord, json, datetime, asyncio
 import urllib.request as request
 from random import randint
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
-async def getID():
-    src = "https://api.matsurihi.me/mltd/v1/events"
-    with request.urlopen(src) as response:
-        data = json.load(response)
-    await asyncio.sleep(2)
-    print("Fetched ID.")
-    return data[-1]['id']
-
-async def getRankBoarding(id):
-    src = "https://api.matsurihi.me/mltd/v1/events/"+str(id)+"/rankings/borderPoints"
-    with request.urlopen(src) as response:
-        data = json.load(response)
-    print("Fetched RankBoarding.")
-    return data
-
-async def getEventInfo(id):
-    src = "https://api.matsurihi.me/mltd/v1/events/" + str(id)
-    with request.urlopen(src) as response:
-        data = json.load(response)
-    print("Fetched EventInfo.")
-    return data
-
-with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\mltd.json", 'r', encoding='utf8') as MLTDjson:
+with open ("./json/mltd.json", mode="r", encoding='utf8') as MLTDjson:
     Mjson = json.load(MLTDjson)
-with open (r"C:\Users\a0919\Desktop\Files\Programming\Github\Suspend-bot\json\config.json", 'r', encoding="utf8") as config:
+with open ("./json/config.json", mode="r", encoding="utf8") as config:
     config = json.load(config)
 
 async def getID():
@@ -132,55 +110,6 @@ class MLTD(commands.Cog):
                 embed.add_field(name = "> 抽獎結果，抽了10次有SR保底", value = f'{result}', inline = False)
                 await ctx.send(embed = embed)
 
-    @cog_ext.cog_slash(name = "legacy_event",
-                       description = "查MLTW pt或高分榜",
-                       guild_ids = config["guild_ids"],
-                       options = [
-                           create_option(
-                               name = "id",
-                               description = "活動id",
-                               option_type = 4,
-                               required = True
-                           ),
-                           create_option(
-                               name = "type",
-                               description = "榜單類型",
-                               option_type = 3,
-                               required = True,
-                               choices = [
-                                   create_choice(
-                                       name = "pt榜",
-                                       value = "eventPoint"
-                                   ),
-                                   create_choice(
-                                       name = "高分榜",
-                                       value = "highScore"
-                                   )
-                               ]
-                           )
-                       ])
-    async def legacy_event(self, ctx:SlashContext, id, type):
-        src = "https://mltd-zh.azurewebsites.net/api/events/" + str(id) + "/rankings/borderPoints"
-        result = ""
-        with request.urlopen(src) as response:
-            data = json.load(response)
-        date_type = [data["date"]["evtBegin"][:-14], data["date"]["evtEnd"][:-14]]
-        time_code = [" 15:00 ~ ", " 20:59"] 
-        evtRng = "活動期間："
-        evtBoost = "加倍日期：" + data["date"]["boostBegin"][:-14].replace("-", "/")
-        evtUpdate = "更新時間：" + data[f"{type}"]["summaryTime"]
-        n = 0
-        for date in date_type:
-            evtRng += date + time_code[n]
-            n = n + 1
-        evtRng = evtRng.replace("-", "/")
-        result = data["evtName"] + f'\n\n{evtRng}\n{evtBoost}\n' + evtUpdate + "\n"
-        information = data[type]["scores"]
-        for datum in information:
-            result += '\n排名：{:>5}'.format(datum["rank"]) + '   '  + '分數：{:>10,}'.format(datum["score"]) + '  ' +  '名稱： {:^0}'.format(datum["name"])
-        result = "```\n" + result + "```"
-        await ctx.send(content = result, hidden = False)
-
     @cog_ext.cog_slash(name = "event",
                        description = "查MLTD日服 pt或高分榜",
                        guild_ids = config["guild_ids"],
@@ -210,8 +139,6 @@ class MLTD(commands.Cog):
                        ])
     @commands.command()
     async def event(self, ctx:SlashContext, id, type):
-        # os.chdir("./cogs/MLTD_Caches")
-
         # 如果id欄位為1，使用getID()自動拿到活動陣列[-1]的活動ID
         # 否則FetchedID就指定為欄位引數
 
