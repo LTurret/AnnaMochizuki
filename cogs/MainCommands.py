@@ -65,10 +65,18 @@ class MainCommands(commands.Cog):
 
         # [Other] ㄤ奈可愛
         if (MainCommandsJson["杏奈可愛keywords"].count(message.content) and message.author != self.Misaki.user):
-            if (str(message.author) == "LTurret#0834"):
-                await message.channel.send("你很噁心... <:AnnaShock:882135258865229894>")
-            else:
-                await message.channel.send("謝謝... 製作人 <:Su04:882135559043170315>💜")
+            MemberRoles = message.author.roles
+            try:
+                if str(MemberRoles).count("THE IDOLM@STER"):
+                    print("access")
+                    if (str(message.author) == "LTurret#0834"):
+                        await message.channel.send("你很噁心... <:AnnaShock:882135258865229894>")
+                    else:
+                        await message.channel.send("謝謝... 製作人 <:Su04:882135559043170315>💜")
+                else:
+                    pass
+            except Exception as e:
+                await message.channel.send(e)
 
 
         # [Other] 打上池
@@ -83,7 +91,7 @@ class MainCommands(commands.Cog):
         # get information
         # if (message.content.count("get") and message.author != self.Misaki.user):
         #     try:
-        #         print(message.author)
+        #         await message.delete()
         #     except Exception as e:
         #         print(e)
             
