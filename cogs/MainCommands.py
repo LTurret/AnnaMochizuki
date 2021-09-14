@@ -3,8 +3,8 @@ from discord.ext import commands
 
 with open("./json/maincommands.json", mode="r", encoding="utf8") as MainCommandsJson:
     MainCommandsJson = json.load(MainCommandsJson)
-with open("./json/other.json", mode="r", encoding="utf8") as config_other:
-    config_other = json.load(config_other)
+with open("./json/other.json", mode="r", encoding="utf8") as ConfigOther:
+    ConfigOther = json.load(ConfigOther)
 
 class MainCommands(commands.Cog):
     def __init__(self, Misaki):
@@ -15,6 +15,12 @@ class MainCommands(commands.Cog):
     async def botsaid(self, ctx, *,message):
         await ctx.message.delete()
         await ctx.send(message)
+
+    @commands.command()
+    async def reply(self, ctx, reply_id, *,message):
+        await ctx.message.delete()
+        reply_message = await ctx.channel.fetch_message(reply_id)
+        await reply_message.reply(message)
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -55,28 +61,17 @@ class MainCommands(commands.Cog):
 
         # [Other] 你很腦殘嗎
         if (message.content.count("你很腦殘嗎") and message.author != self.Misaki.user):
-            await message.channel.send(config_other['AreYouBrainless'])
+            await message.channel.send(ConfigOther['AreYouBrainless'])
 
 
         # [Other] >:)
         if (message.content.count(">:)") and message.author != self.Misaki.user):
-            await message.channel.send(config_other['>:)'])
+            await message.channel.send(ConfigOther['>:)'])
 
 
-        # [Other] ㄤ奈可愛
-        if (MainCommandsJson["杏奈可愛keywords"].count(message.content) and message.author != self.Misaki.user):
-            MemberRoles = message.author.roles
-            try:
-                if str(MemberRoles).count("THE IDOLM@STER"):
-                    print("access")
-                    if (str(message.author) == "LTurret#0834"):
-                        await message.channel.send("你很噁心... <:AnnaShock:882135258865229894>")
-                    else:
-                        await message.channel.send("謝謝... 製作人 <:Su04:882135559043170315>💜")
-                else:
-                    pass
-            except Exception as e:
-                await message.channel.send(e)
+        # [Other] >:(
+        if (message.content.count(">:(") and message.author != self.Misaki.user):
+            await message.channel.send(ConfigOther['>:('])
 
 
         # [Other] 打上池
@@ -87,6 +82,19 @@ class MainCommands(commands.Cog):
                 await reply_message.reply("https://imgur.com/aMTsmeY")
             else:
                 await message.channel.send("不要抽打上池\n<@!278453052850176000> 快點去打165")
+
+
+        # [Other] ㄤ奈可愛
+        if (MainCommandsJson["杏奈可愛keywords"].count(message.content) and message.author != self.Misaki.user):
+            MemberRoles = message.author.roles
+            if str(MemberRoles).count("THE IDOLM@STER"):
+                if (str(message.author) == "LTurret#0834"):
+                    await message.channel.send("你很噁心... <:AnnaShock:882135258865229894>")
+                else:
+                    await message.channel.send("謝謝... 製作人 <:Su04:882135559043170315>💜")
+            else:
+                pass
+
 
         # get information
         # if (message.content.count("get") and message.author != self.Misaki.user):
