@@ -1,10 +1,9 @@
 import discord, datetime
 from discord.ext import commands
-from discord.ext.commands.converter import EmojiConverter
 
 class Other(commands.Cog):
-    def __init__(self, Misaki):
-        self.Misaki = Misaki
+    def __init__(self, Anna):
+        self.Anna = Anna
 
     @commands.command()
     async def 乘法公式(self, ctx):
@@ -17,5 +16,5 @@ class Other(commands.Cog):
         embed.add_field(name = "(a-b)³", value = "a³-3a²b+3ab²-b³ \n= a³-b³-3ab(a-b)", inline = False)
         await ctx.send(embed=embed)
 
-def setup(Misaki):
-    Misaki.add_cog(Other(Misaki))
+def setup(Anna):
+    Anna.add_cog(Other(Anna))

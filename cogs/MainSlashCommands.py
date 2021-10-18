@@ -7,8 +7,8 @@ with open ("./json/config.json", 'r', encoding="utf8") as config:
     config = json.load(config)
 
 class MainSlashCommands(commands.Cog):
-    def __init__(self, Misaki):
-        self.Misaki = Misaki
+    def __init__(self, Anna):
+        self.Anna = Anna
     @cog_ext.cog_slash(name = "cls",
                        description = "指定欲刪除訊息的數量",
                        guild_ids = config['guild_ids'],
@@ -21,7 +21,7 @@ class MainSlashCommands(commands.Cog):
                            )
                        ])
     async def cls(self, ctx:SlashContext, amount:int):
-        server = self.Misaki.get_guild(ctx.guild_id)
+        server = self.Anna.get_guild(ctx.guild_id)
         member = server.get_member(ctx.author_id)
         if (member.guild_permissions.manage_channels == True):
             await ctx.channel.purge(limit = amount)
@@ -33,10 +33,10 @@ class MainSlashCommands(commands.Cog):
                        description = "回傳機器人的延遲時間",
                        guild_ids = config['guild_ids'])
     async def ping(self, ctx):
-        if (round(self.Misaki.latency*1000) >= 100):
-            await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒\n有夠遠的')
+        if (round(self.Anna.latency*1000) >= 100):
+            await ctx.send(f'你與我的距離為 {round(self.Anna.latency*1000)} 毫秒\n有夠遠的')
         else:
-            await ctx.send(f'你與我的距離為 {round(self.Misaki.latency*1000)} 毫秒')
+            await ctx.send(f'你與我的距離為 {round(self.Anna.latency*1000)} 毫秒')
 
-def setup(Misaki):
-    Misaki.add_cog(MainSlashCommands(Misaki))
+def setup(Anna):
+    Anna.add_cog(MainSlashCommands(Anna))

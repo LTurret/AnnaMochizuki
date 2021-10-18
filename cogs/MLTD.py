@@ -1,4 +1,7 @@
-import discord, json, datetime, asyncio
+import discord
+import json
+import datetime
+import asyncio
 import urllib.request as request
 from random import randint
 from discord.ext import commands
@@ -10,42 +13,33 @@ with open ("./json/mltd.json", mode="r", encoding='utf8') as MLTDjson:
 with open ("./json/config.json", mode="r", encoding="utf8") as config:
     config = json.load(config)
 
-async def getID():
-    src = "https://api.matsurihi.me/mltd/v1/events"
-    with request.urlopen(src) as response:
+async def getEvent():
+    url = "https://api.matsurihi.me/mltd/v1/events"
+    with request.urlopen(url) as response:
         data = json.load(response)
-    print("Feteched ID.")
-    return data[-1]['id']
+    print("Feteched Event Information.")
+    return data[-1]
 
-async def getRankBoarding(id):
-    src = "https://api.matsurihi.me/mltd/v1/events/"+str(id)+"/rankings/borderPoints"
-    with request.urlopen(src) as response:
+async def getBoarding(evtid):
+    url = f"https://api.matsurihi.me/mltd/v1/events/{str(evtid)}/rankings/borderPoints"
+    with request.urlopen(url) as response:
         data = json.load(response)
     print("Feteched RankBoarding.")
     return data
 
-async def getEventInfo(id):
-    src = "https://api.matsurihi.me/mltd/v1/events/" + str(id)
-    with request.urlopen(src) as response:
-        data = json.load(response)
-    print("Fetched EventInfo.")
-    return data
-
 async def create_BoardingCache(fetched_data):
-    data = fetched_data
     with open("BoardingCache.json", mode="w", encoding="utf-8") as cache:
-        json.dump(data, cache, indent=4, ensure_ascii=False)
+        json.dump(fetched_data, cache, indent=4, ensure_ascii=False)
     print("Dumped BoardingCache")
 
 async def create_EvtInfoCache(fetched_data):
-    data = fetched_data
     with open("EvtInfoCache.json", mode="w", encoding="utf-8") as cache:
-        json.dump(data, cache, indent=4, ensure_ascii=False)
+        json.dump(fetched_data, cache, indent=4, ensure_ascii=False)
     print("Dumped EvtInfoCache")
 
 class MLTD(commands.Cog):
-    def __init__(self, Misaki):
-        self.Misaki = Misaki
+    def __init__(self, Anna):
+        self.Anna = Anna
 
     @commands.command()
     async def roll_chance(self, ctx):
@@ -62,6 +56,97 @@ class MLTD(commands.Cog):
     async def ouen(self, ctx):
         await ctx.send(content = f"(＊>△<)＜応援ください！")
 
+    @cog_ext.cog_slash(name = "event",
+                       description = "查MLTD日服pt榜",
+                       guild_ids = config["guild_ids"],
+                       options = [
+                           create_option(
+                               name = "display_mode",
+                               description = "顯示模式",
+                               option_type = 3,
+                               required = False,
+                               choices = [
+                                   create_choice(
+                                       name = "詳細模式",
+                                       value = "detail"
+                                   ),
+                                   create_choice(
+                                       name = "簡易模式",
+                                       value = "lite"
+                                   )
+                               ]
+                           ),
+                           create_option(
+                               name = "score_type",
+                               description = "轉蛋數量",
+                               option_type = 3,
+                               required = False,
+                               choices = [
+                                   create_choice(
+                                       name = "pt榜",
+                                       value = "eventPoint"
+                                   ),
+                                   create_choice(
+                                       name = "高分榜",
+                                       value = "highScore"
+                                   )
+                               ]
+                            )
+                       ])
+    async def event(self, ctx, display_mode="detail", score_type="eventPoint"):
+        # 協程擷取json
+        eventData = await getEvent()
+        tasks = [
+            asyncio.create_task(getBoarding(eventData["id"]))
+        ]
+        await asyncio.gather(*tasks)
+        boardingDataset = tasks[0].result()
+
+        # 指定資料
+        eventName = eventData["name"]
+        beginDate = eventData["schedule"]["beginDate"]
+        endDate = eventData["schedule"]["endDate"]
+        boostDate = eventData["schedule"]["boostBeginDate"]
+        timeSummaries = boardingDataset[score_type]["summaryTime"]
+
+        # 格式化日期
+        beginDate = beginDate.replace("-", "/")[0:10]
+        endDate = endDate.replace("-", "/")[0:10]
+        boostDate = boostDate.replace("-", "/")[0:10]
+        time_date = timeSummaries.replace("-","/")[0:10]
+        time_date += f" {timeSummaries[11:16]}"
+
+        # 活動天數
+        formatedBD = datetime.date(int(beginDate[0:4]), int(beginDate[5:7]), int(beginDate[8:10]))
+        formatedED = datetime.date(int(endDate[0:4]), int(endDate[5:7]), int(endDate[8:10]))
+        dayLength = (formatedED - formatedBD).days
+
+        # 新增台灣時間，方便觀察
+        taipei_time = int(timeSummaries[11:13]) - 1
+        taipei_time = f"{int(taipei_time)}{timeSummaries[13:16]}"
+
+        # 榜線數據標頭
+        result = str()
+
+        # 顯示模式
+        if display_mode == "detail":
+            result += f"活動名稱：{eventName}\n"
+            result += f"活動期間：{beginDate} ~ {endDate}\n"
+            # result += f"活動天數：f"{dayLength}，已經過了：{percentage}"
+            result += f"活動天數：{dayLength}天\n"
+            result += f"加倍時間：{boostDate}\n"
+        result += f"資料時間：{time_date}\n"
+
+        # 榜線資料
+        result += f"\n"
+        for data in boardingDataset[score_type]["scores"]:
+            rank = data["rank"]
+            score = data["score"]
+            if score is not None:
+                result += f"排名：{rank:<10,d}分數：{score:>10,.0f}\n"
+        result = f"```{result}```"
+        await ctx.send(content=result, hidden=False)
+
     @cog_ext.cog_slash(name = "roll",
                        description = "MLTD轉蛋模擬器",
                        guild_ids = config["guild_ids"],
@@ -74,12 +159,12 @@ class MLTD(commands.Cog):
                            )
                        ])
     async def roll(self, ctx:SlashContext, amount:int):
-        server = self.Misaki.get_guild(ctx.guild_id)
+        server = self.Anna.get_guild(ctx.guild_id)
         author = server.get_member(ctx.author)
         if (amount > 10):
             await ctx.send(content = "單次抽獎上限為10次喲", hidden = True)
         else:
-            result = " "
+            result = str()
             for draw in range(amount):
                 if (draw == 9):
                     reward = Mjson['Draw_SR']
@@ -110,53 +195,5 @@ class MLTD(commands.Cog):
                 embed.add_field(name = "> 抽獎結果，抽了10次有SR保底", value = f'{result}', inline = False)
                 await ctx.send(embed = embed)
 
-    @cog_ext.cog_slash(name = "event",
-                       description = "查MLTD日服 pt或高分榜",
-                       guild_ids = config["guild_ids"],
-                       options = [
-                           create_option(
-                               name = "id",
-                               description = "活動ID",
-                               option_type = 4,
-                               required = True
-                           ),
-                           create_option(
-                               name = "type",
-                               description = "榜單類型",
-                               option_type = 3,
-                               required = True,
-                               choices = [
-                                   create_choice(
-                                       name = "pt榜",
-                                       value = "eventPoint"
-                                   ),
-                                   create_choice(
-                                       name = "高分榜",
-                                       value = "highScore"
-                                   )
-                               ]
-                           )
-                       ])
-    @commands.command()
-    async def event(self, ctx:SlashContext, id, type):
-        # 如果id欄位為1，使用getID()自動拿到活動陣列[-1]的活動ID
-        # 否則FetchedID就指定為欄位引數
-
-        if (id == 0):
-            FetchedID = await getID() 
-        else:
-            FetchedID = id
-        task_getRankBoarding = asyncio.create_task(getRankBoarding(FetchedID))
-        BoardingDataSets = await task_getRankBoarding
-        time_summaries = BoardingDataSets[f"{type}"]["summaryTime"]
-        nl = "\n"
-        result = f"{str(time_summaries)}{nl}{nl}"
-        for data in BoardingDataSets[f"{type}"]["scores"]:
-            rank = data["rank"]
-            score = data["score"]
-            result += f"排名：{rank}    分數：{score}{nl}"
-        result = "```\n" + result + "```"
-        await ctx.send(content = result, hidden = False)
-            
-def setup(Misaki):
-    Misaki.add_cog(MLTD(Misaki))
+def setup(Anna):
+    Anna.add_cog(MLTD(Anna))
