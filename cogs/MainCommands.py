@@ -1,4 +1,4 @@
-import json, random
+import discord, json, random, os
 from discord.ext import commands
 
 with open("./json/maincommands.json", mode="r", encoding="utf8") as MainCommandsJson:
@@ -109,22 +109,28 @@ class MainCommands(commands.Cog):
 
         # [Other] 星梨花要來抓人囉
         if (Serika_keyword(content) and content.count("抓人") and not_bot()):
-          url = [
-            "https://cdn.discordapp.com/attachments/474858135853596675/898778507482644530/unknown.png",
-            "https://media.discordapp.net/attachments/474858135853596675/898607444685627462/unknown.png"
-          ]
-          await message.channel.send(random.choice(url))
+          file = [filename for filename in os.listdir("./images/serika_capture")]
+          path = "./images/serika_capture/"
+          image = discord.File(f"{path}{random.choice(file)}")
+          await message.channel.send(file=image)
+
+        # [Other] 百合子汁
+        if (content.count("百合子汁") and not_bot()):
+            image = discord.File("./images/yuriko_cup/YurikoCup.png")
+            await message.channel.send(file=image)
 
 
 
 
         # [ㄤ奈] >:)
         if (content.count(">:)") and not_bot()):
-            await message.channel.send(ConfigOther['>:)'])
+            image = discord.File("./images/anna_emojis/anna_yes.png")
+            await message.channel.send(file=image)
 
         # [ㄤ奈] >:(
         if (content.count(">:(") and not_bot()):
-            await message.channel.send(ConfigOther['>:('])
+            image = discord.File("./images/anna_emojis/anna_mad.png")
+            await message.channel.send(file=image)
 
         # [ㄤ奈] ㄤ奈可愛
         if (Anna_keyword(content) and content.count("可愛") and not_bot()):
@@ -150,7 +156,7 @@ class MainCommands(commands.Cog):
             await message.channel.send("：我把ㄤ奈救出來了")
 
         # [ㄤ奈] 窩不知道
-        if (content.count("知道嗎")):
+        if (Anna_keyword(content) and content.count("知道嗎")):
             response = [
               "https://imgur.com/dsZqxeT",
               "https://imgur.com/X03kht3",
@@ -159,9 +165,14 @@ class MainCommands(commands.Cog):
             response = random.choice(response)
             await message.channel.send(response)
 
-        # [ㄤ奈] 窩不知道
+        # [ㄤ奈] 你才不是
         if (content.count("我是") and Anna_keyword(content)):
             await message.channel.send("你才不是")
+
+        # [ㄤ奈] 睡覺
+        if (Anna_keyword(content) and content.count("睡覺")):
+            image = discord.File("./images/anna_sleep/anna_sleep.jpg")
+            await message.channel.send(file=image)
 
 
 
@@ -174,11 +185,13 @@ class MainCommands(commands.Cog):
 
 
         # [Dev tool] try if on_message is still working
-        if (content.count("get") and not_bot()):
-            try:
-                await message.delete()
-            except Exception as e:
-                print(e)
+        # if (content.count("get") and not_bot()):
+        #     try:
+        #         await message.delete()
+        #         image = discord.File("./images/anna_emojis/anna_yes.png")
+        #         await message.channel.send(file=image)
+        #     except Exception as e:
+        #         print(e)
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
