@@ -158,12 +158,14 @@ class MainCommands(commands.Cog):
         # [ㄤ奈] 窩不知道
         if (Anna_keyword(content) and content.count("知道嗎")):
             response = [
-              "https://imgur.com/dsZqxeT",
-              "https://imgur.com/X03kht3",
-              "https://imgur.com/ENUfHlE"
+              "don't_know.png",
+              "kenw.png",
+              "kinda.png",
+              "know.png"
             ]
             response = random.choice(response)
-            await message.channel.send(response)
+            image = discord.File(f"./images/anna_knows/{response}")
+            await message.channel.send(file=image)
 
         # [ㄤ奈] 你才不是
         if (content.count("我是") and Anna_keyword(content)):
