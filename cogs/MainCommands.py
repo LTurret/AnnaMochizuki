@@ -190,8 +190,6 @@ class MainCommands(commands.Cog):
         # if (content.count("get") and not_bot()):
         #     try:
         #         await message.delete()
-        #         image = discord.File("./images/anna_emojis/anna_yes.png")
-        #         await message.channel.send(file=image)
         #     except Exception as e:
         #         print(e)
 

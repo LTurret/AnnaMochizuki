@@ -1,0 +1,20 @@
+{
+    "properties":{
+        "id": [
+            "anna",
+            "serika",
+            "yuriko"
+        ]
+    },
+    "members": {
+        "lturret": {
+            "user_id": 28592219,
+            "token": [
+                {
+                    "id": 0,
+                    "counts": 100
+                }
+            ]
+        }
+    }
+}
