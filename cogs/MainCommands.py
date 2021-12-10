@@ -59,13 +59,6 @@ class MainCommands(commands.Cog):
         def not_bot():
             return author != self.Anna.user
 
-        # [Other] Twitter Mode
-        if (content.upper().count("TWITTER MODE") and len(content) != 12 and not_bot()):
-            await message.add_reaction("🗨️")
-            await message.add_reaction("🔁")
-            await message.add_reaction("❤️")
-
-
         # [MLTD] Webhook translator
         TriggerPassword = content.count('TriggerWebhookConverter')
         if (TriggerPassword == True and author.display_name == "音無小鳥"):
@@ -93,6 +86,11 @@ class MainCommands(commands.Cog):
 
 
 
+        # [Other] Twitter Mode
+        if (content.upper().count("TWITTER MODE") and len(content) != 12 and not_bot()):
+            await message.add_reaction("🗨️")
+            await message.add_reaction("🔁")
+            await message.add_reaction("❤️")
 
         # [Other] 打上池
         if (content.count("打上池") and not_bot()):
