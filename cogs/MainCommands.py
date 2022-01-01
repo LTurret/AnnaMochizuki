@@ -126,7 +126,12 @@ class MainCommands(commands.Cog):
             await message.channel.send(file=image)
 
         # [ㄤ奈] >:(
-        if (content.count(">:(") and not_bot()):
+        def emote_handler(msg):
+            if msg.count(">:(") or msg.count("😠"):
+                return True
+            else:
+                return False
+        if (emote_handler(content) and not_bot()):
             image = discord.File("./images/anna_emojis/anna_mad.png")
             await message.channel.send(file=image)
 
@@ -155,13 +160,7 @@ class MainCommands(commands.Cog):
 
         # [ㄤ奈] 窩不知道
         if (Anna_keyword(content) and content.count("知道嗎")):
-            response = [
-              "don't_know.png",
-              "kenw.png",
-              "kinda.png",
-              "know.png"
-            ]
-            response = random.choice(response)
+            response = random.choice(os.listdir("./images/anna_knows"))
             image = discord.File(f"./images/anna_knows/{response}")
             await message.channel.send(file=image)
 
@@ -171,8 +170,54 @@ class MainCommands(commands.Cog):
 
         # [ㄤ奈] 睡覺
         if (Anna_keyword(content) and content.count("睡覺")):
+            # image = discord.File("./images/anna_sleep/anna_sleep_christmas.jpg")
             image = discord.File("./images/anna_sleep/anna_sleep.jpg")
             await message.channel.send(file=image)
+            emoji = random.choice(["<:Su09:882142223376977950>", "<:Su24:901163597340762172>"])
+            await message.add_reaction(emoji)
+
+        # [ㄤ奈] 晚ㄤ奈
+        if (content.count("晚ㄤ奈") and not_bot()):
+            reply = [
+                "晚ㄤ",
+                "晚ㄤ奈喔~",
+                "<:Su24:901163597340762172>",
+                "<:Su09:882142223376977950>",
+                f"{message.author.mention} 晚ㄤ奈~",
+            ]
+            reply = random.choice(reply)
+            await message.channel.send(reply)
+            emoji = random.choice(["<:Su09:882142223376977950>", "<:Su24:901163597340762172>"])
+            await message.add_reaction(emoji)
+
+        # [ㄤ奈] 早ㄤ奈
+        if (content.count("早ㄤ奈") and not_bot()):
+            toss = random.choice(range(10))
+            if (toss%2 == 0):
+                reply = [
+                    "早ㄤ~~",
+                    "早安",
+                    "早ㄤ奈！",
+                    "早ㄤ奈",
+                    f"{message.author.mention} 早ㄤ奈~"
+                ]
+                reply = random.choice(reply)
+                await message.channel.send(reply)
+            else:
+                image = discord.File("./images/mirai_gm/gm.png")
+                await message.channel.send(file=image)
+
+        # [ㄤ奈] 偷色色
+        if (content.count("ㄤ奈偷色色") and not_bot()):
+            image = discord.File("./images/anna_emojis/anna_disclose.png")
+            await message.channel.send(file=image)
+            reply = random.choice(["窩沒有...", "沒... 沒有...", "...", "騙人的吧"])
+            await message.channel.send(reply)
+
+        # [ㄤ奈] 好色喔ㄤ奈
+        if (content.count("好色喔ㄤ奈") and not_bot()):
+            await message.channel.send("<:AnnaShy:882135259251105802>")
+
 
 
 
