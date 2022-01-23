@@ -4,17 +4,17 @@ created by LTurret
 
 ## * Annoucement
 
-This bot is only use for personal server and for advanced my programming purpose.
+This bot is currently used for individual.
 
 ### * Usage
 
-Mention Misaki or use slash command in the server to activate the functions
+Mention Anna-bot or slash command in chat to activate functions.
 Method:
 
 ```cs
 @望月杏奈 {commands}
 ```
-or using discord new feature called slash command
+or using discord new feature called slash command.
 for example:
 ```cs
 @望月杏奈 botsaid Hello world!
@@ -22,7 +22,7 @@ for example:
 
 ### * Commands
 
-Use the following command for a more detailed description:
+The following command can fetch more detaile:
 
 ```cs
 @望月杏奈 help_main
@@ -34,16 +34,16 @@ Use the following command for a more detailed description:
 
 Main Commands
 - [ ] 隨機組隊系統
-- [X] 匿名傳訊息(botsaid)
+- [X] 匿名傳訊息
 - [x] Twitter Mode
 - [x] MLTD Twitter webhook
-- [ ] 內嵌訊息交互系統
+- [ ] 內嵌訊息表情交互
 
 Slash Commands
-- [x] 應援系統
-- [x] MLTD轉蛋模擬器
-- [x] 刪除訊息
-- [x] 回傳延遲時間
+- [x] 轉移應援系統
+- [x] 轉移MLTD轉蛋模擬器
+- [x] 轉移刪除訊息
+- [x] 轉移回傳延遲時間
 
 Reaction Role Registeration
 - [x] 基本解鎖頻道
@@ -52,4 +52,5 @@ Reaction Role Registeration
 MLTD榜線查詢系統
 - [x] MLTD榜線JSON解析
 - [ ] MLTD榜線錯誤訊息分析
-- [ ] MLTD榜線圖片創造
+- [x] MLTD榜線圖片創造
+- [x] MLTD綁線圖片上傳(目前尚未結合，只有單純活動圖片)
