@@ -1,5 +1,6 @@
 import discord
 import json
+import os
 import datetime
 import asyncio
 import urllib.request as request
@@ -8,11 +9,17 @@ from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
+# functional image path:
+fpath = "./images/functional"
+# mltdevent image path:
+mepath = "./images/mltdevent"
+
 with open ("./json/mltd.json", mode="r", encoding='utf8') as MLTDjson:
     Mjson = json.load(MLTDjson)
 with open ("./json/config.json", mode="r", encoding="utf8") as config:
     config = json.load(config)
 
+# aiohttp for event boarding
 async def getEvent():
     url = "https://api.matsurihi.me/mltd/v1/events"
     with request.urlopen(url) as response:
@@ -26,6 +33,18 @@ async def getBoarding(evtid):
         data = json.load(response)
     print("Feteched RankBoarding.")
     return data
+
+async def fetch_Cover(evtid):
+    url = f"https://storage.matsurihi.me/mltd/event_bg/{evtid:0>4,d}.png"
+    try:
+        with request.urlopen(url) as response:
+            with open(f"./images/mltdevent/{evtid:0>4,d}.png", "wb") as file:
+                file.write(response.read())
+                print("Feteched Cover image.")
+                return 1
+    except Exception as e:
+        print(f"bad gateway: {e}")
+        return 0
 
 async def create_BoardingCache(fetched_data):
     with open("BoardingCache.json", mode="w", encoding="utf-8") as cache:
@@ -50,11 +69,17 @@ class MLTD(commands.Cog):
         embed.add_field(name = "> <:R_:723921106909659227>", value = '**"提供機率" 85%，也就是 "轉出機率" > 15%**', inline = False)
         await ctx.send(embed=embed)
 
+
+
+
     @cog_ext.cog_slash(name = "ouen",
                        description = '使用指令後打上"応援するよ！"來為杏奈應援！！',
                        guild_ids = config['guild_ids'])
     async def ouen(self, ctx):
         await ctx.send(content = f"(＊>△<)＜応援ください！")
+
+
+
 
     @cog_ext.cog_slash(name = "event",
                        description = "查MLTD日服pt榜",
@@ -99,6 +124,8 @@ class MLTD(commands.Cog):
         tasks = [
             asyncio.create_task(getBoarding(eventData["id"]))
         ]
+        if not(os.listdir(mepath).count(f'{eventData["id"]:0>4,d}.png')):
+            await fetch_Cover(eventData["id"])
         await asyncio.gather(*tasks)
         boardingDataset = tasks[0].result()
 
@@ -126,7 +153,8 @@ class MLTD(commands.Cog):
         taipei_time = f"{int(taipei_time)}{timeSummaries[13:16]}"
 
         # 榜線數據標頭
-        result = str()
+        result = f'https://mltd.matsurihi.me/events/{eventData["id"]}\n'
+        result += "```"
 
         # 顯示模式
         if display_mode == "detail":
@@ -144,8 +172,13 @@ class MLTD(commands.Cog):
             score = data["score"]
             if score is not None:
                 result += f"排名：{rank:<10,d}分數：{score:>10,.0f}\n"
-        result = f"```{result}```"
-        await ctx.send(content=result, hidden=False)
+        result = f"{result}```"
+
+        image = discord.File(f'{mepath}/{eventData["id"]:0>4,d}.png')
+        await ctx.send(content=result, file=image, hidden=False)
+
+
+
 
     @cog_ext.cog_slash(name = "roll",
                        description = "MLTD轉蛋模擬器",
@@ -194,6 +227,18 @@ class MLTD(commands.Cog):
                 embed.set_author(name = "早坂そら", url = Mjson['早坂空_about'], icon_url = Mjson['早坂空_avatar'])
                 embed.add_field(name = "> 抽獎結果，抽了10次有SR保底", value = f'{result}', inline = False)
                 await ctx.send(embed = embed)
+
+
+
+
+    @cog_ext.cog_slash(name="randompics",
+                        description="隨機發一張圖片出來",
+                        guild_ids=config['guild_ids'])
+    async def randompics(self, ctx):
+        path = f"{fpath}/random"
+        file = [filename for filename in os.listdir(f"{path}")]
+        print(file)
+        await ctx.channel.send(discord.File())
 
 def setup(Anna):
     Anna.add_cog(MLTD(Anna))

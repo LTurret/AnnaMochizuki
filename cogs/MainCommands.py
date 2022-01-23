@@ -6,6 +6,9 @@ with open("./json/maincommands.json", mode="r", encoding="utf8") as MainCommands
 with open("./json/other.json", mode="r", encoding="utf8") as ConfigOther:
     ConfigOther = json.load(ConfigOther)
 
+# functional image path:
+fpath = "./images/functional"
+
 # Set Anna keyword detect function for shorter programming
 def Anna_keyword(message):
     for keyword in MainCommandsJson["杏奈關鍵字"]:
@@ -107,14 +110,14 @@ class MainCommands(commands.Cog):
 
         # [Other] 星梨花要來抓人囉
         if (Serika_keyword(content) and content.count("抓人") and not_bot()):
-          file = [filename for filename in os.listdir("./images/serika_capture")]
-          path = "./images/serika_capture/"
+          file = [filename for filename in os.listdir(f"{fpath}/serika_capture")]
+          path = f"{fpath}/serika_capture/"
           image = discord.File(f"{path}{random.choice(file)}")
           await message.channel.send(file=image)
 
         # [Other] 百合子汁
         if (content.count("百合子汁") and not_bot()):
-            image = discord.File("./images/yuriko_cup/YurikoCup.png")
+            image = discord.File(f"{fpath}/yuriko_cup/YurikoCup.png")
             await message.channel.send(file=image)
 
 
@@ -122,7 +125,7 @@ class MainCommands(commands.Cog):
 
         # [ㄤ奈] >:)
         if (content.count(">:)") and not_bot()):
-            image = discord.File("./images/anna_emojis/anna_yes.png")
+            image = discord.File(f"{fpath}/anna_emojis/anna_yes.png")
             await message.channel.send(file=image)
 
         # [ㄤ奈] >:(
@@ -132,7 +135,7 @@ class MainCommands(commands.Cog):
             else:
                 return False
         if (emote_handler(content) and not_bot()):
-            image = discord.File("./images/anna_emojis/anna_mad.png")
+            image = discord.File(f"{fpath}/anna_emojis/anna_mad.png")
             await message.channel.send(file=image)
 
         # [ㄤ奈] ㄤ奈可愛
@@ -160,8 +163,8 @@ class MainCommands(commands.Cog):
 
         # [ㄤ奈] 窩不知道
         if (Anna_keyword(content) and content.count("知道嗎")):
-            response = random.choice(os.listdir("./images/anna_knows"))
-            image = discord.File(f"./images/anna_knows/{response}")
+            response = random.choice(os.listdir(fpath+"/anna_knows"))
+            image = discord.File(f"{fpath}/anna_knows/{response}")
             await message.channel.send(file=image)
 
         # [ㄤ奈] 你才不是
@@ -171,7 +174,7 @@ class MainCommands(commands.Cog):
         # [ㄤ奈] 睡覺
         if (Anna_keyword(content) and content.count("睡覺")):
             # image = discord.File("./images/anna_sleep/anna_sleep_christmas.jpg")
-            image = discord.File("./images/anna_sleep/anna_sleep.jpg")
+            image = discord.File(f"{fpath}/anna_sleep/anna_sleep.jpg")
             await message.channel.send(file=image)
             emoji = random.choice(["<:Su09:882142223376977950>", "<:Su24:901163597340762172>"])
             await message.add_reaction(emoji)
@@ -204,12 +207,12 @@ class MainCommands(commands.Cog):
                 reply = random.choice(reply)
                 await message.channel.send(reply)
             else:
-                image = discord.File("./images/mirai_gm/gm.png")
+                image = discord.File(f"{fpath}/mirai_gm/gm.png")
                 await message.channel.send(file=image)
 
         # [ㄤ奈] 偷色色
         if (content.count("ㄤ奈偷色色") and not_bot()):
-            image = discord.File("./images/anna_emojis/anna_disclose.png")
+            image = discord.File(f"{fpath}/anna_emojis/anna_disclose.png")
             await message.channel.send(file=image)
             reply = random.choice(["窩沒有...", "沒... 沒有...", "...", "騙人的吧"])
             await message.channel.send(reply)
