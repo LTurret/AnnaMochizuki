@@ -96,12 +96,12 @@ class MLTD(commands.Cog):
                                required = False,
                                choices = [
                                    create_choice(
-                                       name = "詳細模式",
-                                       value = "detail"
+                                       name = "圖片模式",
+                                       value = "image"
                                    ),
                                    create_choice(
-                                       name = "簡易模式",
-                                       value = "lite"
+                                       name = "文字模式",
+                                       value = "text"
                                    )
                                ]
                            ),
@@ -122,7 +122,7 @@ class MLTD(commands.Cog):
                                ]
                             )
                        ])
-    async def event(self, ctx, display_mode="detail", score_type="eventPoint"):
+    async def event(self, ctx, display_mode="image", score_type="eventPoint"):
         # 協程擷取json
         eventData = await getEvent()
         tasks = [
@@ -152,7 +152,14 @@ class MLTD(commands.Cog):
         formatedED = datetime.date(int(endDate[0:4]), int(endDate[5:7]), int(endDate[8:10]))
         dayLength = (formatedED - formatedBD).days
 
-        # 新增台灣時間，方便觀察
+        # 台灣時間以及當前時間，方便觀察
+        current_time = datetime.datetime.now()
+        end_time = datetime.datetime(int(endDate[0:4]), int(endDate[5:7]), int(endDate[8:10]), 19, 59, 59, 0)
+        different_time = end_time - current_time
+        different_hours = different_time.total_seconds() / 3600
+        different_days = different_hours / 24
+        total_hours = dayLength*24
+        progress = (total_hours-different_hours) / total_hours
         taipei_time = int(timeSummaries[11:13]) - 1
         taipei_time = f"{int(taipei_time)}{timeSummaries[13:16]}"
 
@@ -176,20 +183,20 @@ class MLTD(commands.Cog):
         # Pillow 設定
         y_globe = 290
         y_accumulate = 40
-        globadjx = 30
+        x_globe = 40
         argptr = 1
         adjx = 150
-        ptx = 60
+        ptx = 30
 
         # 圖片資訊產生
-        draw.text((30,30),f"{eventName}", (0,0,0), font=title)
-        draw.text((30,80),f"資料時間：{time_date}", (48,48,48), font=fetchtime)
-        draw.text((30,120),f"活動期間：{beginDate} ~ {endDate}", (48,48,48), font=body)
-        draw.text((30,145),f"活動天數：{dayLength}天", (48,48,48), font=body)
-        draw.text((30,170),f"加倍時間：{boostDate}", (48,48,48), font=body)
+        draw.text((x_globe,30), f"{eventName}", (2, 62, 125), font=title)
+        draw.text((x_globe,75), f"資料時間：{time_date} ({progress:.1%})\n", (51, 65, 92), font=fetchtime)
+        draw.text((x_globe,120), f"活動期間：{beginDate} ~ {endDate} ({dayLength*24}小時)\n", (92, 103, 125), font=body)
+        draw.text((x_globe,145), f"後半期間：{boostDate} ~ {endDate}\n", (92, 103, 125), font=body)
+        draw.text((x_globe,170), f"剩下時間：{different_days:.2}天 ({int(different_hours)}小時)\n", (92, 103, 125), font=body)
 
         # 圖片排名產生
-        for data in boardingDataset[score_type]["scores"]:
+        for data in boardingDataset['eventPoint']["scores"]:
             rank = data["rank"]
             score = data["score"]
             if score is not None:
@@ -201,26 +208,24 @@ class MLTD(commands.Cog):
                     argx = 18
                 else:
                     argx = 0
-                draw.text((argx + globadjx, y_globe),f"{rank}", (114,120,168), font=boarding)
-                draw.text((95 + globadjx, y_globe),"位", (114,120,168), font=boarding)
+                draw.text((argx + x_globe, y_globe),f"{rank}", (3, 83, 164), font=boarding)
+                draw.text((95 + x_globe, y_globe),"位", (3, 83, 164), font=boarding)
                 if (len(str(score)) == 8):
                     adjx = 176.8
                 elif (len(str(score)) == 7):
                     adjx = 194
-                draw.text((adjx + globadjx + ptx, y_globe),f"{score:,.0f}", (25,52,170), font=boarding)
+                draw.text((adjx + x_globe + ptx, y_globe),f"{score:,.0f}", (4, 102, 200), font=boarding)
                 y_globe += y_accumulate
                 argptr += 1
 
         AnnaFrame.save(f"{mepath}/boarding.png")
 
-        # 顯示模式
-        if display_mode == "detail":
-            result += f"活動名稱：{eventName}\n"
-            result += f"活動期間：{beginDate} ~ {endDate}\n"
-            # result += f"活動天數：f"{dayLength}，已經過了：{percentage}"
-            result += f"活動天數：{dayLength}天\n"
-            result += f"加倍時間：{boostDate}\n"
-        result += f"資料時間：{time_date}\n"
+        # 文字模式
+        result += f"{eventName}\n"
+        result += f"活動期間：{beginDate} ~ {endDate} ({dayLength*24}小時)\n"
+        result += f"後半期間：{boostDate} ~ {endDate}\n"
+        result += f"更新時間：{time_date} ({progress:.1%})\n"
+        result += f"剩下時間：{different_days:.2}天 ({different_hours:.3}小時)\n"
 
         # 榜線資料
         result += f"\n"
@@ -231,10 +236,12 @@ class MLTD(commands.Cog):
                 result += f"排名：{rank:<10,d}分數：{score:>10,.0f}\n"
         result = f"{result}```"
 
-        image = discord.File(f"{mepath}/boarding.png")
-        await ctx.send(file=image, hidden=False)
+        if display_mode == "text":
+            await ctx.send(content=result, hidden=False)
+        else:
+            image = discord.File(f"{mepath}/boarding.png")
+            await ctx.send(file=image, hidden=False)
         # image = discord.File(f'{mepath}/{eventData["id"]:0>4,d}.png')
-        # await ctx.send(content=result, file=image, hidden=False)
 
 
 
