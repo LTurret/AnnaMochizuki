@@ -1,3 +1,4 @@
+from tkinter import HIDDEN
 import discord
 import json
 import os
@@ -5,6 +6,9 @@ import datetime
 import asyncio
 import urllib.request as request
 from random import randint
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
@@ -156,6 +160,59 @@ class MLTD(commands.Cog):
         result = f'https://mltd.matsurihi.me/events/{eventData["id"]}\n'
         result += "```"
 
+        # 字型設定
+        font_path = f"{mepath}/component/jf-openhuninn-1.1.ttf"
+        boarding = ImageFont.truetype(font_path, 30)
+        title = ImageFont.truetype(font_path, 30)
+        fetchtime = ImageFont.truetype(font_path, 23)
+        body = ImageFont.truetype(font_path, 20)
+
+        # Pillow 畫布設定
+        bgpath = f"{mepath}/component/AnnaFrame.png"
+        AnnaFrame = Image.open(bgpath)
+        AnnaFrame = AnnaFrame.convert('RGBA')
+        draw = ImageDraw.Draw(AnnaFrame)
+
+        # Pillow 設定
+        y_globe = 290
+        y_accumulate = 40
+        globadjx = 30
+        argptr = 1
+        adjx = 150
+        ptx = 60
+
+        # 圖片資訊產生
+        draw.text((30,30),f"{eventName}", (0,0,0), font=title)
+        draw.text((30,80),f"資料時間：{time_date}", (48,48,48), font=fetchtime)
+        draw.text((30,120),f"活動期間：{beginDate} ~ {endDate}", (48,48,48), font=body)
+        draw.text((30,145),f"活動天數：{dayLength}天", (48,48,48), font=body)
+        draw.text((30,170),f"加倍時間：{boostDate}", (48,48,48), font=body)
+
+        # 圖片排名產生
+        for data in boardingDataset[score_type]["scores"]:
+            rank = data["rank"]
+            score = data["score"]
+            if score is not None:
+                if (argptr <= 3):
+                    argx = 73
+                elif (argptr == 4):
+                    argx = 36
+                elif (argptr > 4 and argptr < 7):
+                    argx = 18
+                else:
+                    argx = 0
+                draw.text((argx + globadjx, y_globe),f"{rank}", (114,120,168), font=boarding)
+                draw.text((95 + globadjx, y_globe),"位", (114,120,168), font=boarding)
+                if (len(str(score)) == 8):
+                    adjx = 176.8
+                elif (len(str(score)) == 7):
+                    adjx = 194
+                draw.text((adjx + globadjx + ptx, y_globe),f"{score:,.0f}", (25,52,170), font=boarding)
+                y_globe += y_accumulate
+                argptr += 1
+
+        AnnaFrame.save(f"{mepath}/boarding.png")
+
         # 顯示模式
         if display_mode == "detail":
             result += f"活動名稱：{eventName}\n"
@@ -174,8 +231,10 @@ class MLTD(commands.Cog):
                 result += f"排名：{rank:<10,d}分數：{score:>10,.0f}\n"
         result = f"{result}```"
 
-        image = discord.File(f'{mepath}/{eventData["id"]:0>4,d}.png')
-        await ctx.send(content=result, file=image, hidden=False)
+        image = discord.File(f"{mepath}/boarding.png")
+        await ctx.send(file=image, hidden=False)
+        # image = discord.File(f'{mepath}/{eventData["id"]:0>4,d}.png')
+        # await ctx.send(content=result, file=image, hidden=False)
 
 
 
