@@ -91,7 +91,6 @@ class keyword(commands.Cog):
             # [ㄤ奈] 窩不知道
             if self.IntegrationTools.stbs(message.content, "anna") and message.content.count("知道嗎") and not_bot():
                 response = random.choice(os.listdir(self.IntegrationTools.locf("AK", file=False)))
-                print(response)
                 image = discord.File(self.IntegrationTools.locf("AK", response))
                 await message.channel.send(file=image)
 

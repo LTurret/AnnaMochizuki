@@ -6,7 +6,10 @@ from discord.ext import commands
 with open("./config/token.json", mode="r") as token:
     token = json.load(token)
 
-Anna = commands.Bot(command_prefix=commands.when_mentioned)
+intents = discord.Intents.default()
+intents.members = True
+
+Anna = commands.Bot(command_prefix=commands.when_mentioned, intents=intents)
 Anna.remove_command("help")
 
 @Anna.event
