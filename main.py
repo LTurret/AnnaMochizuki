@@ -9,7 +9,7 @@ with open("./config/token.json", mode="r") as token:
 intents = discord.Intents.default()
 intents.members = True
 
-Anna = commands.Bot(command_prefix=commands.when_mentioned, intents=intents)
+Anna = commands.Bot(command_prefix="~", intents=intents)
 Anna.remove_command("help")
 
 @Anna.event
