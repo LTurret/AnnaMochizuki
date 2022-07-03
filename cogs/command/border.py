@@ -111,7 +111,7 @@ class border(commands.Cog):
         check_identified = lambda identify: identify is not None and type(identify) is int and identify > 0
         identify_maximun = lambda identify, idmax: identify is not None and identify > idmax
         matchtypes = lambda typecode: [3, 4, 5, 11, 13, 16].count(typecode) == 1
-        isjsonempty = lambda json: "這期活動... 因為太老... 所以... 沒有被... 記錄... 呦。" if (len(json)==0) else event.bordergenerator(event_data, border_data, score_type)
+        isjsonempty = lambda json: True if (len(json)==0) else False
 
         async with aiohttp.ClientSession() as session:
             event_data = await event.GetNewest(session)
@@ -127,7 +127,11 @@ class border(commands.Cog):
                     announcenment = f"這期活動... 沒有... 排名活動... 呦。"
                 else:
                     border_data = await event.FetchBorder(identify, session)
-                    announcenment = await isjsonempty(border_data)
+                    
+                    if isjsonempty(border_data):
+                        announcenment = "這期活動... 因為太老... 所以... 沒有被... 記錄... 呦。"
+                    else:
+                        announcenment = await event.bordergenerator(event_data, border_data, score_type)
 
         await ctx.send(announcenment)
 
