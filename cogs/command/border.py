@@ -79,14 +79,14 @@ class event:
         overprogess = lambda progress: 1 if (progress>=100) else progress
         result = "```"
         result += f"{title}\n"
-        result += f"活動期間：{beginDate} ~ {endDate} ({day_length*24}小時)\n"
         result += f"更新時間：{time_date} ({overprogess(progress):.1%})\n"
+        result += f"活動期間：{beginDate} ~ {endDate} ({day_length*24}小時)\n"
 
         # Special case handle
         if len(boostDate) > 0:
             result += f"後半期間：{boostDate} ~ {endDate}\n"
         if different_days > 0:
-            result += f"剩下時間：{different_days:.2}天 ({different_hours:.3}小時)\n"
+            result += f"剩下時間：{different_days:.2f}天 ({different_hours:.1f}小時)\n"
 
         result += f"\n"
 
@@ -108,9 +108,10 @@ class border(commands.Cog):
     @commands.command()
     async def event(self, ctx, identify:int=None, score_type:int=0):
 
-        identify_maximun = lambda identify, idmax: identify is not None and identify > idmax
         check_identified = lambda identify: identify is not None and type(identify) is int and identify > 0
+        identify_maximun = lambda identify, idmax: identify is not None and identify > idmax
         matchtypes = lambda typecode: [3, 4, 5, 11, 13, 16].count(typecode) == 1
+        isjsonempty = lambda json: "這期活動... 因為太老... 所以... 沒有被... 記錄... 呦。" if (len(json)==0) else event.bordergenerator(event_data, border_data, score_type)
 
         async with aiohttp.ClientSession() as session:
             event_data = await event.GetNewest(session)
@@ -126,11 +127,7 @@ class border(commands.Cog):
                     announcenment = f"這期活動... 沒有... 排名活動... 呦。"
                 else:
                     border_data = await event.FetchBorder(identify, session)
-                    manifest = {
-                        True:"這期活動... 因為太老... 所以... 沒有被... 記錄... 呦。",
-                        False: await event.bordergenerator(event_data, border_data, score_type)
-                    }
-                    announcenment = manifest[len(border_data)==0]
+                    announcenment = await isjsonempty(border_data)
 
         await ctx.send(announcenment)
 
