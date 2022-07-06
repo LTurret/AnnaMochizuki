@@ -3,6 +3,7 @@ import datetime
 
 from discord.ext import commands
 
+
 class event:
     def __init__(self):
         self.status = []
@@ -100,6 +101,7 @@ class event:
         result = f"{result}```"
         return result
 
+
 class border(commands.Cog):
     def __init__(self, Anna):
         self.Anna = Anna
@@ -127,13 +129,17 @@ class border(commands.Cog):
                     announcenment = f"這期活動... 沒有... 排名活動... 呦。"
                 else:
                     border_data = await event.FetchBorder(identify, session)
-                    
-                    if isjsonempty(border_data):
-                        announcenment = "這期活動... 因為太老... 所以... 沒有被... 記錄... 呦。"
-                    else:
-                        announcenment = await event.bordergenerator(event_data, border_data, score_type)
+                    manifest = {
+                        True: "這期活動... 因為太老... 所以... 沒有被... 記錄... 呦。",
+                        False: event.bordergenerator
+                    }
+                    try:
+                        announcenment = await manifest[isjsonempty(border_data)](event_data, border_data, score_type)
+                    except TypeError:
+                        announcenment = manifest[isjsonempty(border_data)]
 
         await ctx.send(announcenment)
+
 
 def setup(Anna):
     Anna.add_cog(border(Anna))
