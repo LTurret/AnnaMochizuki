@@ -16,7 +16,7 @@ Anna.remove_command("help")
 async def on_ready():
     await Anna.change_presence(status = discord.Status.online, activity = discord.Game("偶像大師 百萬人演唱會！ 劇場時光"))
     try:
-        os.system("cls")
+        os.system("clear")
     except Exception as _:
         pass
     print(f"Enter pleasure!!")
