@@ -1,10 +1,8 @@
 from discord.ext import commands
 
-
 class general(commands.Cog):
     def __init__(self, Anna):
         self.Anna = Anna
-
 
     @commands.command()
     async def botsaid(self, ctx, *,message):
@@ -29,7 +27,6 @@ class general(commands.Cog):
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f"延遲時間為： {(self.Anna.latency)*1000:.1f} ms")
-
 
 def setup(Anna):
     Anna.add_cog(general(Anna))
