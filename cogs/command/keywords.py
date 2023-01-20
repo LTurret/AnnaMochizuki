@@ -21,7 +21,6 @@ class IntegrationTools:
         self.__ANNA_KNOWS = __FUNCTIONAL + "/anna_knows/"
         self.__ANNA_SLEEP = __FUNCTIONAL + "/anna_sleep/"
         self.__MIRAI_GM = __FUNCTIONAL + "/mirai_gm/"
-        self.__TAG_FUNNY = __FUNCTIONAL + "/tag_funny/"
         self.__YURIKO_CUP = __FUNCTIONAL + "/yuriko_cup/"
         
     def locf(self, selector:str=None, filename:str="", file:bool=True): # Abbreviation of "Locate Folder"
@@ -34,7 +33,6 @@ class IntegrationTools:
             "AK": self.__ANNA_KNOWS,
             "AS": self.__ANNA_SLEEP,
             "MG": self.__MIRAI_GM,
-            "TF": self.__TAG_FUNNY,
             "YC": self.__YURIKO_CUP
         }
 
@@ -153,14 +151,9 @@ class keyword(commands.Cog):
                 await reply_message.reply(f"不要抽打上池")
                 image = discord.File(self.IntegrationTools.locf("TF", "pullup.png"))
                 await message.channel.send(file=image)
-
-            # [Other] fstring
-            if message.content.count("fstring") and not_bot():
-                image = discord.File(self.IntegrationTools.locf("TF", "fstring.png"))
-                await message.channel.send(file=image)
             
         except Exception as exception:
             print(exception)
 
-def setup(Anna):
-    Anna.add_cog(keyword(Anna))
+async def setup(Anna):
+    await Anna.add_cog(keyword(Anna))

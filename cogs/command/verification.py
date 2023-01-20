@@ -70,7 +70,6 @@ class verification(commands.Cog):
                 member = guild.get_member(payload.user_id)
                 role = guild.get_role(983712854156935229)
                 await member.remove_roles(role)
- 
 
-def setup(Anna):
-    Anna.add_cog(verification(Anna))
+async def setup(Anna):
+    await Anna.add_cog(verification(Anna))

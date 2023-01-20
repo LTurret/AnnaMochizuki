@@ -28,5 +28,5 @@ class general(commands.Cog):
     async def ping(self, ctx):
         await ctx.send(f"延遲時間為： {(self.Anna.latency)*1000:.1f} ms")
 
-def setup(Anna):
-    Anna.add_cog(general(Anna))
+async def setup(Anna):
+    await Anna.add_cog(general(Anna))
