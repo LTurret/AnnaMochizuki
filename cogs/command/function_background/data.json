@@ -1,19 +1,8 @@
 {
     "data": [
         {
+            "id": "1616451357044613123",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 45,
-                        "end": 57,
-                        "tag": "四条貴音生誕祭2023"
-                    },
-                    {
-                        "start": 165,
-                        "end": 170,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "urls": [
                     {
                         "start": 96,
@@ -49,23 +38,28 @@
                         "description": "スマートフォン向けアプリ「アイドルマスター ミリオンライブ！ シアターデイズ」ゲーム内楽曲『フラワーガール』を様々な衣装で歌って踊る姿を編集した特別動画を公開！・歌唱アイドル四条 貴音（CV：原 由実）・作家クレジット作詞：NBGI(Yoshi&Kyon)作曲・編曲：NBGI(Yoshi)ゲーム内では四条 貴音だ...",
                         "unwound_url": "https://www.youtube.com/watch?v=Tz3_QlgxoJM&feature=youtu.be"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 45,
+                        "end": 57,
+                        "tag": "四条貴音生誕祭2023"
+                    },
+                    {
+                        "start": 165,
+                        "end": 170,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616451357044613123"
             ],
-            "text": "貴音ちゃんのお誕生日記念🎉\n公式バースデー記念グッズのプレゼントキャンペーンを開催！\n\n＼#四条貴音生誕祭2023🍰／\nをつけて引用リツイート✨\n\n抽選で5名様に貴音ちゃんグッズプレゼント🎁\nhttps://t.co/9pCUplqk1N\n\n衣装がくるくる変わる特別動画も公開中♪\nhttps://t.co/9jnsdlmxcF\n#ミリシタ",
-            "id": "1616451357044613123"
+            "text": "貴音ちゃんのお誕生日記念🎉\n公式バースデー記念グッズのプレゼントキャンペーンを開催！\n\n＼#四条貴音生誕祭2023🍰／\nをつけて引用リツイート✨\n\n抽選で5名様に貴音ちゃんグッズプレゼント🎁\nhttps://t.co/9pCUplqk1N\n\n衣装がくるくる変わる特別動画も公開中♪\nhttps://t.co/9jnsdlmxcF\n#ミリシタ"
         },
         {
+            "id": "1616450979632660480",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 150,
-                        "end": 155,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "urls": [
                     {
                         "start": 156,
@@ -75,23 +69,23 @@
                         "display_url": "pic.twitter.com/wWorgMEUA7",
                         "media_key": "3_1615957211192393728"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 150,
+                        "end": 155,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616450979632660480"
             ],
-            "text": "『四条貴音Birthdayガシャ』開催中！\n誕生日を記念して、貴音ちゃんのカードだけが登場する特別なガシャです♪\n1ステップ目に「マイオンリードットモード」「Birthday Memory 2023」「スタイルドロップ100個」が特典で付いてきますよ♪\nさらに3ステップ目はSSRカードが1枚確定！\n#ミリシタ https://t.co/wWorgMEUA7",
-            "id": "1616450979632660480"
+            "text": "『四条貴音Birthdayガシャ』開催中！\n誕生日を記念して、貴音ちゃんのカードだけが登場する特別なガシャです♪\n1ステップ目に「マイオンリードットモード」「Birthday Memory 2023」「スタイルドロップ100個」が特典で付いてきますよ♪\nさらに3ステップ目はSSRカードが1枚確定！\n#ミリシタ https://t.co/wWorgMEUA7"
         },
         {
+            "id": "1616450853732335617",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 149,
-                        "end": 154,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 1,
@@ -117,23 +111,23 @@
                         "display_url": "pic.twitter.com/L4XEJl9iIN",
                         "media_key": "3_1615956945336401924"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 149,
+                        "end": 154,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616450853732335617"
             ],
-            "text": "『四条貴音Birthdayセット2023』が登場！\n誕生日を記念して、「プラチナガシャ10回チケット」に衣装「マイオンリードットモード」「Birthday Memory 2023」「スタイルドロップ100個」が付いてきますよ♪\n「マイオンリーカジュアル」がついた2021年のセットも再登場中です！\n#ミリシタ https://t.co/L4XEJl9iIN",
-            "id": "1616450853732335617"
+            "text": "『四条貴音Birthdayセット2023』が登場！\n誕生日を記念して、「プラチナガシャ10回チケット」に衣装「マイオンリードットモード」「Birthday Memory 2023」「スタイルドロップ100個」が付いてきますよ♪\n「マイオンリーカジュアル」がついた2021年のセットも再登場中です！\n#ミリシタ https://t.co/L4XEJl9iIN"
         },
         {
+            "id": "1616450613805473797",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 110,
-                        "end": 115,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "urls": [
                     {
                         "start": 116,
@@ -143,16 +137,33 @@
                         "display_url": "pic.twitter.com/nvr9jsylhN",
                         "media_key": "3_1615956635608055809"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 110,
+                        "end": 115,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616450613805473797"
             ],
-            "text": "本日は四条貴音ちゃんの誕生日です！\n劇場のホワイトボードに美奈子ちゃんと昴ちゃんと真ちゃんとやよいちゃんと未来ちゃんがメッセージを書いてくれたみたいですよ♪\nご注文のお花も用意しておきました。喜んでくれるといいですね♪\n#ミリシタ https://t.co/nvr9jsylhN",
-            "id": "1616450613805473797"
+            "text": "本日は四条貴音ちゃんの誕生日です！\n劇場のホワイトボードに美奈子ちゃんと昴ちゃんと真ちゃんとやよいちゃんと未来ちゃんがメッセージを書いてくれたみたいですよ♪\nご注文のお花も用意しておきました。喜んでくれるといいですね♪\n#ミリシタ https://t.co/nvr9jsylhN"
         },
         {
+            "id": "1616360508356968449",
             "entities": {
+                "urls": [
+                    {
+                        "start": 39,
+                        "end": 62,
+                        "url": "https://t.co/DVpGpOWiph",
+                        "expanded_url": "https://twitter.com/imasml_theater/status/1616360508356968449/photo/1",
+                        "display_url": "pic.twitter.com/DVpGpOWiph",
+                        "media_key": "3_1616316793047638016"
+                    }
+                ],
                 "hashtags": [
                     {
                         "start": 12,
@@ -174,26 +185,26 @@
                         "end": 38,
                         "tag": "4コマ漫画"
                     }
-                ],
-                "urls": [
-                    {
-                        "start": 39,
-                        "end": 62,
-                        "url": "https://t.co/DVpGpOWiph",
-                        "expanded_url": "https://twitter.com/imasml_theater/status/1616360508356968449/photo/1",
-                        "display_url": "pic.twitter.com/DVpGpOWiph",
-                        "media_key": "3_1616316793047638016"
-                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616360508356968449"
             ],
-            "text": "続いて、真ちゃんです♪\n#ミリシタ #ミリシタ4コマ #4コマ #4コマ漫画 https://t.co/DVpGpOWiph",
-            "id": "1616360508356968449"
+            "text": "続いて、真ちゃんです♪\n#ミリシタ #ミリシタ4コマ #4コマ #4コマ漫画 https://t.co/DVpGpOWiph"
         },
         {
+            "id": "1616360130790014976",
             "entities": {
+                "urls": [
+                    {
+                        "start": 40,
+                        "end": 63,
+                        "url": "https://t.co/rn8yPgRNgB",
+                        "expanded_url": "https://twitter.com/imasml_theater/status/1616360130790014976/photo/1",
+                        "display_url": "pic.twitter.com/rn8yPgRNgB",
+                        "media_key": "3_1616316743252865024"
+                    }
+                ],
                 "hashtags": [
                     {
                         "start": 13,
@@ -215,26 +226,26 @@
                         "end": 39,
                         "tag": "4コマ漫画"
                     }
-                ],
-                "urls": [
-                    {
-                        "start": 40,
-                        "end": 63,
-                        "url": "https://t.co/rn8yPgRNgB",
-                        "expanded_url": "https://twitter.com/imasml_theater/status/1616360130790014976/photo/1",
-                        "display_url": "pic.twitter.com/rn8yPgRNgB",
-                        "media_key": "3_1616316743252865024"
-                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616360130790014976"
             ],
-            "text": "続いて、雪歩ちゃんです♪\n#ミリシタ #ミリシタ4コマ #4コマ #4コマ漫画 https://t.co/rn8yPgRNgB",
-            "id": "1616360130790014976"
+            "text": "続いて、雪歩ちゃんです♪\n#ミリシタ #ミリシタ4コマ #4コマ #4コマ漫画 https://t.co/rn8yPgRNgB"
         },
         {
+            "id": "1616360018999218176",
             "entities": {
+                "urls": [
+                    {
+                        "start": 107,
+                        "end": 130,
+                        "url": "https://t.co/bVc6o8WCg7",
+                        "expanded_url": "https://twitter.com/imasml_theater/status/1616360018999218176/photo/1",
+                        "display_url": "pic.twitter.com/bVc6o8WCg7",
+                        "media_key": "3_1616316552328151040"
+                    }
+                ],
                 "hashtags": [
                     {
                         "start": 80,
@@ -256,33 +267,16 @@
                         "end": 106,
                         "tag": "4コマ漫画"
                     }
-                ],
-                "urls": [
-                    {
-                        "start": 107,
-                        "end": 130,
-                        "url": "https://t.co/bVc6o8WCg7",
-                        "expanded_url": "https://twitter.com/imasml_theater/status/1616360018999218176/photo/1",
-                        "display_url": "pic.twitter.com/bVc6o8WCg7",
-                        "media_key": "3_1616316552328151040"
-                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616360018999218176"
             ],
-            "text": "現在開催中の「少女と人形、2人の絆は永遠に…ガシャ」に登場している、\n千早ちゃん、雪歩ちゃん、真ちゃんの4コマまんがを公開します♪ \nまずは、千早ちゃんです！\n#ミリシタ #ミリシタ4コマ #4コマ #4コマ漫画 https://t.co/bVc6o8WCg7",
-            "id": "1616360018999218176"
+            "text": "現在開催中の「少女と人形、2人の絆は永遠に…ガシャ」に登場している、\n千早ちゃん、雪歩ちゃん、真ちゃんの4コマまんがを公開します♪ \nまずは、千早ちゃんです！\n#ミリシタ #ミリシタ4コマ #4コマ #4コマ漫画 https://t.co/bVc6o8WCg7"
         },
         {
+            "id": "1616269417242935297",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 65,
-                        "end": 70,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "urls": [
                     {
                         "start": 71,
@@ -292,24 +286,23 @@
                         "display_url": "pic.twitter.com/hTvXBdnSLN",
                         "media_key": "13_1615607922100441094"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 65,
+                        "end": 70,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616269417242935297"
             ],
-            "text": "雪歩ちゃんのSSRカードが、ただいま開催中の『少女と人形、2人の絆は永遠に…ガシャ』で獲得できますよ！\n今なら出現率UP中です♪\n#ミリシタ https://t.co/hTvXBdnSLN",
-            "id": "1616269417242935297"
+            "text": "雪歩ちゃんのSSRカードが、ただいま開催中の『少女と人形、2人の絆は永遠に…ガシャ』で獲得できますよ！\n今なら出現率UP中です♪\n#ミリシタ https://t.co/hTvXBdnSLN"
         },
         {
+            "id": "1616074781656506369",
             "entities": {
-                "mentions": [
-                    {
-                        "start": 3,
-                        "end": 11,
-                        "username": "imas_ch",
-                        "id": "1283006118285815810"
-                    }
-                ],
                 "urls": [
                     {
                         "start": 75,
@@ -322,28 +315,24 @@
                         "description": "ミリシタ5.5周年を記念し、『開発スタッフインタビュー』を収録！バンダイナムコスタジオのミリシタ開発・運営スタッフによるMVやカードの制作過程、開発時のエピソードなど必見の内容になっております！▼5.5周年記念特設サイトはこちら！https://millionlive-theaterdays.idolmaster...",
                         "unwound_url": "https://www.youtube.com/watch?v=2t9W0j_WJMg&feature=youtu.be"
                     }
+                ],
+                "mentions": [
+                    {
+                        "start": 3,
+                        "end": 11,
+                        "username": "imas_ch",
+                        "id": "1283006118285815810"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616074781656506369"
             ],
-            "text": "RT @imas_ch: 【動画更新情報】\n\n本日の動画は「【ミリオンライブ！】裏話満載！？ここでしか聞けないミリシタ制作秘話を特別公開！」です！\n\nhttps://t.co/zsPLM7z1Jj\n\nミリシタ開発・運営スタッフによるMVやカードの制作過程、開発時のエピソードなど…",
-            "id": "1616074781656506369"
+            "text": "RT @imas_ch: 【動画更新情報】\n\n本日の動画は「【ミリオンライブ！】裏話満載！？ここでしか聞けないミリシタ制作秘話を特別公開！」です！\n\nhttps://t.co/zsPLM7z1Jj\n\nミリシタ開発・運営スタッフによるMVやカードの制作過程、開発時のエピソードなど…"
         },
         {
+            "id": "1616070939141353472",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 23,
-                        "end": 38,
-                        "tag": "ミリシタ55MVプロデュース"
-                    },
-                    {
-                        "start": 112,
-                        "end": 125,
-                        "tag": "ミリシタアートコンテスト"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 3,
@@ -391,23 +380,28 @@
                         "expanded_url": "https://twitter.com/imasml_theater/status/1598292182158307332",
                         "display_url": "twitter.com/imasml_theater…"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 23,
+                        "end": 38,
+                        "tag": "ミリシタ55MVプロデュース"
+                    },
+                    {
+                        "start": 112,
+                        "end": 125,
+                        "tag": "ミリシタアートコンテスト"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616070939141353472"
             ],
-            "text": "この後YouTube「GO.GO!TV」にて\n#ミリシタ55MVプロデュース で募集したMVを大公開！\n\nプロデューサーさんのこだわりが詰まった、渾身のステージばかり✨ぜひお気に入りを見つけてください♪\n\n🎨番組の合間には #ミリシタアートコンテスト 投稿作品もご紹介！\n\n👇視聴はコチラ\nhttps://t.co/EZ08nRaDu5 https://t.co/USd1IoD2bQ",
-            "id": "1616070939141353472"
+            "text": "この後YouTube「GO.GO!TV」にて\n#ミリシタ55MVプロデュース で募集したMVを大公開！\n\nプロデューサーさんのこだわりが詰まった、渾身のステージばかり✨ぜひお気に入りを見つけてください♪\n\n🎨番組の合間には #ミリシタアートコンテスト 投稿作品もご紹介！\n\n👇視聴はコチラ\nhttps://t.co/EZ08nRaDu5 https://t.co/USd1IoD2bQ"
         },
         {
+            "id": "1616070597477367809",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 90,
-                        "end": 101,
-                        "tag": "正餐とイーヴルナイフ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 1,
@@ -449,23 +443,23 @@
                         "display_url": "pic.twitter.com/ub3T3UjqnL",
                         "media_key": "3_1616033777821847553"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 90,
+                        "end": 101,
+                        "tag": "正餐とイーヴルナイフ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616070597477367809"
             ],
-            "text": "『Criminally Dinner〜正餐とイーヴルナイフ～』コミュ上映会にご参加いただき、ありがとうございました！\n\n✒【登場人物 相関図】最終版をお見せしちゃいます！\n感想は #正餐とイーヴルナイフ でツイートしてくださいね♪\n\n👇GO.GO!TVはコチラ！\nhttps://t.co/EZ08nRa5Ex https://t.co/ub3T3UjqnL",
-            "id": "1616070597477367809"
+            "text": "『Criminally Dinner〜正餐とイーヴルナイフ～』コミュ上映会にご参加いただき、ありがとうございました！\n\n✒【登場人物 相関図】最終版をお見せしちゃいます！\n感想は #正餐とイーヴルナイフ でツイートしてくださいね♪\n\n👇GO.GO!TVはコチラ！\nhttps://t.co/EZ08nRa5Ex https://t.co/ub3T3UjqnL"
         },
         {
+            "id": "1616055372422209536",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 91,
-                        "end": 102,
-                        "tag": "正餐とイーヴルナイフ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 44,
@@ -507,23 +501,23 @@
                         "display_url": "pic.twitter.com/nLfokqojgL",
                         "media_key": "3_1616033490226806784"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 91,
+                        "end": 102,
+                        "tag": "正餐とイーヴルナイフ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616055372422209536"
             ],
-            "text": "■━━━━━━━━■\n　📺コミュ上映会✨\n■━━━━━━━━■\n\n♠第４夜は・・・\n『Criminally Dinner〜正餐とイーヴルナイフ～』を放送！\nこのあと22時～予定！\n\n#正餐とイーヴルナイフ\nで呟いてくださいね♪\n\n👇視聴はコチラ！\nhttps://t.co/EZ08nRa5Ex https://t.co/nLfokqojgL",
-            "id": "1616055372422209536"
+            "text": "■━━━━━━━━■\n　📺コミュ上映会✨\n■━━━━━━━━■\n\n♠第４夜は・・・\n『Criminally Dinner〜正餐とイーヴルナイフ～』を放送！\nこのあと22時～予定！\n\n#正餐とイーヴルナイフ\nで呟いてくださいね♪\n\n👇視聴はコチラ！\nhttps://t.co/EZ08nRa5Ex https://t.co/nLfokqojgL"
         },
         {
+            "id": "1616047761522315270",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 150,
-                        "end": 155,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "urls": [
                     {
                         "start": 126,
@@ -548,33 +542,23 @@
                         "description": "プロデューサーの皆さんこんにちは！ 「アイドルマスター ミリオンライブ！ シアターデイズ」からのお知らせです！  1月31日より開",
                         "unwound_url": "https://idolmaster-official.jp/news/01_7695"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 150,
+                        "end": 155,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1616047761522315270"
             ],
-            "text": "＼1月31日より投票開始！／\n✨MILLION C@STING!!!✨\n\n本日のミリラジにて詳細を発表いたしました🎉\nプロデューサーさん！\nアイドルたちのキャスティングをよろしくお願いします♪\n\n▼詳細はアイマスポータルやアプリ内お知らせをチェック！\nhttps://t.co/Bv0nBtrHFo\n#ミリシタ",
-            "id": "1616047761522315270"
+            "text": "＼1月31日より投票開始！／\n✨MILLION C@STING!!!✨\n\n本日のミリラジにて詳細を発表いたしました🎉\nプロデューサーさん！\nアイドルたちのキャスティングをよろしくお願いします♪\n\n▼詳細はアイマスポータルやアプリ内お知らせをチェック！\nhttps://t.co/Bv0nBtrHFo\n#ミリシタ"
         },
         {
+            "id": "1615981032985227265",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 44,
-                        "end": 53,
-                        "tag": "REDALiCE"
-                    },
-                    {
-                        "start": 57,
-                        "end": 64,
-                        "tag": "小岩井ことり"
-                    },
-                    {
-                        "start": 100,
-                        "end": 115,
-                        "tag": "GOGOTV放送中_ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 0,
@@ -623,23 +607,33 @@
                         "display_url": "pic.twitter.com/z80QbENQUf",
                         "media_key": "3_1615980871168970752"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 44,
+                        "end": 53,
+                        "tag": "REDALiCE"
+                    },
+                    {
+                        "start": 57,
+                        "end": 64,
+                        "tag": "小岩井ことり"
+                    },
+                    {
+                        "start": 100,
+                        "end": 115,
+                        "tag": "GOGOTV放送中_ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615981032985227265"
             ],
-            "text": "◤　　　　　　　　　　◥\n　スペシャルDJ Night✨\n◣　　　　　　　　　 　◢\n\n#REDALiCE さん\n#小岩井ことり さん\nご出演のDJ映像の放送は、\n📢本日22時まで！お見逃しなく♪\n\n#GOGOTV放送中_ミリシタ \n👇視聴はコチラ\nhttps://t.co/EZ08nRaDu5 https://t.co/z80QbENQUf",
-            "id": "1615981032985227265"
+            "text": "◤　　　　　　　　　　◥\n　スペシャルDJ Night✨\n◣　　　　　　　　　 　◢\n\n#REDALiCE さん\n#小岩井ことり さん\nご出演のDJ映像の放送は、\n📢本日22時まで！お見逃しなく♪\n\n#GOGOTV放送中_ミリシタ \n👇視聴はコチラ\nhttps://t.co/EZ08nRaDu5 https://t.co/z80QbENQUf"
         },
         {
+            "id": "1615980697617063937",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 118,
-                        "end": 133,
-                        "tag": "ミリシタ55MVプロデュース"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 48,
@@ -681,23 +675,23 @@
                         "display_url": "pic.twitter.com/KYx27J62kt",
                         "media_key": "3_1615980420658761730"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 118,
+                        "end": 133,
+                        "tag": "ミリシタ55MVプロデュース"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615980697617063937"
             ],
-            "text": "■━━━━━━━━━■\n　✨24/7放送予定\n■━━━━━━━━━■\n\n＜📺本日22時～＞\n『Criminally Dinner〜正餐とイーヴルナイフ～』\nさらに！\n『5.5周年記念！開発スタッフインタビュー』完全版\n\n＜📺上映会後＞\n#ミリシタ55MVプロデュース で選ばれたMVを24/7配信！\n\nhttps://t.co/EZ08nRaDu5 https://t.co/KYx27J62kt",
-            "id": "1615980697617063937"
+            "text": "■━━━━━━━━━■\n　✨24/7放送予定\n■━━━━━━━━━■\n\n＜📺本日22時～＞\n『Criminally Dinner〜正餐とイーヴルナイフ～』\nさらに！\n『5.5周年記念！開発スタッフインタビュー』完全版\n\n＜📺上映会後＞\n#ミリシタ55MVプロデュース で選ばれたMVを24/7配信！\n\nhttps://t.co/EZ08nRaDu5 https://t.co/KYx27J62kt"
         },
         {
+            "id": "1615907027888349186",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 65,
-                        "end": 70,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 0,
@@ -723,23 +717,23 @@
                         "display_url": "pic.twitter.com/KEtwk1hWDd",
                         "media_key": "13_1615607034501804033"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 65,
+                        "end": 70,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615907027888349186"
             ],
-            "text": "千早ちゃんのSSRカードが、ただいま開催中の『少女と人形、2人の絆は永遠に…ガシャ』で獲得できますよ！\n今なら出現率UP中です♪\n#ミリシタ https://t.co/KEtwk1hWDd",
-            "id": "1615907027888349186"
+            "text": "千早ちゃんのSSRカードが、ただいま開催中の『少女と人形、2人の絆は永遠に…ガシャ』で獲得できますよ！\n今なら出現率UP中です♪\n#ミリシタ https://t.co/KEtwk1hWDd"
         },
         {
+            "id": "1615592069229154315",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 161,
-                        "end": 166,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 8,
@@ -786,23 +780,23 @@
                         "display_url": "pic.twitter.com/RH0F4ZIKKG",
                         "media_key": "3_1615254893320863747"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 161,
+                        "end": 166,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615592069229154315"
             ],
-            "text": "『衣装購入』に「ドリーミー・クッキング」を追加しました！\n765PRO ALLSTARS、PRINCESS STARS、FAIRY STARS、ANGEL STARS 各13人分の衣装が付いたプラチナガシャ10回チケットを、有償ミリオンジュエル2500個で購入いただけます！\n詳しくはアプリ内のお知らせをご確認ください♪\n#ミリシタ https://t.co/RH0F4ZIKKG",
-            "id": "1615592069229154315"
+            "text": "『衣装購入』に「ドリーミー・クッキング」を追加しました！\n765PRO ALLSTARS、PRINCESS STARS、FAIRY STARS、ANGEL STARS 各13人分の衣装が付いたプラチナガシャ10回チケットを、有償ミリオンジュエル2500個で購入いただけます！\n詳しくはアプリ内のお知らせをご確認ください♪\n#ミリシタ https://t.co/RH0F4ZIKKG"
         },
         {
+            "id": "1615591817587613698",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 96,
-                        "end": 101,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 7,
@@ -828,23 +822,23 @@
                         "display_url": "pic.twitter.com/ecMS3QUPgd",
                         "media_key": "3_1614899632852832262"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 96,
+                        "end": 101,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615591817587613698"
             ],
-            "text": "今回追加される真ちゃんのカードには『プリティウェイトレス』がついてきます！\nMILLION LIVE CLOSET! Reburnの衣装ですよ♪\n詳しくはアプリ内のお知らせをご確認ください！\n#ミリシタ https://t.co/ecMS3QUPgd",
-            "id": "1615591817587613698"
+            "text": "今回追加される真ちゃんのカードには『プリティウェイトレス』がついてきます！\nMILLION LIVE CLOSET! Reburnの衣装ですよ♪\n詳しくはアプリ内のお知らせをご確認ください！\n#ミリシタ https://t.co/ecMS3QUPgd"
         },
         {
+            "id": "1615591566093029376",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 120,
-                        "end": 125,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 7,
@@ -884,23 +878,23 @@
                         "display_url": "pic.twitter.com/KBPbFfaBAC",
                         "media_key": "3_1614899266564259841"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 120,
+                        "end": 125,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615591566093029376"
             ],
-            "text": "今回追加される雪歩ちゃんのカードには\n新衣装『イトシキメモワール』がついてきます！\n\n雪歩「ここをこうして……うん、いい感じ！ねぇ、お人形さん。……千早。どうかな？……。うーん、まだ会話は難しいか～。でも大丈夫、私、待つのは得意なんだ。」\n#ミリシタ https://t.co/KBPbFfaBAC",
-            "id": "1615591566093029376"
+            "text": "今回追加される雪歩ちゃんのカードには\n新衣装『イトシキメモワール』がついてきます！\n\n雪歩「ここをこうして……うん、いい感じ！ねぇ、お人形さん。……千早。どうかな？……。うーん、まだ会話は難しいか～。でも大丈夫、私、待つのは得意なんだ。」\n#ミリシタ https://t.co/KBPbFfaBAC"
         },
         {
+            "id": "1615591440280686592",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 121,
-                        "end": 126,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 7,
@@ -933,23 +927,23 @@
                         "display_url": "pic.twitter.com/SjfkJJcrUR",
                         "media_key": "3_1614898872522002432"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 121,
+                        "end": 126,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615591440280686592"
             ],
-            "text": "今回追加される千早ちゃんのカードには\n新衣装『ココロリアン』がついてきます！\n\n千早「この植物を、どうして私に？　いえ、マスターが望むのであれば受け取ります。赤い花……スイートピー、というのですね。\n……マスター、なぜ嬉しそうなのですか？」\n#ミリシタ https://t.co/SjfkJJcrUR",
-            "id": "1615591440280686592"
+            "text": "今回追加される千早ちゃんのカードには\n新衣装『ココロリアン』がついてきます！\n\n千早「この植物を、どうして私に？　いえ、マスターが望むのであれば受け取ります。赤い花……スイートピー、というのですね。\n……マスター、なぜ嬉しそうなのですか？」\n#ミリシタ https://t.co/SjfkJJcrUR"
         },
         {
+            "id": "1615591188672778240",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 122,
-                        "end": 127,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 29,
@@ -968,23 +962,23 @@
                         "display_url": "pic.twitter.com/SU5URLmlxB",
                         "media_key": "3_1614898572696358912"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 122,
+                        "end": 127,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615591188672778240"
             ],
-            "text": "『少女と人形、2人の絆は永遠に…ガシャ』は、毎回引く度に「キラメキのしずく」が獲得できます。\nさらにピックアップ中のSSRカード獲得で、そのアイドルのスタイルドロップも100個獲得！\nたくさん集めて髪型を変えられる衣装を増やしていきましょう♪\n#ミリシタ https://t.co/SU5URLmlxB",
-            "id": "1615591188672778240"
+            "text": "『少女と人形、2人の絆は永遠に…ガシャ』は、毎回引く度に「キラメキのしずく」が獲得できます。\nさらにピックアップ中のSSRカード獲得で、そのアイドルのスタイルドロップも100個獲得！\nたくさん集めて髪型を変えられる衣装を増やしていきましょう♪\n#ミリシタ https://t.co/SU5URLmlxB"
         },
         {
+            "id": "1615590936918085632",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 146,
-                        "end": 151,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 1,
@@ -1080,23 +1074,23 @@
                         "display_url": "pic.twitter.com/NPBPC7AmHV",
                         "media_key": "3_1614898259897765888"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 146,
+                        "end": 151,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615590936918085632"
             ],
-            "text": "『少女と人形、2人の絆は永遠に…ガシャ』開催です♪\n\n【限定】\nSSR 如月千早(CV：今井麻美)\nSSR 萩原雪歩(CV：浅倉杏美)\n\n【新規追加】\n衣装付きSR 菊地真(CV：平田宏美)\nSR 高槻やよい(CV：仁後真耶子)\nR 周防桃子(CV：渡部恵子)\n\n今なら出現率UP中ですよ♪\n#ミリシタ https://t.co/NPBPC7AmHV",
-            "id": "1615590936918085632"
+            "text": "『少女と人形、2人の絆は永遠に…ガシャ』開催です♪\n\n【限定】\nSSR 如月千早(CV：今井麻美)\nSSR 萩原雪歩(CV：浅倉杏美)\n\n【新規追加】\n衣装付きSR 菊地真(CV：平田宏美)\nSR 高槻やよい(CV：仁後真耶子)\nR 周防桃子(CV：渡部恵子)\n\n今なら出現率UP中ですよ♪\n#ミリシタ https://t.co/NPBPC7AmHV"
         },
         {
+            "id": "1615590559594287106",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 136,
-                        "end": 141,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 21,
@@ -1129,23 +1123,23 @@
                         "display_url": "pic.twitter.com/RZPqgLCb4o",
                         "media_key": "3_1615243578456035329"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 136,
+                        "end": 141,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615590559594287106"
             ],
-            "text": "『プレミアムパス交換所＞衣装交換』に衣装[トワイライト・エピック 奏]を追加しました！\n衣装[トワイライト・エピック 奏]引換券を使用することでEmotionLight公演メンバーの衣装を獲得することができますよ！\n『ナビ』の『プレミアムパス交換所』からご確認ください♪\n#ミリシタ https://t.co/RZPqgLCb4o",
-            "id": "1615590559594287106"
+            "text": "『プレミアムパス交換所＞衣装交換』に衣装[トワイライト・エピック 奏]を追加しました！\n衣装[トワイライト・エピック 奏]引換券を使用することでEmotionLight公演メンバーの衣装を獲得することができますよ！\n『ナビ』の『プレミアムパス交換所』からご確認ください♪\n#ミリシタ https://t.co/RZPqgLCb4o"
         },
         {
+            "id": "1615590433639354368",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 121,
-                        "end": 126,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "urls": [
                     {
                         "start": 97,
@@ -1178,23 +1172,23 @@
                         "display_url": "pic.twitter.com/F0JrFuqzk5",
                         "media_key": "13_1615249393686581248"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 121,
+                        "end": 126,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615590433639354368"
             ],
-            "text": "『オレンジ・エピソード』\nEmotionLightのメンバー13人が活躍する新曲が追加されましたので、映像を少しだけ公開しちゃいます♪\nこの一瞬を大事に…未体験の世界へ一緒に歩き出しましょう♪\nhttps://t.co/y2BVHCaYzK\n#ミリシタ https://t.co/F0JrFuqzk5",
-            "id": "1615590433639354368"
+            "text": "『オレンジ・エピソード』\nEmotionLightのメンバー13人が活躍する新曲が追加されましたので、映像を少しだけ公開しちゃいます♪\nこの一瞬を大事に…未体験の世界へ一緒に歩き出しましょう♪\nhttps://t.co/y2BVHCaYzK\n#ミリシタ https://t.co/F0JrFuqzk5"
         },
         {
+            "id": "1615590056168767490",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 97,
-                        "end": 102,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 5,
@@ -1234,23 +1228,23 @@
                         "display_url": "pic.twitter.com/1kcLSyKqiE",
                         "media_key": "3_1614815840557469697"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 97,
+                        "end": 102,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615590056168767490"
             ],
-            "text": "イベント『プラチナスタータイム』開演です！\nイベント楽曲『オレンジ・エピソード』や、イベント限定コミュも楽しんでくださいね♪\n\n【イベント限定カード】\n衣装付きSR 佐竹美奈子\nSR 北沢志保\n#ミリシタ https://t.co/1kcLSyKqiE",
-            "id": "1615590056168767490"
+            "text": "イベント『プラチナスタータイム』開演です！\nイベント楽曲『オレンジ・エピソード』や、イベント限定コミュも楽しんでくださいね♪\n\n【イベント限定カード】\n衣装付きSR 佐竹美奈子\nSR 北沢志保\n#ミリシタ https://t.co/1kcLSyKqiE"
         },
         {
+            "id": "1615589805991104513",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 122,
-                        "end": 127,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 1,
@@ -1269,23 +1263,23 @@
                         "display_url": "pic.twitter.com/75fyC4ErjC",
                         "media_key": "13_1615253458009092096"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 122,
+                        "end": 127,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615589805991104513"
             ],
-            "text": "「MILLION THEATER SEASON FINAL」～EmotionLight～ 開幕です！\n暖かい光が、アイドルたちをそっと包んでますよ♪\nスペシャルムービーを最後まで見ると…？\n\n詳細はアプリ内イベント専用ページをご確認ください。\n#ミリシタ https://t.co/75fyC4ErjC",
-            "id": "1615589805991104513"
+            "text": "「MILLION THEATER SEASON FINAL」～EmotionLight～ 開幕です！\n暖かい光が、アイドルたちをそっと包んでますよ♪\nスペシャルムービーを最後まで見ると…？\n\n詳細はアプリ内イベント専用ページをご確認ください。\n#ミリシタ https://t.co/75fyC4ErjC"
         },
         {
+            "id": "1615544631617265665",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 77,
-                        "end": 82,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 10,
@@ -1318,28 +1312,23 @@
                         "display_url": "pic.twitter.com/aLhf8GFxLA",
                         "media_key": "3_1614897962303492097"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 77,
+                        "end": 82,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615544631617265665"
             ],
-            "text": "本日15:00～ 『少女と人形、2人の絆は永遠に…ガシャ』を開催します♪\n今回追加されるカードを一部ご紹介しちゃいますね。\n千早ちゃんと雪歩ちゃんです♪\n#ミリシタ https://t.co/aLhf8GFxLA",
-            "id": "1615544631617265665"
+            "text": "本日15:00～ 『少女と人形、2人の絆は永遠に…ガシャ』を開催します♪\n今回追加されるカードを一部ご紹介しちゃいますね。\n千早ちゃんと雪歩ちゃんです♪\n#ミリシタ https://t.co/aLhf8GFxLA"
         },
         {
+            "id": "1615364193288429570",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 45,
-                        "end": 57,
-                        "tag": "北沢志保生誕祭2023"
-                    },
-                    {
-                        "start": 165,
-                        "end": 170,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 0,
@@ -1403,23 +1392,28 @@
                         "description": "スマートフォン向けアプリ「アイドルマスター ミリオンライブ！ シアターデイズ」ゲーム内楽曲『絵本』を様々な衣装で歌って踊る姿を編集した特別動画を公開！・歌唱アイドル北沢 志保（CV：雨宮 天）・作家クレジット作詞：坂井季乃作曲・編曲：増谷賢ゲーム内では北沢 志保だけが登場する誕生日ガシャも登場！今すぐ起動： ht...",
                         "unwound_url": "https://www.youtube.com/watch?v=X9l9uF77Hx8&feature=youtu.be"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 45,
+                        "end": 57,
+                        "tag": "北沢志保生誕祭2023"
+                    },
+                    {
+                        "start": 165,
+                        "end": 170,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615364193288429570"
             ],
-            "text": "志保ちゃんのお誕生日記念🎉\n公式バースデー記念グッズのプレゼントキャンペーンを開催！\n\n＼#北沢志保生誕祭2023🍰／\nをつけて引用リツイート✨\n\n抽選で5名様に志保ちゃんグッズプレゼント🎁\nhttps://t.co/1i0XldKSBa\n\n衣装がくるくる変わる特別動画も公開中♪\nhttps://t.co/hpvLt0avf3\n#ミリシタ",
-            "id": "1615364193288429570"
+            "text": "志保ちゃんのお誕生日記念🎉\n公式バースデー記念グッズのプレゼントキャンペーンを開催！\n\n＼#北沢志保生誕祭2023🍰／\nをつけて引用リツイート✨\n\n抽選で5名様に志保ちゃんグッズプレゼント🎁\nhttps://t.co/1i0XldKSBa\n\n衣装がくるくる変わる特別動画も公開中♪\nhttps://t.co/hpvLt0avf3\n#ミリシタ"
         },
         {
+            "id": "1615363815750639617",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 150,
-                        "end": 155,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 1,
@@ -1452,23 +1446,23 @@
                         "display_url": "pic.twitter.com/Pq3UGiyWOW",
                         "media_key": "3_1614821999255375872"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 150,
+                        "end": 155,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615363815750639617"
             ],
-            "text": "『北沢志保Birthdayガシャ』開催中！\n誕生日を記念して、志保ちゃんのカードだけが登場する特別なガシャです♪\n1ステップ目に「マイオンリードットモード」「Birthday Memory 2023」「スタイルドロップ100個」が特典で付いてきますよ♪\nさらに3ステップ目はSSRカードが1枚確定！\n#ミリシタ https://t.co/Pq3UGiyWOW",
-            "id": "1615363815750639617"
+            "text": "『北沢志保Birthdayガシャ』開催中！\n誕生日を記念して、志保ちゃんのカードだけが登場する特別なガシャです♪\n1ステップ目に「マイオンリードットモード」「Birthday Memory 2023」「スタイルドロップ100個」が特典で付いてきますよ♪\nさらに3ステップ目はSSRカードが1枚確定！\n#ミリシタ https://t.co/Pq3UGiyWOW"
         },
         {
+            "id": "1615363564499247104",
             "entities": {
-                "hashtags": [
-                    {
-                        "start": 149,
-                        "end": 154,
-                        "tag": "ミリシタ"
-                    }
-                ],
                 "annotations": [
                     {
                         "start": 1,
@@ -1494,13 +1488,19 @@
                         "display_url": "pic.twitter.com/o08aqcF1bR",
                         "media_key": "3_1614821746473070593"
                     }
+                ],
+                "hashtags": [
+                    {
+                        "start": 149,
+                        "end": 154,
+                        "tag": "ミリシタ"
+                    }
                 ]
             },
             "edit_history_tweet_ids": [
                 "1615363564499247104"
             ],
-            "text": "『北沢志保Birthdayセット2023』が登場！\n誕生日を記念して、「プラチナガシャ10回チケット」に衣装「マイオンリードットモード」「Birthday Memory 2023」「スタイルドロップ100個」が付いてきますよ♪\n「マイオンリーカジュアル」がついた2021年のセットも再登場中です！\n#ミリシタ https://t.co/o08aqcF1bR",
-            "id": "1615363564499247104"
+            "text": "『北沢志保Birthdayセット2023』が登場！\n誕生日を記念して、「プラチナガシャ10回チケット」に衣装「マイオンリードットモード」「Birthday Memory 2023」「スタイルドロップ100個」が付いてきますよ♪\n「マイオンリーカジュアル」がついた2021年のセットも再登場中です！\n#ミリシタ https://t.co/o08aqcF1bR"
         }
     ],
     "meta": {
