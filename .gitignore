@@ -1,6 +1,7 @@
 
-data.json
+cogs/command/function_background/data.json
+cogs/command/function_background/last_id.json
+cogs/command/function_background/secret.json
 token.json
-secret.json
 
 **/__pycache__
