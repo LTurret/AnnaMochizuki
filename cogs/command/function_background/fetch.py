@@ -10,7 +10,7 @@ def fetch(secrets: list) -> None:
     payload = {
         "query": "from:imasml_theater",
         "tweet.fields": ["entities"],
-        "max_results": 30
+        "max_results": 11
     }
 
     oauth = OAuth1Session(
