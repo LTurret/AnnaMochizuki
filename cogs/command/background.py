@@ -85,11 +85,15 @@ class background(commands.Cog):
 
             for _ in range(cluster[0]):
                 data = cluster[1].pop()
+                last_id = data["id"]
                 suffix = data["id"]
                 url = prefix + suffix
                 keywords = get_keywords(data)
                 hashtags = get_hashtags(data)
                 await ctx.send(content=template(url, keywords, hashtags))
+
+            with open("./cogs/command/function_background/last_id.json", mode="w") as prev_id:
+                json.dump({"id": last_id, "log": f"<t:{int(time.time())}>"}, prev_id)
 
             await asyncio.sleep(60)
 
