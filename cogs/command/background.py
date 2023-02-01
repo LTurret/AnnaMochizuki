@@ -55,6 +55,7 @@ def get_hashtags(webhook_data: list) -> list:
 class background(commands.Cog):
     def __init__(self, Anna):
         self.Anna = Anna
+        self.channel = None
 
     @commands.command()
     async def imasml(self, ctx):
@@ -90,7 +91,11 @@ class background(commands.Cog):
                 url = prefix + suffix
                 keywords = get_keywords(data)
                 hashtags = get_hashtags(data)
-                await ctx.send(content=template(url, keywords, hashtags))
+                with open("./cogs/command/function_background/channel.json", mode="r") as channels:
+                    channels = json.load(channels)
+                for channel in channels["channel"]:
+                    channel = await self.Anna.fetch_channel(channel)
+                    await channel.send(content=template(url, keywords, hashtags))
 
             with open("./cogs/command/function_background/last_id.json", mode="w") as prev_id:
                 json.dump({"id": last_id, "log": f"<t:{int(time.time())}>"}, prev_id)
