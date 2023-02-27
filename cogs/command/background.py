@@ -91,11 +91,15 @@ class background(commands.Cog):
                 url = prefix + suffix
                 keywords = get_keywords(data)
                 hashtags = get_hashtags(data)
-                with open("./cogs/command/function_background/channel.json", mode="r") as channels:
-                    channels = json.load(channels)
-                for channel in channels["channel"]:
-                    channel = await self.Anna.fetch_channel(channel)
-                    await channel.send(content=template(url, keywords, hashtags))
+                if "channel.json" is not os.listdir("./cogs/command/function_background"):
+                    print('"channel.json" is not in the directory, please read the docs for setup this command')
+                    # 該學exception了
+                else:
+                    with open("./cogs/command/function_background/channel.json", mode="r") as channels:
+                        channels = json.load(channels)
+                    for channel in channels["channel"]:
+                        channel = await self.Anna.fetch_channel(channel)
+                        await channel.send(content=template(url, keywords, hashtags))
 
             with open("./cogs/command/function_background/last_id.json", mode="w") as prev_id:
                 json.dump({"id": last_id, "log": f"<t:{int(time.time())}>"}, prev_id)
