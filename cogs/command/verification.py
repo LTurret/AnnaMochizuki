@@ -34,8 +34,6 @@ class verification(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
 
-        print(payload)
-
         guild = self.Anna.get_guild(self.constants.id("guild"))
         channel = payload.channel_id
         emoji = payload.emoji.name
@@ -43,7 +41,7 @@ class verification(commands.Cog):
 
         if channel == self.constants.id("info_channel") and msg == self.constants.id("msg"):
             
-            if emoji == "Serika":
+            if emoji == "✅":
                 role = guild.get_role(self.constants.id("role_member"))
                 await payload.member.add_roles(role)
 
