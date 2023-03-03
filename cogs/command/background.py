@@ -91,7 +91,7 @@ class background(commands.Cog):
                 url = prefix + suffix
                 keywords = get_keywords(data)
                 hashtags = get_hashtags(data)
-                if "channel.json" is not os.listdir("./cogs/command/function_background"):
+                if "channel.json" not in os.listdir("./cogs/command/function_background"):
                     print('"channel.json" is not in the directory, please read the docs for setup this command')
                     # 該學exception了
                 else:
