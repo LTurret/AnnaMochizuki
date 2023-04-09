@@ -152,10 +152,6 @@ class keyword(commands.Cog):
                 image = discord.File(self.IntegrationTools.locf("TF", "pullup.png"))
                 await message.channel.send(file=image)
 
-            # [Other] 低能卡注意
-            if message.content.count("https://www.dcard.tw/"):
-                await message.channel.send("低能卡注意")
-            
         except Exception as exception:
             print(exception)
 
