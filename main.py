@@ -1,7 +1,16 @@
-import asyncio, json, os
+import asyncio
+import json
+
+from dotenv import load_dotenv
+from os import getenv
+from os import listdir
+from os import system
 
 import discord
+
 from discord.ext import commands
+
+load_dotenv()
 
 with open("./config/token.json", mode="r") as token:
     token = json.load(token)
@@ -18,7 +27,7 @@ Anna.remove_command("help")
 async def on_ready():
     await Anna.change_presence(status = discord.Status.online, activity = discord.Game("偶像大師 百萬人演唱會！ 劇場時光"))
     try:
-        os.system("clear")
+        system("clear")
     except Exception as _:
         pass
     print(f"Enter pleasure!!")
@@ -43,10 +52,10 @@ async def reload(ctx, extension):
 
 async def main():
     async with Anna:
-        for filename in os.listdir("./cogs/command"):
+        for filename in listdir("./cogs/command"):
             if filename.endswith(".py"):
                 print(f"Loading commands extension: {filename}")
                 await Anna.load_extension(f"cogs.command.{filename[:-3]}")
-        await Anna.start(token["token"])
+        await Anna.start(getenv("BOT_TOKEN"))
 
 asyncio.run(main())

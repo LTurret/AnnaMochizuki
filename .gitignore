@@ -5,4 +5,6 @@ cogs/command/function_background/last_id.json
 cogs/command/function_background/secret.json
 token.json
 
+.env
+
 **/__pycache__

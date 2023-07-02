@@ -1,5 +1,7 @@
 import json
 
+from os import getenv
+
 from discord.ext import commands
 
 # Unique ids for verification.
@@ -12,10 +14,10 @@ with open("./config/scope.json") as server_scopes:
 
 class constants():
     def __init__(self):
-        self.__GUILD:int = server_scopes["Production"]
-        self.__CHANNEL_INFORMATION:int = unique_ids["CHANNEL_INFORMATION"]
-        self.__MESSAGE:int = unique_ids["MESSAGE"]
-        self.__ROLE_MEMBER:int = unique_ids["ROLE_MEMBER"]
+        self.__GUILD:int = getenv("Production")
+        self.__CHANNEL_INFORMATION:int = getenv("CHANNEL_INFORMATION")
+        self.__MESSAGE:int = getenv("MESSAGE")
+        self.__ROLE_MEMBER:int = getenv("ROLE_MEMBER")
 
     def id(self, selector:str=""):
         manifest = {
