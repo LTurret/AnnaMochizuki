@@ -4,14 +4,6 @@ from os import getenv
 
 from discord.ext import commands
 
-# Unique ids for verification.
-with open("./config/unique.json") as unique_ids:
-    unique_ids = json.load(unique_ids)
-
-# Server scopes(ids), used for quick switching between production and testing server.
-with open("./config/scope.json") as server_scopes:
-    server_scopes = json.load(server_scopes)
-
 class constants():
     def __init__(self):
         self.__GUILD:int = getenv("Production")

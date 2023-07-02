@@ -12,9 +12,6 @@ from discord.ext import commands
 
 load_dotenv()
 
-with open("./config/token.json", mode="r") as token:
-    token = json.load(token)
-
 intents = discord.Intents.all()
 intents.members = True
 intents.messages = True
